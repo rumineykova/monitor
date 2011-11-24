@@ -1,0 +1,21 @@
+import Order;
+import CreditCheck;
+import CreditOk;
+import Confirmation;
+import InsufficientCredit;
+import OrderRejected;
+import OutOfStock;
+protocol Purchasing at Buyer {
+	Order to Seller;
+	choice {
+		OutOfStock from Seller;
+		OutOfStock from Seller;
+		OutOfStock from Seller;
+	} or 
+        {
+		Confirmation from Seller;
+		OK to Seller;
+	}
+	Finish to Seller;
+
+}

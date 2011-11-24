@@ -1,0 +1,12 @@
+import Order;
+import CreditCheck;
+import CreditOk;
+import InsufficientCredit;
+import Confirmation;
+import OutOfStock;
+
+protocol PurchasingBuyer (role Broker) {
+
+	Order(Milk, Bread) to Broker;
+	
+}

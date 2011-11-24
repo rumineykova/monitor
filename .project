@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>MonitorPrototype</name>
+	<comment></comment>
+	<projects>
+	</projects>
+	<buildSpec>
+		<buildCommand>
+			<name>org.eclipse.dltk.core.scriptbuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+		<buildCommand>
+			<name>org.python.pydev.PyDevBuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+	</buildSpec>
+	<natures>
+		<nature>org.python.pydev.pythonNature</nature>
+		<nature>org.deved.antlride.core.nature</nature>
+	</natures>
+	<linkedResources>
+		<link>
+			<name>Antlr</name>
+			<type>2</type>
+			<location>/homes/rn710/workspace/MonitorPrototype/Antlr</location>
+		</link>
+	</linkedResources>
+</projectDescription>
