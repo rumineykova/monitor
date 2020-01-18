@@ -1,44 +1,97 @@
 import sys 
-from parser.ANTLRScribbleParser import ANTLRScribbleParser
-from common.configuration import Configuration
-from common.logger import Logger
+from parsing.parsers import ANTLRScribbleParser
+from transition import TransitionFactory    
+from conversation.conversation_types import LocalType
+from conversation.protocol_providers import DefaultProtocolProvider  
+from core.fsm import ExceptionFSM, ExceptionFailAssertion
+    
+class ConversationMonitorException(Exception):
+    """This is the Exception class for ConversationMonitor."""
+    def __init__(self, value):
+        self.value = value
+
+    def __str__(self):
+        return 'self.value'
+    
+class ConversationMonitor(object):
+    def __init__(self, protocolProvider = None): 
+        self.protocolStateMachines = {} 
+        self.conversations = {}
+        self.conversationRoles = {}
+        self.is_logic_enabled = True
+        if protocolProvider: self.protocolProvider = protocolProvider
+        else: self.protocolProvider = DefaultProtocolProvider()
+    
+    def on_create_conversation(self, cid, protocolID, initiator):
+        roles = self.protocolProvider.get_roles_by_protocolID(protocolID)
+        self.conversations.setdefault(cid, protocolID)
+        for role in roles:
+            # This marks whether a role capability is enabled. Initially it is not
+            self.conversationRoles.setdefault((cid, role), None)
+            
+    """ on_incoming_invitations is meant to be used for checking of send_invitation, 
+        check when an invitation arrive, not when it is accepted
+        In the current setting receiving an invitation means accepting it. """          
+    def on_incoming_invitations(self, invitation):
+        cid = invitation.cid
+        role = invitation.role
+        self.conversationRoles.setdefault((cid, role), invitation.local_capability)
         
-# Need to have parser, filecontent
-class Monitor(object):
+    def on_accept_invitation(self, invitation):
+        self.initialise(invitation.cid, invitation.role, invitation.local_capability)
     
-    jvmlib = jpype.getDefaultJVMPath()
-    print os.path.dirname(os.path.dirname(jvmlib))
-    specsScribble = {"purchasingAtBuyer":"/homes/rn710/workspace/MonitorPrototype/src/specs/purchasingAtBuyer.txt"}
-    specsXML = {"purchasingAtBuyer":"/homes/rn710/workspace/MonitorPrototype/src/specs/purchasingAtBuyer.txt"} 
-    def start(self, specID):
-        Logger.logFuncCall([Monitor,self.start])
-        if (Configuration.useXmlMonitorModel()):
-            { self.__getModelFromXml(specID) }
-        else:  
-            { self.__getModelFromScribble(specID, )}
-        pass
+    def check_accept_invitation(self, invitation):
+        cid = invitation.cid
+        role = invitation.role
+        return self.conversationRoles.get((cid, role), False)
+      
+    def check_outgoing_invitation(self, invitation):
+        cid = invitation.cid
+        role = invitation.role
+        if self.conversationRoles.has_key((cid, role)):
+            self.conversationRoles[(cid, role)] = invitation.participant
+            return True
+        return False
+        
+    # Note: here role capability is file_name
     
-    def receive(self, sessionId, msg):
-        # state = statemachine[sessionId].getState() 
-        # check(state, msg)
-        pass
-    def output(self, sessionId, msg):
-        pass    
+    def initialise(self, cid, role, role_capability):
+        print role_capability
+        myparser = ANTLRScribbleParser()
+        res = myparser.parse(role_capability)
+        builder = myparser.walk(res)
+        builder.main_fsm.fsm.set_assertion_check(self.is_logic_enabled)
+        self.protocolStateMachines.setdefault((cid, str.lower(role)), builder.main_fsm.fsm)
+        print "Monitor initalise: %s" %(builder.main_fsm.fsm)
     
-    def __getModelFromScribble(self, specID):
-        spec = self.specs.get(specID)
-        parser = ANTLRScribbleParser()
-        protocol = parser.parse(spec)
-        # statemachine = SateMachine(protocol)
-    
-    # This is just a wrapper function for getting the monitor from Scribble implementation 
-    # We load the monitor model that is serialized as XML 
-    def __getModelFromXml(self, specID):
-        pass
-    
+    def check_incoming_msg(self, convMsg):
+        return self.__check(convMsg.cid, convMsg.to_role, LocalType.RESV, 
+                            convMsg.label, convMsg.from_role, convMsg.content) 
+        
+    def check_outgoing_msg(self, convMsg):
+        return self.__check(convMsg.cid, convMsg.from_role, LocalType.SEND, 
+                            convMsg.label, convMsg.to_role, convMsg.content)     
+    def __check(self, cid, self_role, local_type, label, participant_role, content = None):
+        fsm = self.protocolStateMachines.get((cid, str.lower(self_role)))
+        if fsm is None:
+            raise ConversationMonitorException('No FSM for cid:%s and role:%s' 
+                                               %(cid, str.lower(self_role)))
+        transition = TransitionFactory.create(local_type, label, participant_role)
+        
+        try:
+            if self.is_logic_enabled:
+                # content is a tuple
+                fsm.process(transition, content)
+            else:
+                fsm.process(transition)
+            return True
+        except ExceptionFailAssertion: 
+            raise
+        except ExceptionFSM:
+            raise
+
 def main (argv): 
-    monitor = Monitor()
-    monitor.start("purchasingAtBuyer")
+    pass
 
 if __name__ == "__main__":
     sys.exit (main (sys.argv))

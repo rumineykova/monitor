@@ -6,7 +6,6 @@ import InsufficientCredit;
 import OrderRejected;
 import OutOfStock;
 protocol Purchasing at Buyer {
-	Order to Seller;
 	choice {
 		OutOfStock from Seller;
 		OutOfStock from Seller;

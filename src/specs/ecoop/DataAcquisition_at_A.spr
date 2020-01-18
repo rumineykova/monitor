@@ -1,0 +1,81 @@
+protocol DataAcquisition at A(role U, role I) 
+{
+	do 
+	{
+		choice 
+		{
+		 	Push from U;
+		 	StreamMode to I;
+		 	choice 
+		 	{
+		 		Supported from I;
+		 		ConfigStream to I;
+		 		rec STREAM 
+		 		{
+		 			Raw from I;
+		 			Formatted to U;
+		 			STREAM;
+		 		}
+		 	} 
+		 	or 
+		 	{
+		 		NotSupported from I;
+		 		ConfigPoll to I;
+		 		rec SAMPLE 
+		 		{
+		 			Poll to I;
+		 			Raw from I;
+		 			Formatted to U;
+		 			SAMPLE;
+		 		} 
+		 	}
+		 } 
+		 or 
+		 {
+		 	Poll from U;
+			SampleMode to I;
+		 	choice 
+		 	{
+		 		Supported from I;
+		 		ConfigPoll to I;
+		 		rec SAMPLE1 
+		 		{
+		 			Poll to I;
+		 			Raw from I;
+		 			Formatted to U;
+		 			SAMPLE1;
+		 		}
+		 	} 
+		 	or 
+		 	{
+		 		NotSupported from I;
+		 		parallel 
+		 		{
+		 			ConfigPush to I;
+		 			rec STREAM1 
+		 			{
+		 				Raw from I;
+		 				STREAM1;
+		 			}
+		 		}
+		  		and 
+		  		{
+		 			rec SAMPLE2 
+		 			{
+		 				Formatted to U;
+		 				SAMPLE2;
+		 			}
+	 			}
+			}
+		}
+	}	 
+ 	interrupt by U 
+   	{
+ 		Stop from U;
+ 		Stop to I;
+	}
+ }
+
+
+ 
+ 

@@ -1,0 +1,21 @@
+protocol Purchasing at Buyer {Confirmation1 from  Seller;
+OK1 to Seller;
+Confirmation2 from  Seller;
+OK2 to Seller;
+Confirmation3 from  Seller;
+OK3 to Seller;
+Confirmation4 from  Seller;
+OK4 to Seller;
+Confirmation5 from  Seller;
+OK5 to Seller;
+Confirmation6 from  Seller;
+OK6 to Seller;
+Confirmation7 from  Seller;
+OK7 to Seller;
+Confirmation8 from  Seller;
+OK8 to Seller;
+Confirmation9 from  Seller;
+OK9 to Seller;
+Confirmation10 from  Seller;
+OK10 to Seller;
+}

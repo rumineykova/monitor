@@ -1,0 +1,19 @@
+import Order;
+import CreditCheck;
+import CreditOk;
+import Confirmation;
+import InsufficientCredit;
+import OrderRejected;
+import OutOfStock;
+protocol Purchasing at Buyer {
+    rec Transaction
+    {
+        choice 
+	  {OutOfStock to Buyer;} 
+	   or 
+        {Confirmation(y:int) to Buyer;
+	    OK(x:int) from Buyer @{y+x>1 and x >0};
+         Transaction;
+	  }
+    }
+}

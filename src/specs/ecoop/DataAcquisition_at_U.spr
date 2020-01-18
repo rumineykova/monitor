@@ -1,0 +1,52 @@
+protocol DataAcquisition at U
+{
+	do 
+	{
+		choice
+		{
+		 	Push to A;
+		 	choice
+		 	{
+		 		rec STREAM 
+		 		{
+		 			Formatted from A;
+		 			STREAM;
+		 		}
+		 	} 
+		 	or 
+		 	{
+		 		rec SAMPLE 
+		 		{
+		 			Formatted from A;
+		 			SAMPLE;
+		 		} 
+		 	}
+		 } 
+		 or 
+		 {
+		 	choice 
+		 	{
+		 		rec SAMPLE1 
+		 		{
+		 			Formatted from A;
+		 			SAMPLE1;
+		 		}
+		 	} 
+		 	or 
+		 	{
+	 			rec SAMPLE2 
+	 			{
+	 				Formatted from A;
+	 				SAMPLE2;
+	 			}
+			}
+		}
+	}	 
+ 	interrupt by U 
+   	{
+ 		Stop to A;
+	}
+ }
+
+
+ 

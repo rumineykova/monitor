@@ -1,0 +1,15 @@
+import Order;
+import CreditCheck;
+import CreditOk;
+import InsufficientCredit;
+import Confirmation;
+import OutOfStock;
+
+protocol PurchasingBuyer (role Buyer) {
+	Order to Broker;
+	Confirmation from Seller;
+	Confirmation from Seller;
+	Order to Broker;
+	Confirmation from Seller;
+	Confirmation from Seller;
+}

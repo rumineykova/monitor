@@ -11,5 +11,6 @@ protocol Purchasing at Seller(role Buyer) {
 	} and {
 		Confirmation to Buyer;
 	}
+	
 	OK to Buyer;
 }

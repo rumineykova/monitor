@@ -1,4 +1,4 @@
-# $ANTLR 3.1.3 Mar 18, 2009 10:09:25 src/Monitor.g 2011-11-23 21:43:03
+# $ANTLR 3.1.3 Mar 18, 2009 10:09:25 Monitor.g 2011-12-06 02:38:03
 
 import sys
 from antlr3 import *
@@ -65,8 +65,8 @@ DIV=8
 # token names
 tokenNames = [
     "<invalid>", "<EOR>", "<DOWN>", "<UP>", 
-    "INTERACTION", "PLUS", "MINUS", "MULT", "DIV", "FULLSTOP", "RESV", "SEND", 
-    "BRANCH", "UNORDERED", "RECLABEL", "PARALLEL", "PROTOCOL", "ANNOTATION", 
+    "INTERACTION", "PLUS", "MINUS", "MULT", "DIV", "FULLSTOP", "RESV", 
+    "SEND", "BRANCH", "UNORDERED", "RECLABEL", "PARALLEL", "PROTOCOL", "ANNOTATION", 
     "ID", "StringLiteral", "NUMBER", "DIGIT", "WHITESPACE", "ML_COMMENT", 
     "LINE_COMMENT", "'import'", "'protocol'", "','", "';'", "'from'", "'as'", 
     "'at'", "'{'", "'}'", "'('", "')'", "'role'", "'introduces'", "'to'", 
@@ -78,7 +78,7 @@ tokenNames = [
 
 
 class MonitorParser(Parser):
-    grammarFileName = "src/Monitor.g"
+    grammarFileName = "Monitor.g"
     antlr_version = version_str_to_tuple("3.1.3 Mar 18, 2009 10:09:25")
     antlr_version_str = "3.1.3 Mar 18, 2009 10:09:25"
     tokenNames = tokenNames
@@ -152,7 +152,7 @@ class MonitorParser(Parser):
 
 
     # $ANTLR start "description"
-    # src/Monitor.g:29:1: description : ( ( ANNOTATION )* ( importProtocolStatement | importTypeStatement ) )* ( ANNOTATION )* protocolDef -> protocolDef ;
+    # Monitor.g:29:1: description : ( ( ANNOTATION )* ( importProtocolStatement | importTypeStatement ) )* ( ANNOTATION )* protocolDef -> protocolDef ;
     def description(self, ):
 
         retval = self.description_return()
@@ -177,17 +177,17 @@ class MonitorParser(Parser):
         stream_importProtocolStatement = RewriteRuleSubtreeStream(self._adaptor, "rule importProtocolStatement")
         try:
             try:
-                # src/Monitor.g:29:12: ( ( ( ANNOTATION )* ( importProtocolStatement | importTypeStatement ) )* ( ANNOTATION )* protocolDef -> protocolDef )
-                # src/Monitor.g:29:14: ( ( ANNOTATION )* ( importProtocolStatement | importTypeStatement ) )* ( ANNOTATION )* protocolDef
+                # Monitor.g:29:12: ( ( ( ANNOTATION )* ( importProtocolStatement | importTypeStatement ) )* ( ANNOTATION )* protocolDef -> protocolDef )
+                # Monitor.g:29:14: ( ( ANNOTATION )* ( importProtocolStatement | importTypeStatement ) )* ( ANNOTATION )* protocolDef
                 pass 
-                # src/Monitor.g:29:14: ( ( ANNOTATION )* ( importProtocolStatement | importTypeStatement ) )*
+                # Monitor.g:29:14: ( ( ANNOTATION )* ( importProtocolStatement | importTypeStatement ) )*
                 while True: #loop3
                     alt3 = 2
                     alt3 = self.dfa3.predict(self.input)
                     if alt3 == 1:
-                        # src/Monitor.g:29:16: ( ANNOTATION )* ( importProtocolStatement | importTypeStatement )
+                        # Monitor.g:29:16: ( ANNOTATION )* ( importProtocolStatement | importTypeStatement )
                         pass 
-                        # src/Monitor.g:29:16: ( ANNOTATION )*
+                        # Monitor.g:29:16: ( ANNOTATION )*
                         while True: #loop1
                             alt1 = 2
                             LA1_0 = self.input.LA(1)
@@ -197,7 +197,7 @@ class MonitorParser(Parser):
 
 
                             if alt1 == 1:
-                                # src/Monitor.g:29:18: ANNOTATION
+                                # Monitor.g:29:18: ANNOTATION
                                 pass 
                                 ANNOTATION1=self.match(self.input, ANNOTATION, self.FOLLOW_ANNOTATION_in_description161) 
                                 if self._state.backtracking == 0:
@@ -206,7 +206,7 @@ class MonitorParser(Parser):
 
                             else:
                                 break #loop1
-                        # src/Monitor.g:29:32: ( importProtocolStatement | importTypeStatement )
+                        # Monitor.g:29:32: ( importProtocolStatement | importTypeStatement )
                         alt2 = 2
                         LA2_0 = self.input.LA(1)
 
@@ -234,7 +234,7 @@ class MonitorParser(Parser):
                             raise nvae
 
                         if alt2 == 1:
-                            # src/Monitor.g:29:34: importProtocolStatement
+                            # Monitor.g:29:34: importProtocolStatement
                             pass 
                             self._state.following.append(self.FOLLOW_importProtocolStatement_in_description168)
                             importProtocolStatement2 = self.importProtocolStatement()
@@ -245,7 +245,7 @@ class MonitorParser(Parser):
 
 
                         elif alt2 == 2:
-                            # src/Monitor.g:29:60: importTypeStatement
+                            # Monitor.g:29:60: importTypeStatement
                             pass 
                             self._state.following.append(self.FOLLOW_importTypeStatement_in_description172)
                             importTypeStatement3 = self.importTypeStatement()
@@ -260,7 +260,7 @@ class MonitorParser(Parser):
 
                     else:
                         break #loop3
-                # src/Monitor.g:29:85: ( ANNOTATION )*
+                # Monitor.g:29:85: ( ANNOTATION )*
                 while True: #loop4
                     alt4 = 2
                     LA4_0 = self.input.LA(1)
@@ -270,7 +270,7 @@ class MonitorParser(Parser):
 
 
                     if alt4 == 1:
-                        # src/Monitor.g:29:87: ANNOTATION
+                        # Monitor.g:29:87: ANNOTATION
                         pass 
                         ANNOTATION4=self.match(self.input, ANNOTATION, self.FOLLOW_ANNOTATION_in_description181) 
                         if self._state.backtracking == 0:
@@ -342,7 +342,7 @@ class MonitorParser(Parser):
 
 
     # $ANTLR start "importProtocolStatement"
-    # src/Monitor.g:31:1: importProtocolStatement : 'import' 'protocol' importProtocolDef ( ',' importProtocolDef )* ';' ;
+    # Monitor.g:31:1: importProtocolStatement : 'import' 'protocol' importProtocolDef ( ',' importProtocolDef )* ';' ;
     def importProtocolStatement(self, ):
 
         retval = self.importProtocolStatement_return()
@@ -366,8 +366,8 @@ class MonitorParser(Parser):
 
         try:
             try:
-                # src/Monitor.g:31:24: ( 'import' 'protocol' importProtocolDef ( ',' importProtocolDef )* ';' )
-                # src/Monitor.g:31:26: 'import' 'protocol' importProtocolDef ( ',' importProtocolDef )* ';'
+                # Monitor.g:31:24: ( 'import' 'protocol' importProtocolDef ( ',' importProtocolDef )* ';' )
+                # Monitor.g:31:26: 'import' 'protocol' importProtocolDef ( ',' importProtocolDef )* ';'
                 pass 
                 root_0 = self._adaptor.nil()
 
@@ -389,7 +389,7 @@ class MonitorParser(Parser):
                 self._state.following.pop()
                 if self._state.backtracking == 0:
                     self._adaptor.addChild(root_0, importProtocolDef8.tree)
-                # src/Monitor.g:31:64: ( ',' importProtocolDef )*
+                # Monitor.g:31:64: ( ',' importProtocolDef )*
                 while True: #loop5
                     alt5 = 2
                     LA5_0 = self.input.LA(1)
@@ -399,7 +399,7 @@ class MonitorParser(Parser):
 
 
                     if alt5 == 1:
-                        # src/Monitor.g:31:66: ',' importProtocolDef
+                        # Monitor.g:31:66: ',' importProtocolDef
                         pass 
                         char_literal9=self.match(self.input, 27, self.FOLLOW_27_in_importProtocolStatement205)
                         self._state.following.append(self.FOLLOW_importProtocolDef_in_importProtocolStatement208)
@@ -445,7 +445,7 @@ class MonitorParser(Parser):
 
 
     # $ANTLR start "importProtocolDef"
-    # src/Monitor.g:33:1: importProtocolDef : ID 'from' StringLiteral ;
+    # Monitor.g:33:1: importProtocolDef : ID 'from' StringLiteral ;
     def importProtocolDef(self, ):
 
         retval = self.importProtocolDef_return()
@@ -463,8 +463,8 @@ class MonitorParser(Parser):
 
         try:
             try:
-                # src/Monitor.g:33:18: ( ID 'from' StringLiteral )
-                # src/Monitor.g:33:20: ID 'from' StringLiteral
+                # Monitor.g:33:18: ( ID 'from' StringLiteral )
+                # Monitor.g:33:20: ID 'from' StringLiteral
                 pass 
                 root_0 = self._adaptor.nil()
 
@@ -513,7 +513,7 @@ class MonitorParser(Parser):
 
 
     # $ANTLR start "importTypeStatement"
-    # src/Monitor.g:35:1: importTypeStatement : 'import' ( simpleName )? importTypeDef ( ',' importTypeDef )* ( 'from' StringLiteral )? ';' ;
+    # Monitor.g:35:1: importTypeStatement : 'import' ( simpleName )? importTypeDef ( ',' importTypeDef )* ( 'from' StringLiteral )? ';' ;
     def importTypeStatement(self, ):
 
         retval = self.importTypeStatement_return()
@@ -541,8 +541,8 @@ class MonitorParser(Parser):
 
         try:
             try:
-                # src/Monitor.g:35:20: ( 'import' ( simpleName )? importTypeDef ( ',' importTypeDef )* ( 'from' StringLiteral )? ';' )
-                # src/Monitor.g:35:22: 'import' ( simpleName )? importTypeDef ( ',' importTypeDef )* ( 'from' StringLiteral )? ';'
+                # Monitor.g:35:20: ( 'import' ( simpleName )? importTypeDef ( ',' importTypeDef )* ( 'from' StringLiteral )? ';' )
+                # Monitor.g:35:22: 'import' ( simpleName )? importTypeDef ( ',' importTypeDef )* ( 'from' StringLiteral )? ';'
                 pass 
                 root_0 = self._adaptor.nil()
 
@@ -552,7 +552,7 @@ class MonitorParser(Parser):
                     string_literal15_tree = self._adaptor.createWithPayload(string_literal15)
                     self._adaptor.addChild(root_0, string_literal15_tree)
 
-                # src/Monitor.g:35:31: ( simpleName )?
+                # Monitor.g:35:31: ( simpleName )?
                 alt6 = 2
                 LA6_0 = self.input.LA(1)
 
@@ -562,7 +562,7 @@ class MonitorParser(Parser):
                     if ((ID <= LA6_1 <= StringLiteral)) :
                         alt6 = 1
                 if alt6 == 1:
-                    # src/Monitor.g:35:33: simpleName
+                    # Monitor.g:35:33: simpleName
                     pass 
                     self._state.following.append(self.FOLLOW_simpleName_in_importTypeStatement244)
                     simpleName16 = self.simpleName()
@@ -579,7 +579,7 @@ class MonitorParser(Parser):
                 self._state.following.pop()
                 if self._state.backtracking == 0:
                     self._adaptor.addChild(root_0, importTypeDef17.tree)
-                # src/Monitor.g:35:61: ( ',' importTypeDef )*
+                # Monitor.g:35:61: ( ',' importTypeDef )*
                 while True: #loop7
                     alt7 = 2
                     LA7_0 = self.input.LA(1)
@@ -589,7 +589,7 @@ class MonitorParser(Parser):
 
 
                     if alt7 == 1:
-                        # src/Monitor.g:35:63: ',' importTypeDef
+                        # Monitor.g:35:63: ',' importTypeDef
                         pass 
                         char_literal18=self.match(self.input, 27, self.FOLLOW_27_in_importTypeStatement253)
                         self._state.following.append(self.FOLLOW_importTypeDef_in_importTypeStatement256)
@@ -602,14 +602,14 @@ class MonitorParser(Parser):
 
                     else:
                         break #loop7
-                # src/Monitor.g:35:85: ( 'from' StringLiteral )?
+                # Monitor.g:35:85: ( 'from' StringLiteral )?
                 alt8 = 2
                 LA8_0 = self.input.LA(1)
 
                 if (LA8_0 == 29) :
                     alt8 = 1
                 if alt8 == 1:
-                    # src/Monitor.g:35:87: 'from' StringLiteral
+                    # Monitor.g:35:87: 'from' StringLiteral
                     pass 
                     string_literal20=self.match(self.input, 29, self.FOLLOW_29_in_importTypeStatement263)
                     StringLiteral21=self.match(self.input, StringLiteral, self.FOLLOW_StringLiteral_in_importTypeStatement266)
@@ -654,7 +654,7 @@ class MonitorParser(Parser):
 
 
     # $ANTLR start "importTypeDef"
-    # src/Monitor.g:37:1: importTypeDef : ( dataTypeDef 'as' )? ID ;
+    # Monitor.g:37:1: importTypeDef : ( dataTypeDef 'as' )? ID ;
     def importTypeDef(self, ):
 
         retval = self.importTypeDef_return()
@@ -672,19 +672,19 @@ class MonitorParser(Parser):
 
         try:
             try:
-                # src/Monitor.g:37:14: ( ( dataTypeDef 'as' )? ID )
-                # src/Monitor.g:37:16: ( dataTypeDef 'as' )? ID
+                # Monitor.g:37:14: ( ( dataTypeDef 'as' )? ID )
+                # Monitor.g:37:16: ( dataTypeDef 'as' )? ID
                 pass 
                 root_0 = self._adaptor.nil()
 
-                # src/Monitor.g:37:16: ( dataTypeDef 'as' )?
+                # Monitor.g:37:16: ( dataTypeDef 'as' )?
                 alt9 = 2
                 LA9_0 = self.input.LA(1)
 
                 if (LA9_0 == StringLiteral) :
                     alt9 = 1
                 if alt9 == 1:
-                    # src/Monitor.g:37:18: dataTypeDef 'as'
+                    # Monitor.g:37:18: dataTypeDef 'as'
                     pass 
                     self._state.following.append(self.FOLLOW_dataTypeDef_in_importTypeDef282)
                     dataTypeDef23 = self.dataTypeDef()
@@ -734,7 +734,7 @@ class MonitorParser(Parser):
 
 
     # $ANTLR start "dataTypeDef"
-    # src/Monitor.g:39:1: dataTypeDef : StringLiteral ;
+    # Monitor.g:39:1: dataTypeDef : StringLiteral ;
     def dataTypeDef(self, ):
 
         retval = self.dataTypeDef_return()
@@ -748,8 +748,8 @@ class MonitorParser(Parser):
 
         try:
             try:
-                # src/Monitor.g:39:12: ( StringLiteral )
-                # src/Monitor.g:39:14: StringLiteral
+                # Monitor.g:39:12: ( StringLiteral )
+                # Monitor.g:39:14: StringLiteral
                 pass 
                 root_0 = self._adaptor.nil()
 
@@ -791,7 +791,7 @@ class MonitorParser(Parser):
 
 
     # $ANTLR start "simpleName"
-    # src/Monitor.g:41:1: simpleName : ID ;
+    # Monitor.g:41:1: simpleName : ID ;
     def simpleName(self, ):
 
         retval = self.simpleName_return()
@@ -805,8 +805,8 @@ class MonitorParser(Parser):
 
         try:
             try:
-                # src/Monitor.g:41:11: ( ID )
-                # src/Monitor.g:41:13: ID
+                # Monitor.g:41:11: ( ID )
+                # Monitor.g:41:13: ID
                 pass 
                 root_0 = self._adaptor.nil()
 
@@ -848,7 +848,7 @@ class MonitorParser(Parser):
 
 
     # $ANTLR start "protocolDef"
-    # src/Monitor.g:43:1: protocolDef : 'protocol' protocolName ( 'at' roleName )? ( parameterDefs )? '{' protocolBlockDef ( ( ANNOTATION )* protocolDef )* '}' -> ^( PROTOCOL ( protocolBlockDef )+ ) ;
+    # Monitor.g:43:1: protocolDef : 'protocol' protocolName ( 'at' roleName )? ( parameterDefs )? '{' protocolBlockDef ( ( ANNOTATION )* protocolDef )* '}' -> ^( PROTOCOL ( protocolBlockDef )+ ) ;
     def protocolDef(self, ):
 
         retval = self.protocolDef_return()
@@ -889,8 +889,8 @@ class MonitorParser(Parser):
         stream_roleName = RewriteRuleSubtreeStream(self._adaptor, "rule roleName")
         try:
             try:
-                # src/Monitor.g:43:12: ( 'protocol' protocolName ( 'at' roleName )? ( parameterDefs )? '{' protocolBlockDef ( ( ANNOTATION )* protocolDef )* '}' -> ^( PROTOCOL ( protocolBlockDef )+ ) )
-                # src/Monitor.g:43:14: 'protocol' protocolName ( 'at' roleName )? ( parameterDefs )? '{' protocolBlockDef ( ( ANNOTATION )* protocolDef )* '}'
+                # Monitor.g:43:12: ( 'protocol' protocolName ( 'at' roleName )? ( parameterDefs )? '{' protocolBlockDef ( ( ANNOTATION )* protocolDef )* '}' -> ^( PROTOCOL ( protocolBlockDef )+ ) )
+                # Monitor.g:43:14: 'protocol' protocolName ( 'at' roleName )? ( parameterDefs )? '{' protocolBlockDef ( ( ANNOTATION )* protocolDef )* '}'
                 pass 
                 string_literal28=self.match(self.input, 26, self.FOLLOW_26_in_protocolDef314) 
                 if self._state.backtracking == 0:
@@ -901,14 +901,14 @@ class MonitorParser(Parser):
                 self._state.following.pop()
                 if self._state.backtracking == 0:
                     stream_protocolName.add(protocolName29.tree)
-                # src/Monitor.g:43:38: ( 'at' roleName )?
+                # Monitor.g:43:38: ( 'at' roleName )?
                 alt10 = 2
                 LA10_0 = self.input.LA(1)
 
                 if (LA10_0 == 31) :
                     alt10 = 1
                 if alt10 == 1:
-                    # src/Monitor.g:43:40: 'at' roleName
+                    # Monitor.g:43:40: 'at' roleName
                     pass 
                     string_literal30=self.match(self.input, 31, self.FOLLOW_31_in_protocolDef320) 
                     if self._state.backtracking == 0:
@@ -922,14 +922,14 @@ class MonitorParser(Parser):
 
 
 
-                # src/Monitor.g:43:57: ( parameterDefs )?
+                # Monitor.g:43:57: ( parameterDefs )?
                 alt11 = 2
                 LA11_0 = self.input.LA(1)
 
                 if (LA11_0 == 34) :
                     alt11 = 1
                 if alt11 == 1:
-                    # src/Monitor.g:43:59: parameterDefs
+                    # Monitor.g:43:59: parameterDefs
                     pass 
                     self._state.following.append(self.FOLLOW_parameterDefs_in_protocolDef329)
                     parameterDefs32 = self.parameterDefs()
@@ -949,7 +949,7 @@ class MonitorParser(Parser):
                 self._state.following.pop()
                 if self._state.backtracking == 0:
                     stream_protocolBlockDef.add(protocolBlockDef34.tree)
-                # src/Monitor.g:43:97: ( ( ANNOTATION )* protocolDef )*
+                # Monitor.g:43:97: ( ( ANNOTATION )* protocolDef )*
                 while True: #loop13
                     alt13 = 2
                     LA13_0 = self.input.LA(1)
@@ -959,9 +959,9 @@ class MonitorParser(Parser):
 
 
                     if alt13 == 1:
-                        # src/Monitor.g:43:99: ( ANNOTATION )* protocolDef
+                        # Monitor.g:43:99: ( ANNOTATION )* protocolDef
                         pass 
-                        # src/Monitor.g:43:99: ( ANNOTATION )*
+                        # Monitor.g:43:99: ( ANNOTATION )*
                         while True: #loop12
                             alt12 = 2
                             LA12_0 = self.input.LA(1)
@@ -971,7 +971,7 @@ class MonitorParser(Parser):
 
 
                             if alt12 == 1:
-                                # src/Monitor.g:43:101: ANNOTATION
+                                # Monitor.g:43:101: ANNOTATION
                                 pass 
                                 ANNOTATION35=self.match(self.input, ANNOTATION, self.FOLLOW_ANNOTATION_in_protocolDef342) 
                                 if self._state.backtracking == 0:
@@ -1013,11 +1013,11 @@ class MonitorParser(Parser):
 
                     root_0 = self._adaptor.nil()
                     # 44:7: -> ^( PROTOCOL ( protocolBlockDef )+ )
-                    # src/Monitor.g:44:10: ^( PROTOCOL ( protocolBlockDef )+ )
+                    # Monitor.g:44:10: ^( PROTOCOL ( protocolBlockDef )+ )
                     root_1 = self._adaptor.nil()
                     root_1 = self._adaptor.becomeRoot(self._adaptor.createFromType(PROTOCOL, "PROTOCOL"), root_1)
 
-                    # src/Monitor.g:44:21: ( protocolBlockDef )+
+                    # Monitor.g:44:21: ( protocolBlockDef )+
                     if not (stream_protocolBlockDef.hasNext()):
                         raise RewriteEarlyExitException()
 
@@ -1064,7 +1064,7 @@ class MonitorParser(Parser):
 
 
     # $ANTLR start "protocolName"
-    # src/Monitor.g:46:1: protocolName : ID ;
+    # Monitor.g:46:1: protocolName : ID ;
     def protocolName(self, ):
 
         retval = self.protocolName_return()
@@ -1078,8 +1078,8 @@ class MonitorParser(Parser):
 
         try:
             try:
-                # src/Monitor.g:46:13: ( ID )
-                # src/Monitor.g:46:15: ID
+                # Monitor.g:46:13: ( ID )
+                # Monitor.g:46:15: ID
                 pass 
                 root_0 = self._adaptor.nil()
 
@@ -1121,7 +1121,7 @@ class MonitorParser(Parser):
 
 
     # $ANTLR start "parameterDefs"
-    # src/Monitor.g:48:1: parameterDefs : '(' parameterDef ( ',' parameterDef )* ')' ;
+    # Monitor.g:48:1: parameterDefs : '(' parameterDef ( ',' parameterDef )* ')' ;
     def parameterDefs(self, ):
 
         retval = self.parameterDefs_return()
@@ -1143,8 +1143,8 @@ class MonitorParser(Parser):
 
         try:
             try:
-                # src/Monitor.g:48:14: ( '(' parameterDef ( ',' parameterDef )* ')' )
-                # src/Monitor.g:48:16: '(' parameterDef ( ',' parameterDef )* ')'
+                # Monitor.g:48:14: ( '(' parameterDef ( ',' parameterDef )* ')' )
+                # Monitor.g:48:16: '(' parameterDef ( ',' parameterDef )* ')'
                 pass 
                 root_0 = self._adaptor.nil()
 
@@ -1155,7 +1155,7 @@ class MonitorParser(Parser):
                 self._state.following.pop()
                 if self._state.backtracking == 0:
                     self._adaptor.addChild(root_0, parameterDef40.tree)
-                # src/Monitor.g:48:34: ( ',' parameterDef )*
+                # Monitor.g:48:34: ( ',' parameterDef )*
                 while True: #loop14
                     alt14 = 2
                     LA14_0 = self.input.LA(1)
@@ -1165,7 +1165,7 @@ class MonitorParser(Parser):
 
 
                     if alt14 == 1:
-                        # src/Monitor.g:48:36: ',' parameterDef
+                        # Monitor.g:48:36: ',' parameterDef
                         pass 
                         char_literal41=self.match(self.input, 27, self.FOLLOW_27_in_parameterDefs389)
                         self._state.following.append(self.FOLLOW_parameterDef_in_parameterDefs392)
@@ -1211,7 +1211,7 @@ class MonitorParser(Parser):
 
 
     # $ANTLR start "parameterDef"
-    # src/Monitor.g:50:1: parameterDef : ( typeReferenceDef | 'role' ) simpleName ;
+    # Monitor.g:50:1: parameterDef : ( typeReferenceDef | 'role' ) simpleName ;
     def parameterDef(self, ):
 
         retval = self.parameterDef_return()
@@ -1229,12 +1229,12 @@ class MonitorParser(Parser):
 
         try:
             try:
-                # src/Monitor.g:50:13: ( ( typeReferenceDef | 'role' ) simpleName )
-                # src/Monitor.g:50:15: ( typeReferenceDef | 'role' ) simpleName
+                # Monitor.g:50:13: ( ( typeReferenceDef | 'role' ) simpleName )
+                # Monitor.g:50:15: ( typeReferenceDef | 'role' ) simpleName
                 pass 
                 root_0 = self._adaptor.nil()
 
-                # src/Monitor.g:50:15: ( typeReferenceDef | 'role' )
+                # Monitor.g:50:15: ( typeReferenceDef | 'role' )
                 alt15 = 2
                 LA15_0 = self.input.LA(1)
 
@@ -1251,7 +1251,7 @@ class MonitorParser(Parser):
                     raise nvae
 
                 if alt15 == 1:
-                    # src/Monitor.g:50:17: typeReferenceDef
+                    # Monitor.g:50:17: typeReferenceDef
                     pass 
                     self._state.following.append(self.FOLLOW_typeReferenceDef_in_parameterDef408)
                     typeReferenceDef44 = self.typeReferenceDef()
@@ -1262,7 +1262,7 @@ class MonitorParser(Parser):
 
 
                 elif alt15 == 2:
-                    # src/Monitor.g:50:36: 'role'
+                    # Monitor.g:50:36: 'role'
                     pass 
                     string_literal45=self.match(self.input, 36, self.FOLLOW_36_in_parameterDef412)
                     if self._state.backtracking == 0:
@@ -1311,7 +1311,7 @@ class MonitorParser(Parser):
 
 
     # $ANTLR start "protocolBlockDef"
-    # src/Monitor.g:52:1: protocolBlockDef : activityListDef -> activityListDef ;
+    # Monitor.g:52:1: protocolBlockDef : activityListDef -> activityListDef ;
     def protocolBlockDef(self, ):
 
         retval = self.protocolBlockDef_return()
@@ -1325,8 +1325,8 @@ class MonitorParser(Parser):
         stream_activityListDef = RewriteRuleSubtreeStream(self._adaptor, "rule activityListDef")
         try:
             try:
-                # src/Monitor.g:52:17: ( activityListDef -> activityListDef )
-                # src/Monitor.g:52:19: activityListDef
+                # Monitor.g:52:17: ( activityListDef -> activityListDef )
+                # Monitor.g:52:19: activityListDef
                 pass 
                 self._state.following.append(self.FOLLOW_activityListDef_in_protocolBlockDef424)
                 activityListDef47 = self.activityListDef()
@@ -1391,7 +1391,7 @@ class MonitorParser(Parser):
 
 
     # $ANTLR start "blockDef"
-    # src/Monitor.g:54:1: blockDef : '{' activityListDef '}' -> ^( BRANCH activityListDef ) ;
+    # Monitor.g:54:1: blockDef : '{' activityListDef '}' -> ^( BRANCH activityListDef ) ;
     def blockDef(self, ):
 
         retval = self.blockDef_return()
@@ -1411,8 +1411,8 @@ class MonitorParser(Parser):
         stream_activityListDef = RewriteRuleSubtreeStream(self._adaptor, "rule activityListDef")
         try:
             try:
-                # src/Monitor.g:54:9: ( '{' activityListDef '}' -> ^( BRANCH activityListDef ) )
-                # src/Monitor.g:54:11: '{' activityListDef '}'
+                # Monitor.g:54:9: ( '{' activityListDef '}' -> ^( BRANCH activityListDef ) )
+                # Monitor.g:54:11: '{' activityListDef '}'
                 pass 
                 char_literal48=self.match(self.input, 32, self.FOLLOW_32_in_blockDef435) 
                 if self._state.backtracking == 0:
@@ -1446,7 +1446,7 @@ class MonitorParser(Parser):
 
                     root_0 = self._adaptor.nil()
                     # 54:35: -> ^( BRANCH activityListDef )
-                    # src/Monitor.g:54:38: ^( BRANCH activityListDef )
+                    # Monitor.g:54:38: ^( BRANCH activityListDef )
                     root_1 = self._adaptor.nil()
                     root_1 = self._adaptor.becomeRoot(self._adaptor.createFromType(BRANCH, "BRANCH"), root_1)
 
@@ -1489,7 +1489,7 @@ class MonitorParser(Parser):
 
 
     # $ANTLR start "activityListDef"
-    # src/Monitor.g:56:1: activityListDef : ( ( ANNOTATION )* activityDef )* -> ( activityDef )+ ;
+    # Monitor.g:56:1: activityListDef : ( ( ANNOTATION )* activityDef )* -> ( activityDef )+ ;
     def activityListDef(self, ):
 
         retval = self.activityListDef_return()
@@ -1506,17 +1506,17 @@ class MonitorParser(Parser):
         stream_activityDef = RewriteRuleSubtreeStream(self._adaptor, "rule activityDef")
         try:
             try:
-                # src/Monitor.g:56:16: ( ( ( ANNOTATION )* activityDef )* -> ( activityDef )+ )
-                # src/Monitor.g:56:18: ( ( ANNOTATION )* activityDef )*
+                # Monitor.g:56:16: ( ( ( ANNOTATION )* activityDef )* -> ( activityDef )+ )
+                # Monitor.g:56:18: ( ( ANNOTATION )* activityDef )*
                 pass 
-                # src/Monitor.g:56:18: ( ( ANNOTATION )* activityDef )*
+                # Monitor.g:56:18: ( ( ANNOTATION )* activityDef )*
                 while True: #loop17
                     alt17 = 2
                     alt17 = self.dfa17.predict(self.input)
                     if alt17 == 1:
-                        # src/Monitor.g:56:20: ( ANNOTATION )* activityDef
+                        # Monitor.g:56:20: ( ANNOTATION )* activityDef
                         pass 
-                        # src/Monitor.g:56:20: ( ANNOTATION )*
+                        # Monitor.g:56:20: ( ANNOTATION )*
                         while True: #loop16
                             alt16 = 2
                             LA16_0 = self.input.LA(1)
@@ -1526,7 +1526,7 @@ class MonitorParser(Parser):
 
 
                             if alt16 == 1:
-                                # src/Monitor.g:56:22: ANNOTATION
+                                # Monitor.g:56:22: ANNOTATION
                                 pass 
                                 ANNOTATION51=self.match(self.input, ANNOTATION, self.FOLLOW_ANNOTATION_in_activityListDef458) 
                                 if self._state.backtracking == 0:
@@ -1565,7 +1565,7 @@ class MonitorParser(Parser):
 
                     root_0 = self._adaptor.nil()
                     # 56:51: -> ( activityDef )+
-                    # src/Monitor.g:56:54: ( activityDef )+
+                    # Monitor.g:56:54: ( activityDef )+
                     if not (stream_activityDef.hasNext()):
                         raise RewriteEarlyExitException()
 
@@ -1610,7 +1610,7 @@ class MonitorParser(Parser):
 
 
     # $ANTLR start "activityDef"
-    # src/Monitor.g:58:1: activityDef : ( ( introducesDef | interactionDef | inlineDef | runDef | recursionDef | endDef ) ';' | choiceDef | directedChoiceDef | parallelDef | repeatDef | unorderedDef | recBlockDef | globalEscapeDef );
+    # Monitor.g:58:1: activityDef : ( ( introducesDef | interactionDef | inlineDef | runDef | recursionDef | endDef ) ';' | choiceDef | directedChoiceDef | parallelDef | repeatDef | unorderedDef | recBlockDef | globalEscapeDef );
     def activityDef(self, ):
 
         retval = self.activityDef_return()
@@ -1650,7 +1650,7 @@ class MonitorParser(Parser):
 
         try:
             try:
-                # src/Monitor.g:58:12: ( ( introducesDef | interactionDef | inlineDef | runDef | recursionDef | endDef ) ';' | choiceDef | directedChoiceDef | parallelDef | repeatDef | unorderedDef | recBlockDef | globalEscapeDef )
+                # Monitor.g:58:12: ( ( introducesDef | interactionDef | inlineDef | runDef | recursionDef | endDef ) ';' | choiceDef | directedChoiceDef | parallelDef | repeatDef | unorderedDef | recBlockDef | globalEscapeDef )
                 alt19 = 8
                 LA19 = self.input.LA(1)
                 if LA19 == ID or LA19 == 44 or LA19 == 45 or LA19 == 46:
@@ -1678,11 +1678,11 @@ class MonitorParser(Parser):
                     raise nvae
 
                 if alt19 == 1:
-                    # src/Monitor.g:58:14: ( introducesDef | interactionDef | inlineDef | runDef | recursionDef | endDef ) ';'
+                    # Monitor.g:58:14: ( introducesDef | interactionDef | inlineDef | runDef | recursionDef | endDef ) ';'
                     pass 
                     root_0 = self._adaptor.nil()
 
-                    # src/Monitor.g:58:14: ( introducesDef | interactionDef | inlineDef | runDef | recursionDef | endDef )
+                    # Monitor.g:58:14: ( introducesDef | interactionDef | inlineDef | runDef | recursionDef | endDef )
                     alt18 = 6
                     LA18 = self.input.LA(1)
                     if LA18 == ID:
@@ -1716,7 +1716,7 @@ class MonitorParser(Parser):
                         raise nvae
 
                     if alt18 == 1:
-                        # src/Monitor.g:58:16: introducesDef
+                        # Monitor.g:58:16: introducesDef
                         pass 
                         self._state.following.append(self.FOLLOW_introducesDef_in_activityDef480)
                         introducesDef53 = self.introducesDef()
@@ -1727,7 +1727,7 @@ class MonitorParser(Parser):
 
 
                     elif alt18 == 2:
-                        # src/Monitor.g:58:32: interactionDef
+                        # Monitor.g:58:32: interactionDef
                         pass 
                         self._state.following.append(self.FOLLOW_interactionDef_in_activityDef484)
                         interactionDef54 = self.interactionDef()
@@ -1738,7 +1738,7 @@ class MonitorParser(Parser):
 
 
                     elif alt18 == 3:
-                        # src/Monitor.g:58:49: inlineDef
+                        # Monitor.g:58:49: inlineDef
                         pass 
                         self._state.following.append(self.FOLLOW_inlineDef_in_activityDef488)
                         inlineDef55 = self.inlineDef()
@@ -1749,7 +1749,7 @@ class MonitorParser(Parser):
 
 
                     elif alt18 == 4:
-                        # src/Monitor.g:58:61: runDef
+                        # Monitor.g:58:61: runDef
                         pass 
                         self._state.following.append(self.FOLLOW_runDef_in_activityDef492)
                         runDef56 = self.runDef()
@@ -1760,7 +1760,7 @@ class MonitorParser(Parser):
 
 
                     elif alt18 == 5:
-                        # src/Monitor.g:58:70: recursionDef
+                        # Monitor.g:58:70: recursionDef
                         pass 
                         self._state.following.append(self.FOLLOW_recursionDef_in_activityDef496)
                         recursionDef57 = self.recursionDef()
@@ -1771,7 +1771,7 @@ class MonitorParser(Parser):
 
 
                     elif alt18 == 6:
-                        # src/Monitor.g:58:85: endDef
+                        # Monitor.g:58:85: endDef
                         pass 
                         self._state.following.append(self.FOLLOW_endDef_in_activityDef500)
                         endDef58 = self.endDef()
@@ -1786,7 +1786,7 @@ class MonitorParser(Parser):
 
 
                 elif alt19 == 2:
-                    # src/Monitor.g:59:4: choiceDef
+                    # Monitor.g:59:4: choiceDef
                     pass 
                     root_0 = self._adaptor.nil()
 
@@ -1799,7 +1799,7 @@ class MonitorParser(Parser):
 
 
                 elif alt19 == 3:
-                    # src/Monitor.g:59:16: directedChoiceDef
+                    # Monitor.g:59:16: directedChoiceDef
                     pass 
                     root_0 = self._adaptor.nil()
 
@@ -1812,7 +1812,7 @@ class MonitorParser(Parser):
 
 
                 elif alt19 == 4:
-                    # src/Monitor.g:59:36: parallelDef
+                    # Monitor.g:59:36: parallelDef
                     pass 
                     root_0 = self._adaptor.nil()
 
@@ -1825,7 +1825,7 @@ class MonitorParser(Parser):
 
 
                 elif alt19 == 5:
-                    # src/Monitor.g:59:50: repeatDef
+                    # Monitor.g:59:50: repeatDef
                     pass 
                     root_0 = self._adaptor.nil()
 
@@ -1838,7 +1838,7 @@ class MonitorParser(Parser):
 
 
                 elif alt19 == 6:
-                    # src/Monitor.g:59:62: unorderedDef
+                    # Monitor.g:59:62: unorderedDef
                     pass 
                     root_0 = self._adaptor.nil()
 
@@ -1851,7 +1851,7 @@ class MonitorParser(Parser):
 
 
                 elif alt19 == 7:
-                    # src/Monitor.g:60:4: recBlockDef
+                    # Monitor.g:60:4: recBlockDef
                     pass 
                     root_0 = self._adaptor.nil()
 
@@ -1864,7 +1864,7 @@ class MonitorParser(Parser):
 
 
                 elif alt19 == 8:
-                    # src/Monitor.g:60:18: globalEscapeDef
+                    # Monitor.g:60:18: globalEscapeDef
                     pass 
                     root_0 = self._adaptor.nil()
 
@@ -1905,7 +1905,7 @@ class MonitorParser(Parser):
 
 
     # $ANTLR start "introducesDef"
-    # src/Monitor.g:62:1: introducesDef : roleDef 'introduces' roleDef ( ',' roleDef )* ;
+    # Monitor.g:62:1: introducesDef : roleDef 'introduces' roleDef ( ',' roleDef )* ;
     def introducesDef(self, ):
 
         retval = self.introducesDef_return()
@@ -1927,8 +1927,8 @@ class MonitorParser(Parser):
 
         try:
             try:
-                # src/Monitor.g:62:14: ( roleDef 'introduces' roleDef ( ',' roleDef )* )
-                # src/Monitor.g:62:16: roleDef 'introduces' roleDef ( ',' roleDef )*
+                # Monitor.g:62:14: ( roleDef 'introduces' roleDef ( ',' roleDef )* )
+                # Monitor.g:62:16: roleDef 'introduces' roleDef ( ',' roleDef )*
                 pass 
                 root_0 = self._adaptor.nil()
 
@@ -1950,7 +1950,7 @@ class MonitorParser(Parser):
                 self._state.following.pop()
                 if self._state.backtracking == 0:
                     self._adaptor.addChild(root_0, roleDef69.tree)
-                # src/Monitor.g:62:45: ( ',' roleDef )*
+                # Monitor.g:62:45: ( ',' roleDef )*
                 while True: #loop20
                     alt20 = 2
                     LA20_0 = self.input.LA(1)
@@ -1960,7 +1960,7 @@ class MonitorParser(Parser):
 
 
                     if alt20 == 1:
-                        # src/Monitor.g:62:47: ',' roleDef
+                        # Monitor.g:62:47: ',' roleDef
                         pass 
                         char_literal70=self.match(self.input, 27, self.FOLLOW_27_in_introducesDef556)
                         if self._state.backtracking == 0:
@@ -2010,7 +2010,7 @@ class MonitorParser(Parser):
 
 
     # $ANTLR start "roleDef"
-    # src/Monitor.g:64:1: roleDef : ID -> ID ;
+    # Monitor.g:64:1: roleDef : ID -> ID ;
     def roleDef(self, ):
 
         retval = self.roleDef_return()
@@ -2025,8 +2025,8 @@ class MonitorParser(Parser):
 
         try:
             try:
-                # src/Monitor.g:64:8: ( ID -> ID )
-                # src/Monitor.g:64:10: ID
+                # Monitor.g:64:8: ( ID -> ID )
+                # Monitor.g:64:10: ID
                 pass 
                 ID72=self.match(self.input, ID, self.FOLLOW_ID_in_roleDef569) 
                 if self._state.backtracking == 0:
@@ -2088,7 +2088,7 @@ class MonitorParser(Parser):
 
 
     # $ANTLR start "roleName"
-    # src/Monitor.g:66:1: roleName : ID -> ID ;
+    # Monitor.g:66:1: roleName : ID -> ID ;
     def roleName(self, ):
 
         retval = self.roleName_return()
@@ -2103,8 +2103,8 @@ class MonitorParser(Parser):
 
         try:
             try:
-                # src/Monitor.g:66:9: ( ID -> ID )
-                # src/Monitor.g:66:11: ID
+                # Monitor.g:66:9: ( ID -> ID )
+                # Monitor.g:66:11: ID
                 pass 
                 ID73=self.match(self.input, ID, self.FOLLOW_ID_in_roleName580) 
                 if self._state.backtracking == 0:
@@ -2166,7 +2166,7 @@ class MonitorParser(Parser):
 
 
     # $ANTLR start "typeReferenceDef"
-    # src/Monitor.g:68:1: typeReferenceDef : ID -> ID ;
+    # Monitor.g:68:1: typeReferenceDef : ID -> ID ;
     def typeReferenceDef(self, ):
 
         retval = self.typeReferenceDef_return()
@@ -2181,8 +2181,8 @@ class MonitorParser(Parser):
 
         try:
             try:
-                # src/Monitor.g:68:17: ( ID -> ID )
-                # src/Monitor.g:68:19: ID
+                # Monitor.g:68:17: ( ID -> ID )
+                # Monitor.g:68:19: ID
                 pass 
                 ID74=self.match(self.input, ID, self.FOLLOW_ID_in_typeReferenceDef591) 
                 if self._state.backtracking == 0:
@@ -2244,7 +2244,7 @@ class MonitorParser(Parser):
 
 
     # $ANTLR start "interactionSignatureDef"
-    # src/Monitor.g:70:1: interactionSignatureDef : ( typeReferenceDef | ID '(' ( typeReferenceDef ( ',' typeReferenceDef )* )? ')' ) ;
+    # Monitor.g:70:1: interactionSignatureDef : ( typeReferenceDef | ID '(' ( typeReferenceDef ( ',' typeReferenceDef )* )? ')' ) ;
     def interactionSignatureDef(self, ):
 
         retval = self.interactionSignatureDef_return()
@@ -2270,12 +2270,12 @@ class MonitorParser(Parser):
 
         try:
             try:
-                # src/Monitor.g:70:24: ( ( typeReferenceDef | ID '(' ( typeReferenceDef ( ',' typeReferenceDef )* )? ')' ) )
-                # src/Monitor.g:70:26: ( typeReferenceDef | ID '(' ( typeReferenceDef ( ',' typeReferenceDef )* )? ')' )
+                # Monitor.g:70:24: ( ( typeReferenceDef | ID '(' ( typeReferenceDef ( ',' typeReferenceDef )* )? ')' ) )
+                # Monitor.g:70:26: ( typeReferenceDef | ID '(' ( typeReferenceDef ( ',' typeReferenceDef )* )? ')' )
                 pass 
                 root_0 = self._adaptor.nil()
 
-                # src/Monitor.g:70:26: ( typeReferenceDef | ID '(' ( typeReferenceDef ( ',' typeReferenceDef )* )? ')' )
+                # Monitor.g:70:26: ( typeReferenceDef | ID '(' ( typeReferenceDef ( ',' typeReferenceDef )* )? ')' )
                 alt23 = 2
                 LA23_0 = self.input.LA(1)
 
@@ -2303,7 +2303,7 @@ class MonitorParser(Parser):
                     raise nvae
 
                 if alt23 == 1:
-                    # src/Monitor.g:70:28: typeReferenceDef
+                    # Monitor.g:70:28: typeReferenceDef
                     pass 
                     self._state.following.append(self.FOLLOW_typeReferenceDef_in_interactionSignatureDef605)
                     typeReferenceDef75 = self.typeReferenceDef()
@@ -2314,7 +2314,7 @@ class MonitorParser(Parser):
 
 
                 elif alt23 == 2:
-                    # src/Monitor.g:70:47: ID '(' ( typeReferenceDef ( ',' typeReferenceDef )* )? ')'
+                    # Monitor.g:70:47: ID '(' ( typeReferenceDef ( ',' typeReferenceDef )* )? ')'
                     pass 
                     ID76=self.match(self.input, ID, self.FOLLOW_ID_in_interactionSignatureDef609)
                     if self._state.backtracking == 0:
@@ -2323,14 +2323,14 @@ class MonitorParser(Parser):
                         self._adaptor.addChild(root_0, ID76_tree)
 
                     char_literal77=self.match(self.input, 34, self.FOLLOW_34_in_interactionSignatureDef611)
-                    # src/Monitor.g:70:55: ( typeReferenceDef ( ',' typeReferenceDef )* )?
+                    # Monitor.g:70:55: ( typeReferenceDef ( ',' typeReferenceDef )* )?
                     alt22 = 2
                     LA22_0 = self.input.LA(1)
 
                     if (LA22_0 == ID) :
                         alt22 = 1
                     if alt22 == 1:
-                        # src/Monitor.g:70:57: typeReferenceDef ( ',' typeReferenceDef )*
+                        # Monitor.g:70:57: typeReferenceDef ( ',' typeReferenceDef )*
                         pass 
                         self._state.following.append(self.FOLLOW_typeReferenceDef_in_interactionSignatureDef616)
                         typeReferenceDef78 = self.typeReferenceDef()
@@ -2338,7 +2338,7 @@ class MonitorParser(Parser):
                         self._state.following.pop()
                         if self._state.backtracking == 0:
                             self._adaptor.addChild(root_0, typeReferenceDef78.tree)
-                        # src/Monitor.g:70:74: ( ',' typeReferenceDef )*
+                        # Monitor.g:70:74: ( ',' typeReferenceDef )*
                         while True: #loop21
                             alt21 = 2
                             LA21_0 = self.input.LA(1)
@@ -2348,7 +2348,7 @@ class MonitorParser(Parser):
 
 
                             if alt21 == 1:
-                                # src/Monitor.g:70:76: ',' typeReferenceDef
+                                # Monitor.g:70:76: ',' typeReferenceDef
                                 pass 
                                 char_literal79=self.match(self.input, 27, self.FOLLOW_27_in_interactionSignatureDef620)
                                 self._state.following.append(self.FOLLOW_typeReferenceDef_in_interactionSignatureDef623)
@@ -2400,7 +2400,7 @@ class MonitorParser(Parser):
 
 
     # $ANTLR start "interactionDef"
-    # src/Monitor.g:73:1: interactionDef : interactionSignatureDef ( 'from' role= roleName -> ^( RESV interactionSignatureDef $role) | 'to' roleName -> ^( SEND interactionSignatureDef roleName ) ) ;
+    # Monitor.g:73:1: interactionDef : interactionSignatureDef ( 'from' role= roleName -> ^( RESV interactionSignatureDef $role) | 'to' roleName -> ^( SEND interactionSignatureDef roleName ) ) ;
     def interactionDef(self, ):
 
         retval = self.interactionDef_return()
@@ -2425,8 +2425,8 @@ class MonitorParser(Parser):
         stream_interactionSignatureDef = RewriteRuleSubtreeStream(self._adaptor, "rule interactionSignatureDef")
         try:
             try:
-                # src/Monitor.g:73:15: ( interactionSignatureDef ( 'from' role= roleName -> ^( RESV interactionSignatureDef $role) | 'to' roleName -> ^( SEND interactionSignatureDef roleName ) ) )
-                # src/Monitor.g:74:7: interactionSignatureDef ( 'from' role= roleName -> ^( RESV interactionSignatureDef $role) | 'to' roleName -> ^( SEND interactionSignatureDef roleName ) )
+                # Monitor.g:73:15: ( interactionSignatureDef ( 'from' role= roleName -> ^( RESV interactionSignatureDef $role) | 'to' roleName -> ^( SEND interactionSignatureDef roleName ) ) )
+                # Monitor.g:74:7: interactionSignatureDef ( 'from' role= roleName -> ^( RESV interactionSignatureDef $role) | 'to' roleName -> ^( SEND interactionSignatureDef roleName ) )
                 pass 
                 self._state.following.append(self.FOLLOW_interactionSignatureDef_in_interactionDef649)
                 interactionSignatureDef82 = self.interactionSignatureDef()
@@ -2434,7 +2434,7 @@ class MonitorParser(Parser):
                 self._state.following.pop()
                 if self._state.backtracking == 0:
                     stream_interactionSignatureDef.add(interactionSignatureDef82.tree)
-                # src/Monitor.g:74:31: ( 'from' role= roleName -> ^( RESV interactionSignatureDef $role) | 'to' roleName -> ^( SEND interactionSignatureDef roleName ) )
+                # Monitor.g:74:31: ( 'from' role= roleName -> ^( RESV interactionSignatureDef $role) | 'to' roleName -> ^( SEND interactionSignatureDef roleName ) )
                 alt24 = 2
                 LA24_0 = self.input.LA(1)
 
@@ -2451,7 +2451,7 @@ class MonitorParser(Parser):
                     raise nvae
 
                 if alt24 == 1:
-                    # src/Monitor.g:75:3: 'from' role= roleName
+                    # Monitor.g:75:3: 'from' role= roleName
                     pass 
                     string_literal83=self.match(self.input, 29, self.FOLLOW_29_in_interactionDef655) 
                     if self._state.backtracking == 0:
@@ -2464,7 +2464,7 @@ class MonitorParser(Parser):
                         stream_roleName.add(role.tree)
 
                     # AST Rewrite
-                    # elements: interactionSignatureDef, role
+                    # elements: role, interactionSignatureDef
                     # token labels: 
                     # rule labels: retval, role
                     # token list labels: 
@@ -2488,7 +2488,7 @@ class MonitorParser(Parser):
 
                         root_0 = self._adaptor.nil()
                         # 75:26: -> ^( RESV interactionSignatureDef $role)
-                        # src/Monitor.g:75:29: ^( RESV interactionSignatureDef $role)
+                        # Monitor.g:75:29: ^( RESV interactionSignatureDef $role)
                         root_1 = self._adaptor.nil()
                         root_1 = self._adaptor.becomeRoot(self._adaptor.createFromType(RESV, "RESV"), root_1)
 
@@ -2503,7 +2503,7 @@ class MonitorParser(Parser):
 
 
                 elif alt24 == 2:
-                    # src/Monitor.g:76:10: 'to' roleName
+                    # Monitor.g:76:10: 'to' roleName
                     pass 
                     string_literal84=self.match(self.input, 38, self.FOLLOW_38_in_interactionDef684) 
                     if self._state.backtracking == 0:
@@ -2516,7 +2516,7 @@ class MonitorParser(Parser):
                         stream_roleName.add(roleName85.tree)
 
                     # AST Rewrite
-                    # elements: roleName, interactionSignatureDef
+                    # elements: interactionSignatureDef, roleName
                     # token labels: 
                     # rule labels: retval
                     # token list labels: 
@@ -2534,7 +2534,7 @@ class MonitorParser(Parser):
 
                         root_0 = self._adaptor.nil()
                         # 76:25: -> ^( SEND interactionSignatureDef roleName )
-                        # src/Monitor.g:76:28: ^( SEND interactionSignatureDef roleName )
+                        # Monitor.g:76:28: ^( SEND interactionSignatureDef roleName )
                         root_1 = self._adaptor.nil()
                         root_1 = self._adaptor.becomeRoot(self._adaptor.createFromType(SEND, "SEND"), root_1)
 
@@ -2581,7 +2581,7 @@ class MonitorParser(Parser):
 
 
     # $ANTLR start "choiceDef"
-    # src/Monitor.g:78:1: choiceDef : 'choice' ( 'at' roleName )? blockDef ( 'or' blockDef )* -> ^( 'choice' ( blockDef )+ ) ;
+    # Monitor.g:78:1: choiceDef : 'choice' ( 'at' roleName )? blockDef ( 'or' blockDef )* -> ^( 'choice' ( blockDef )+ ) ;
     def choiceDef(self, ):
 
         retval = self.choiceDef_return()
@@ -2609,20 +2609,20 @@ class MonitorParser(Parser):
         stream_blockDef = RewriteRuleSubtreeStream(self._adaptor, "rule blockDef")
         try:
             try:
-                # src/Monitor.g:78:10: ( 'choice' ( 'at' roleName )? blockDef ( 'or' blockDef )* -> ^( 'choice' ( blockDef )+ ) )
-                # src/Monitor.g:78:12: 'choice' ( 'at' roleName )? blockDef ( 'or' blockDef )*
+                # Monitor.g:78:10: ( 'choice' ( 'at' roleName )? blockDef ( 'or' blockDef )* -> ^( 'choice' ( blockDef )+ ) )
+                # Monitor.g:78:12: 'choice' ( 'at' roleName )? blockDef ( 'or' blockDef )*
                 pass 
                 string_literal86=self.match(self.input, 39, self.FOLLOW_39_in_choiceDef705) 
                 if self._state.backtracking == 0:
                     stream_39.add(string_literal86)
-                # src/Monitor.g:78:21: ( 'at' roleName )?
+                # Monitor.g:78:21: ( 'at' roleName )?
                 alt25 = 2
                 LA25_0 = self.input.LA(1)
 
                 if (LA25_0 == 31) :
                     alt25 = 1
                 if alt25 == 1:
-                    # src/Monitor.g:78:23: 'at' roleName
+                    # Monitor.g:78:23: 'at' roleName
                     pass 
                     string_literal87=self.match(self.input, 31, self.FOLLOW_31_in_choiceDef709) 
                     if self._state.backtracking == 0:
@@ -2642,7 +2642,7 @@ class MonitorParser(Parser):
                 self._state.following.pop()
                 if self._state.backtracking == 0:
                     stream_blockDef.add(blockDef89.tree)
-                # src/Monitor.g:78:49: ( 'or' blockDef )*
+                # Monitor.g:78:49: ( 'or' blockDef )*
                 while True: #loop26
                     alt26 = 2
                     LA26_0 = self.input.LA(1)
@@ -2652,7 +2652,7 @@ class MonitorParser(Parser):
 
 
                     if alt26 == 1:
-                        # src/Monitor.g:78:51: 'or' blockDef
+                        # Monitor.g:78:51: 'or' blockDef
                         pass 
                         string_literal90=self.match(self.input, 40, self.FOLLOW_40_in_choiceDef720) 
                         if self._state.backtracking == 0:
@@ -2687,11 +2687,11 @@ class MonitorParser(Parser):
 
                     root_0 = self._adaptor.nil()
                     # 78:68: -> ^( 'choice' ( blockDef )+ )
-                    # src/Monitor.g:78:71: ^( 'choice' ( blockDef )+ )
+                    # Monitor.g:78:71: ^( 'choice' ( blockDef )+ )
                     root_1 = self._adaptor.nil()
                     root_1 = self._adaptor.becomeRoot(stream_39.nextNode(), root_1)
 
-                    # src/Monitor.g:78:82: ( blockDef )+
+                    # Monitor.g:78:82: ( blockDef )+
                     if not (stream_blockDef.hasNext()):
                         raise RewriteEarlyExitException()
 
@@ -2738,7 +2738,7 @@ class MonitorParser(Parser):
 
 
     # $ANTLR start "directedChoiceDef"
-    # src/Monitor.g:80:1: directedChoiceDef : ( 'from' roleName )? ( 'to' roleName ( ',' roleName )* )? '{' ( onMessageDef )+ '}' ;
+    # Monitor.g:80:1: directedChoiceDef : ( 'from' roleName )? ( 'to' roleName ( ',' roleName )* )? '{' ( onMessageDef )+ '}' ;
     def directedChoiceDef(self, ):
 
         retval = self.directedChoiceDef_return()
@@ -2768,19 +2768,19 @@ class MonitorParser(Parser):
 
         try:
             try:
-                # src/Monitor.g:80:18: ( ( 'from' roleName )? ( 'to' roleName ( ',' roleName )* )? '{' ( onMessageDef )+ '}' )
-                # src/Monitor.g:80:20: ( 'from' roleName )? ( 'to' roleName ( ',' roleName )* )? '{' ( onMessageDef )+ '}'
+                # Monitor.g:80:18: ( ( 'from' roleName )? ( 'to' roleName ( ',' roleName )* )? '{' ( onMessageDef )+ '}' )
+                # Monitor.g:80:20: ( 'from' roleName )? ( 'to' roleName ( ',' roleName )* )? '{' ( onMessageDef )+ '}'
                 pass 
                 root_0 = self._adaptor.nil()
 
-                # src/Monitor.g:80:20: ( 'from' roleName )?
+                # Monitor.g:80:20: ( 'from' roleName )?
                 alt27 = 2
                 LA27_0 = self.input.LA(1)
 
                 if (LA27_0 == 29) :
                     alt27 = 1
                 if alt27 == 1:
-                    # src/Monitor.g:80:22: 'from' roleName
+                    # Monitor.g:80:22: 'from' roleName
                     pass 
                     string_literal92=self.match(self.input, 29, self.FOLLOW_29_in_directedChoiceDef743)
                     if self._state.backtracking == 0:
@@ -2797,14 +2797,14 @@ class MonitorParser(Parser):
 
 
 
-                # src/Monitor.g:80:41: ( 'to' roleName ( ',' roleName )* )?
+                # Monitor.g:80:41: ( 'to' roleName ( ',' roleName )* )?
                 alt29 = 2
                 LA29_0 = self.input.LA(1)
 
                 if (LA29_0 == 38) :
                     alt29 = 1
                 if alt29 == 1:
-                    # src/Monitor.g:80:43: 'to' roleName ( ',' roleName )*
+                    # Monitor.g:80:43: 'to' roleName ( ',' roleName )*
                     pass 
                     string_literal94=self.match(self.input, 38, self.FOLLOW_38_in_directedChoiceDef752)
                     if self._state.backtracking == 0:
@@ -2818,7 +2818,7 @@ class MonitorParser(Parser):
                     self._state.following.pop()
                     if self._state.backtracking == 0:
                         self._adaptor.addChild(root_0, roleName95.tree)
-                    # src/Monitor.g:80:57: ( ',' roleName )*
+                    # Monitor.g:80:57: ( ',' roleName )*
                     while True: #loop28
                         alt28 = 2
                         LA28_0 = self.input.LA(1)
@@ -2828,7 +2828,7 @@ class MonitorParser(Parser):
 
 
                         if alt28 == 1:
-                            # src/Monitor.g:80:59: ',' roleName
+                            # Monitor.g:80:59: ',' roleName
                             pass 
                             char_literal96=self.match(self.input, 27, self.FOLLOW_27_in_directedChoiceDef758)
                             self._state.following.append(self.FOLLOW_roleName_in_directedChoiceDef761)
@@ -2850,7 +2850,7 @@ class MonitorParser(Parser):
                     char_literal98_tree = self._adaptor.createWithPayload(char_literal98)
                     self._adaptor.addChild(root_0, char_literal98_tree)
 
-                # src/Monitor.g:80:83: ( onMessageDef )+
+                # Monitor.g:80:83: ( onMessageDef )+
                 cnt30 = 0
                 while True: #loop30
                     alt30 = 2
@@ -2861,7 +2861,7 @@ class MonitorParser(Parser):
 
 
                     if alt30 == 1:
-                        # src/Monitor.g:80:85: onMessageDef
+                        # Monitor.g:80:85: onMessageDef
                         pass 
                         self._state.following.append(self.FOLLOW_onMessageDef_in_directedChoiceDef773)
                         onMessageDef99 = self.onMessageDef()
@@ -2920,7 +2920,7 @@ class MonitorParser(Parser):
 
 
     # $ANTLR start "onMessageDef"
-    # src/Monitor.g:82:1: onMessageDef : interactionSignatureDef ':' activityList ;
+    # Monitor.g:82:1: onMessageDef : interactionSignatureDef ':' activityList ;
     def onMessageDef(self, ):
 
         retval = self.onMessageDef_return()
@@ -2938,8 +2938,8 @@ class MonitorParser(Parser):
 
         try:
             try:
-                # src/Monitor.g:82:13: ( interactionSignatureDef ':' activityList )
-                # src/Monitor.g:82:15: interactionSignatureDef ':' activityList
+                # Monitor.g:82:13: ( interactionSignatureDef ':' activityList )
+                # Monitor.g:82:15: interactionSignatureDef ':' activityList
                 pass 
                 root_0 = self._adaptor.nil()
 
@@ -2993,7 +2993,7 @@ class MonitorParser(Parser):
 
 
     # $ANTLR start "activityList"
-    # src/Monitor.g:84:1: activityList : ( ( ANNOTATION )* activityDef )* ;
+    # Monitor.g:84:1: activityList : ( ( ANNOTATION )* activityDef )* ;
     def activityList(self, ):
 
         retval = self.activityList_return()
@@ -3009,19 +3009,19 @@ class MonitorParser(Parser):
 
         try:
             try:
-                # src/Monitor.g:84:13: ( ( ( ANNOTATION )* activityDef )* )
-                # src/Monitor.g:84:15: ( ( ANNOTATION )* activityDef )*
+                # Monitor.g:84:13: ( ( ( ANNOTATION )* activityDef )* )
+                # Monitor.g:84:15: ( ( ANNOTATION )* activityDef )*
                 pass 
                 root_0 = self._adaptor.nil()
 
-                # src/Monitor.g:84:15: ( ( ANNOTATION )* activityDef )*
+                # Monitor.g:84:15: ( ( ANNOTATION )* activityDef )*
                 while True: #loop32
                     alt32 = 2
                     alt32 = self.dfa32.predict(self.input)
                     if alt32 == 1:
-                        # src/Monitor.g:84:17: ( ANNOTATION )* activityDef
+                        # Monitor.g:84:17: ( ANNOTATION )* activityDef
                         pass 
-                        # src/Monitor.g:84:17: ( ANNOTATION )*
+                        # Monitor.g:84:17: ( ANNOTATION )*
                         while True: #loop31
                             alt31 = 2
                             LA31_0 = self.input.LA(1)
@@ -3031,7 +3031,7 @@ class MonitorParser(Parser):
 
 
                             if alt31 == 1:
-                                # src/Monitor.g:84:19: ANNOTATION
+                                # Monitor.g:84:19: ANNOTATION
                                 pass 
                                 ANNOTATION104=self.match(self.input, ANNOTATION, self.FOLLOW_ANNOTATION_in_activityList802)
                                 if self._state.backtracking == 0:
@@ -3085,7 +3085,7 @@ class MonitorParser(Parser):
 
 
     # $ANTLR start "repeatDef"
-    # src/Monitor.g:86:1: repeatDef : 'repeat' ( 'at' roleName ( ',' roleName )* )? blockDef -> ^( 'repeat' blockDef ) ;
+    # Monitor.g:86:1: repeatDef : 'repeat' ( 'at' roleName ( ',' roleName )* )? blockDef -> ^( 'repeat' blockDef ) ;
     def repeatDef(self, ):
 
         retval = self.repeatDef_return()
@@ -3113,20 +3113,20 @@ class MonitorParser(Parser):
         stream_blockDef = RewriteRuleSubtreeStream(self._adaptor, "rule blockDef")
         try:
             try:
-                # src/Monitor.g:86:10: ( 'repeat' ( 'at' roleName ( ',' roleName )* )? blockDef -> ^( 'repeat' blockDef ) )
-                # src/Monitor.g:86:12: 'repeat' ( 'at' roleName ( ',' roleName )* )? blockDef
+                # Monitor.g:86:10: ( 'repeat' ( 'at' roleName ( ',' roleName )* )? blockDef -> ^( 'repeat' blockDef ) )
+                # Monitor.g:86:12: 'repeat' ( 'at' roleName ( ',' roleName )* )? blockDef
                 pass 
                 string_literal106=self.match(self.input, 42, self.FOLLOW_42_in_repeatDef817) 
                 if self._state.backtracking == 0:
                     stream_42.add(string_literal106)
-                # src/Monitor.g:86:21: ( 'at' roleName ( ',' roleName )* )?
+                # Monitor.g:86:21: ( 'at' roleName ( ',' roleName )* )?
                 alt34 = 2
                 LA34_0 = self.input.LA(1)
 
                 if (LA34_0 == 31) :
                     alt34 = 1
                 if alt34 == 1:
-                    # src/Monitor.g:86:23: 'at' roleName ( ',' roleName )*
+                    # Monitor.g:86:23: 'at' roleName ( ',' roleName )*
                     pass 
                     string_literal107=self.match(self.input, 31, self.FOLLOW_31_in_repeatDef821) 
                     if self._state.backtracking == 0:
@@ -3137,7 +3137,7 @@ class MonitorParser(Parser):
                     self._state.following.pop()
                     if self._state.backtracking == 0:
                         stream_roleName.add(roleName108.tree)
-                    # src/Monitor.g:86:37: ( ',' roleName )*
+                    # Monitor.g:86:37: ( ',' roleName )*
                     while True: #loop33
                         alt33 = 2
                         LA33_0 = self.input.LA(1)
@@ -3147,7 +3147,7 @@ class MonitorParser(Parser):
 
 
                         if alt33 == 1:
-                            # src/Monitor.g:86:39: ',' roleName
+                            # Monitor.g:86:39: ',' roleName
                             pass 
                             char_literal109=self.match(self.input, 27, self.FOLLOW_27_in_repeatDef827) 
                             if self._state.backtracking == 0:
@@ -3191,7 +3191,7 @@ class MonitorParser(Parser):
 
                     root_0 = self._adaptor.nil()
                     # 86:68: -> ^( 'repeat' blockDef )
-                    # src/Monitor.g:86:71: ^( 'repeat' blockDef )
+                    # Monitor.g:86:71: ^( 'repeat' blockDef )
                     root_1 = self._adaptor.nil()
                     root_1 = self._adaptor.becomeRoot(stream_42.nextNode(), root_1)
 
@@ -3234,7 +3234,7 @@ class MonitorParser(Parser):
 
 
     # $ANTLR start "recBlockDef"
-    # src/Monitor.g:88:1: recBlockDef : 'rec' labelName blockDef -> ^( 'rec' labelName blockDef ) ;
+    # Monitor.g:88:1: recBlockDef : 'rec' labelName blockDef -> ^( 'rec' labelName blockDef ) ;
     def recBlockDef(self, ):
 
         retval = self.recBlockDef_return()
@@ -3254,8 +3254,8 @@ class MonitorParser(Parser):
         stream_blockDef = RewriteRuleSubtreeStream(self._adaptor, "rule blockDef")
         try:
             try:
-                # src/Monitor.g:88:12: ( 'rec' labelName blockDef -> ^( 'rec' labelName blockDef ) )
-                # src/Monitor.g:88:14: 'rec' labelName blockDef
+                # Monitor.g:88:12: ( 'rec' labelName blockDef -> ^( 'rec' labelName blockDef ) )
+                # Monitor.g:88:14: 'rec' labelName blockDef
                 pass 
                 string_literal112=self.match(self.input, 43, self.FOLLOW_43_in_recBlockDef853) 
                 if self._state.backtracking == 0:
@@ -3274,7 +3274,7 @@ class MonitorParser(Parser):
                     stream_blockDef.add(blockDef114.tree)
 
                 # AST Rewrite
-                # elements: blockDef, labelName, 43
+                # elements: labelName, 43, blockDef
                 # token labels: 
                 # rule labels: retval
                 # token list labels: 
@@ -3292,7 +3292,7 @@ class MonitorParser(Parser):
 
                     root_0 = self._adaptor.nil()
                     # 88:39: -> ^( 'rec' labelName blockDef )
-                    # src/Monitor.g:88:42: ^( 'rec' labelName blockDef )
+                    # Monitor.g:88:42: ^( 'rec' labelName blockDef )
                     root_1 = self._adaptor.nil()
                     root_1 = self._adaptor.becomeRoot(stream_43.nextNode(), root_1)
 
@@ -3336,7 +3336,7 @@ class MonitorParser(Parser):
 
 
     # $ANTLR start "labelName"
-    # src/Monitor.g:90:1: labelName : ID -> ID ;
+    # Monitor.g:90:1: labelName : ID -> ID ;
     def labelName(self, ):
 
         retval = self.labelName_return()
@@ -3351,8 +3351,8 @@ class MonitorParser(Parser):
 
         try:
             try:
-                # src/Monitor.g:90:10: ( ID -> ID )
-                # src/Monitor.g:90:12: ID
+                # Monitor.g:90:10: ( ID -> ID )
+                # Monitor.g:90:12: ID
                 pass 
                 ID115=self.match(self.input, ID, self.FOLLOW_ID_in_labelName874) 
                 if self._state.backtracking == 0:
@@ -3414,7 +3414,7 @@ class MonitorParser(Parser):
 
 
     # $ANTLR start "recursionDef"
-    # src/Monitor.g:92:1: recursionDef : labelName -> ^( RECLABEL labelName ) ;
+    # Monitor.g:92:1: recursionDef : labelName -> ^( RECLABEL labelName ) ;
     def recursionDef(self, ):
 
         retval = self.recursionDef_return()
@@ -3428,8 +3428,8 @@ class MonitorParser(Parser):
         stream_labelName = RewriteRuleSubtreeStream(self._adaptor, "rule labelName")
         try:
             try:
-                # src/Monitor.g:92:13: ( labelName -> ^( RECLABEL labelName ) )
-                # src/Monitor.g:92:15: labelName
+                # Monitor.g:92:13: ( labelName -> ^( RECLABEL labelName ) )
+                # Monitor.g:92:15: labelName
                 pass 
                 self._state.following.append(self.FOLLOW_labelName_in_recursionDef886)
                 labelName116 = self.labelName()
@@ -3457,7 +3457,7 @@ class MonitorParser(Parser):
 
                     root_0 = self._adaptor.nil()
                     # 92:25: -> ^( RECLABEL labelName )
-                    # src/Monitor.g:92:28: ^( RECLABEL labelName )
+                    # Monitor.g:92:28: ^( RECLABEL labelName )
                     root_1 = self._adaptor.nil()
                     root_1 = self._adaptor.becomeRoot(self._adaptor.createFromType(RECLABEL, "RECLABEL"), root_1)
 
@@ -3500,7 +3500,7 @@ class MonitorParser(Parser):
 
 
     # $ANTLR start "endDef"
-    # src/Monitor.g:95:1: endDef : 'end' ;
+    # Monitor.g:95:1: endDef : 'end' ;
     def endDef(self, ):
 
         retval = self.endDef_return()
@@ -3514,8 +3514,8 @@ class MonitorParser(Parser):
 
         try:
             try:
-                # src/Monitor.g:95:7: ( 'end' )
-                # src/Monitor.g:95:9: 'end'
+                # Monitor.g:95:7: ( 'end' )
+                # Monitor.g:95:9: 'end'
                 pass 
                 root_0 = self._adaptor.nil()
 
@@ -3557,7 +3557,7 @@ class MonitorParser(Parser):
 
 
     # $ANTLR start "runDef"
-    # src/Monitor.g:98:1: runDef : 'run' protocolRefDef ( '(' parameter ( ',' parameter )* ')' )? 'from' roleName ;
+    # Monitor.g:98:1: runDef : 'run' protocolRefDef ( '(' parameter ( ',' parameter )* ')' )? 'from' roleName ;
     def runDef(self, ):
 
         retval = self.runDef_return()
@@ -3587,8 +3587,8 @@ class MonitorParser(Parser):
 
         try:
             try:
-                # src/Monitor.g:98:7: ( 'run' protocolRefDef ( '(' parameter ( ',' parameter )* ')' )? 'from' roleName )
-                # src/Monitor.g:98:9: 'run' protocolRefDef ( '(' parameter ( ',' parameter )* ')' )? 'from' roleName
+                # Monitor.g:98:7: ( 'run' protocolRefDef ( '(' parameter ( ',' parameter )* ')' )? 'from' roleName )
+                # Monitor.g:98:9: 'run' protocolRefDef ( '(' parameter ( ',' parameter )* ')' )? 'from' roleName
                 pass 
                 root_0 = self._adaptor.nil()
 
@@ -3604,14 +3604,14 @@ class MonitorParser(Parser):
                 self._state.following.pop()
                 if self._state.backtracking == 0:
                     self._adaptor.addChild(root_0, protocolRefDef119.tree)
-                # src/Monitor.g:98:31: ( '(' parameter ( ',' parameter )* ')' )?
+                # Monitor.g:98:31: ( '(' parameter ( ',' parameter )* ')' )?
                 alt36 = 2
                 LA36_0 = self.input.LA(1)
 
                 if (LA36_0 == 34) :
                     alt36 = 1
                 if alt36 == 1:
-                    # src/Monitor.g:98:33: '(' parameter ( ',' parameter )* ')'
+                    # Monitor.g:98:33: '(' parameter ( ',' parameter )* ')'
                     pass 
                     char_literal120=self.match(self.input, 34, self.FOLLOW_34_in_runDef919)
                     self._state.following.append(self.FOLLOW_parameter_in_runDef922)
@@ -3620,7 +3620,7 @@ class MonitorParser(Parser):
                     self._state.following.pop()
                     if self._state.backtracking == 0:
                         self._adaptor.addChild(root_0, parameter121.tree)
-                    # src/Monitor.g:98:48: ( ',' parameter )*
+                    # Monitor.g:98:48: ( ',' parameter )*
                     while True: #loop35
                         alt35 = 2
                         LA35_0 = self.input.LA(1)
@@ -3630,7 +3630,7 @@ class MonitorParser(Parser):
 
 
                         if alt35 == 1:
-                            # src/Monitor.g:98:50: ',' parameter
+                            # Monitor.g:98:50: ',' parameter
                             pass 
                             char_literal122=self.match(self.input, 27, self.FOLLOW_27_in_runDef926)
                             self._state.following.append(self.FOLLOW_parameter_in_runDef929)
@@ -3691,7 +3691,7 @@ class MonitorParser(Parser):
 
 
     # $ANTLR start "protocolRefDef"
-    # src/Monitor.g:100:1: protocolRefDef : ID ( 'at' roleName )? ;
+    # Monitor.g:100:1: protocolRefDef : ID ( 'at' roleName )? ;
     def protocolRefDef(self, ):
 
         retval = self.protocolRefDef_return()
@@ -3709,8 +3709,8 @@ class MonitorParser(Parser):
 
         try:
             try:
-                # src/Monitor.g:100:15: ( ID ( 'at' roleName )? )
-                # src/Monitor.g:100:17: ID ( 'at' roleName )?
+                # Monitor.g:100:15: ( ID ( 'at' roleName )? )
+                # Monitor.g:100:17: ID ( 'at' roleName )?
                 pass 
                 root_0 = self._adaptor.nil()
 
@@ -3720,14 +3720,14 @@ class MonitorParser(Parser):
                     ID127_tree = self._adaptor.createWithPayload(ID127)
                     self._adaptor.addChild(root_0, ID127_tree)
 
-                # src/Monitor.g:100:20: ( 'at' roleName )?
+                # Monitor.g:100:20: ( 'at' roleName )?
                 alt37 = 2
                 LA37_0 = self.input.LA(1)
 
                 if (LA37_0 == 31) :
                     alt37 = 1
                 if alt37 == 1:
-                    # src/Monitor.g:100:22: 'at' roleName
+                    # Monitor.g:100:22: 'at' roleName
                     pass 
                     string_literal128=self.match(self.input, 31, self.FOLLOW_31_in_protocolRefDef954)
                     if self._state.backtracking == 0:
@@ -3776,7 +3776,7 @@ class MonitorParser(Parser):
 
 
     # $ANTLR start "declarationName"
-    # src/Monitor.g:102:1: declarationName : ID ;
+    # Monitor.g:102:1: declarationName : ID ;
     def declarationName(self, ):
 
         retval = self.declarationName_return()
@@ -3790,8 +3790,8 @@ class MonitorParser(Parser):
 
         try:
             try:
-                # src/Monitor.g:102:16: ( ID )
-                # src/Monitor.g:102:18: ID
+                # Monitor.g:102:16: ( ID )
+                # Monitor.g:102:18: ID
                 pass 
                 root_0 = self._adaptor.nil()
 
@@ -3833,7 +3833,7 @@ class MonitorParser(Parser):
 
 
     # $ANTLR start "parameter"
-    # src/Monitor.g:104:1: parameter : declarationName ;
+    # Monitor.g:104:1: parameter : declarationName ;
     def parameter(self, ):
 
         retval = self.parameter_return()
@@ -3847,8 +3847,8 @@ class MonitorParser(Parser):
 
         try:
             try:
-                # src/Monitor.g:104:10: ( declarationName )
-                # src/Monitor.g:104:12: declarationName
+                # Monitor.g:104:10: ( declarationName )
+                # Monitor.g:104:12: declarationName
                 pass 
                 root_0 = self._adaptor.nil()
 
@@ -3890,7 +3890,7 @@ class MonitorParser(Parser):
 
 
     # $ANTLR start "inlineDef"
-    # src/Monitor.g:107:1: inlineDef : 'inline' protocolRefDef ( '(' parameter ( ',' parameter )* ')' )? ;
+    # Monitor.g:107:1: inlineDef : 'inline' protocolRefDef ( '(' parameter ( ',' parameter )* ')' )? ;
     def inlineDef(self, ):
 
         retval = self.inlineDef_return()
@@ -3916,8 +3916,8 @@ class MonitorParser(Parser):
 
         try:
             try:
-                # src/Monitor.g:107:10: ( 'inline' protocolRefDef ( '(' parameter ( ',' parameter )* ')' )? )
-                # src/Monitor.g:107:12: 'inline' protocolRefDef ( '(' parameter ( ',' parameter )* ')' )?
+                # Monitor.g:107:10: ( 'inline' protocolRefDef ( '(' parameter ( ',' parameter )* ')' )? )
+                # Monitor.g:107:12: 'inline' protocolRefDef ( '(' parameter ( ',' parameter )* ')' )?
                 pass 
                 root_0 = self._adaptor.nil()
 
@@ -3933,14 +3933,14 @@ class MonitorParser(Parser):
                 self._state.following.pop()
                 if self._state.backtracking == 0:
                     self._adaptor.addChild(root_0, protocolRefDef133.tree)
-                # src/Monitor.g:107:37: ( '(' parameter ( ',' parameter )* ')' )?
+                # Monitor.g:107:37: ( '(' parameter ( ',' parameter )* ')' )?
                 alt39 = 2
                 LA39_0 = self.input.LA(1)
 
                 if (LA39_0 == 34) :
                     alt39 = 1
                 if alt39 == 1:
-                    # src/Monitor.g:107:39: '(' parameter ( ',' parameter )* ')'
+                    # Monitor.g:107:39: '(' parameter ( ',' parameter )* ')'
                     pass 
                     char_literal134=self.match(self.input, 34, self.FOLLOW_34_in_inlineDef991)
                     self._state.following.append(self.FOLLOW_parameter_in_inlineDef994)
@@ -3949,7 +3949,7 @@ class MonitorParser(Parser):
                     self._state.following.pop()
                     if self._state.backtracking == 0:
                         self._adaptor.addChild(root_0, parameter135.tree)
-                    # src/Monitor.g:107:54: ( ',' parameter )*
+                    # Monitor.g:107:54: ( ',' parameter )*
                     while True: #loop38
                         alt38 = 2
                         LA38_0 = self.input.LA(1)
@@ -3959,7 +3959,7 @@ class MonitorParser(Parser):
 
 
                         if alt38 == 1:
-                            # src/Monitor.g:107:56: ',' parameter
+                            # Monitor.g:107:56: ',' parameter
                             pass 
                             char_literal136=self.match(self.input, 27, self.FOLLOW_27_in_inlineDef998)
                             self._state.following.append(self.FOLLOW_parameter_in_inlineDef1001)
@@ -4008,7 +4008,7 @@ class MonitorParser(Parser):
 
 
     # $ANTLR start "parallelDef"
-    # src/Monitor.g:109:1: parallelDef : 'parallel' blockDef ( 'and' blockDef )* -> ^( PARALLEL ( blockDef )+ ) ;
+    # Monitor.g:109:1: parallelDef : 'parallel' blockDef ( 'and' blockDef )* -> ^( PARALLEL ( blockDef )+ ) ;
     def parallelDef(self, ):
 
         retval = self.parallelDef_return()
@@ -4030,8 +4030,8 @@ class MonitorParser(Parser):
         stream_blockDef = RewriteRuleSubtreeStream(self._adaptor, "rule blockDef")
         try:
             try:
-                # src/Monitor.g:109:12: ( 'parallel' blockDef ( 'and' blockDef )* -> ^( PARALLEL ( blockDef )+ ) )
-                # src/Monitor.g:109:14: 'parallel' blockDef ( 'and' blockDef )*
+                # Monitor.g:109:12: ( 'parallel' blockDef ( 'and' blockDef )* -> ^( PARALLEL ( blockDef )+ ) )
+                # Monitor.g:109:14: 'parallel' blockDef ( 'and' blockDef )*
                 pass 
                 string_literal139=self.match(self.input, 47, self.FOLLOW_47_in_parallelDef1018) 
                 if self._state.backtracking == 0:
@@ -4042,7 +4042,7 @@ class MonitorParser(Parser):
                 self._state.following.pop()
                 if self._state.backtracking == 0:
                     stream_blockDef.add(blockDef140.tree)
-                # src/Monitor.g:109:34: ( 'and' blockDef )*
+                # Monitor.g:109:34: ( 'and' blockDef )*
                 while True: #loop40
                     alt40 = 2
                     LA40_0 = self.input.LA(1)
@@ -4052,7 +4052,7 @@ class MonitorParser(Parser):
 
 
                     if alt40 == 1:
-                        # src/Monitor.g:109:36: 'and' blockDef
+                        # Monitor.g:109:36: 'and' blockDef
                         pass 
                         string_literal141=self.match(self.input, 48, self.FOLLOW_48_in_parallelDef1024) 
                         if self._state.backtracking == 0:
@@ -4087,11 +4087,11 @@ class MonitorParser(Parser):
 
                     root_0 = self._adaptor.nil()
                     # 109:54: -> ^( PARALLEL ( blockDef )+ )
-                    # src/Monitor.g:109:57: ^( PARALLEL ( blockDef )+ )
+                    # Monitor.g:109:57: ^( PARALLEL ( blockDef )+ )
                     root_1 = self._adaptor.nil()
                     root_1 = self._adaptor.becomeRoot(self._adaptor.createFromType(PARALLEL, "PARALLEL"), root_1)
 
-                    # src/Monitor.g:109:68: ( blockDef )+
+                    # Monitor.g:109:68: ( blockDef )+
                     if not (stream_blockDef.hasNext()):
                         raise RewriteEarlyExitException()
 
@@ -4138,7 +4138,7 @@ class MonitorParser(Parser):
 
 
     # $ANTLR start "globalEscapeDef"
-    # src/Monitor.g:112:1: globalEscapeDef : 'do' blockDef ( interruptDef )+ ;
+    # Monitor.g:112:1: globalEscapeDef : 'do' blockDef ( interruptDef )+ ;
     def globalEscapeDef(self, ):
 
         retval = self.globalEscapeDef_return()
@@ -4156,8 +4156,8 @@ class MonitorParser(Parser):
 
         try:
             try:
-                # src/Monitor.g:112:16: ( 'do' blockDef ( interruptDef )+ )
-                # src/Monitor.g:112:18: 'do' blockDef ( interruptDef )+
+                # Monitor.g:112:16: ( 'do' blockDef ( interruptDef )+ )
+                # Monitor.g:112:18: 'do' blockDef ( interruptDef )+
                 pass 
                 root_0 = self._adaptor.nil()
 
@@ -4173,7 +4173,7 @@ class MonitorParser(Parser):
                 self._state.following.pop()
                 if self._state.backtracking == 0:
                     self._adaptor.addChild(root_0, blockDef144.tree)
-                # src/Monitor.g:112:33: ( interruptDef )+
+                # Monitor.g:112:33: ( interruptDef )+
                 cnt41 = 0
                 while True: #loop41
                     alt41 = 2
@@ -4184,7 +4184,7 @@ class MonitorParser(Parser):
 
 
                     if alt41 == 1:
-                        # src/Monitor.g:112:35: interruptDef
+                        # Monitor.g:112:35: interruptDef
                         pass 
                         self._state.following.append(self.FOLLOW_interruptDef_in_globalEscapeDef1053)
                         interruptDef145 = self.interruptDef()
@@ -4237,7 +4237,7 @@ class MonitorParser(Parser):
 
 
     # $ANTLR start "interruptDef"
-    # src/Monitor.g:115:1: interruptDef : 'interrupt' blockDef ;
+    # Monitor.g:115:1: interruptDef : 'interrupt' blockDef ;
     def interruptDef(self, ):
 
         retval = self.interruptDef_return()
@@ -4253,8 +4253,8 @@ class MonitorParser(Parser):
 
         try:
             try:
-                # src/Monitor.g:115:13: ( 'interrupt' blockDef )
-                # src/Monitor.g:115:15: 'interrupt' blockDef
+                # Monitor.g:115:13: ( 'interrupt' blockDef )
+                # Monitor.g:115:15: 'interrupt' blockDef
                 pass 
                 root_0 = self._adaptor.nil()
 
@@ -4302,7 +4302,7 @@ class MonitorParser(Parser):
 
 
     # $ANTLR start "unorderedDef"
-    # src/Monitor.g:117:1: unorderedDef : 'unordered' '{' ( ( ANNOTATION )* activityDef )* '}' -> ^( PARALLEL ( ^( BRANCH activityDef ) )+ ) ;
+    # Monitor.g:117:1: unorderedDef : 'unordered' '{' ( ( ANNOTATION )* activityDef )* '}' -> ^( PARALLEL ( ^( BRANCH activityDef ) )+ ) ;
     def unorderedDef(self, ):
 
         retval = self.unorderedDef_return()
@@ -4328,8 +4328,8 @@ class MonitorParser(Parser):
         stream_activityDef = RewriteRuleSubtreeStream(self._adaptor, "rule activityDef")
         try:
             try:
-                # src/Monitor.g:117:13: ( 'unordered' '{' ( ( ANNOTATION )* activityDef )* '}' -> ^( PARALLEL ( ^( BRANCH activityDef ) )+ ) )
-                # src/Monitor.g:117:15: 'unordered' '{' ( ( ANNOTATION )* activityDef )* '}'
+                # Monitor.g:117:13: ( 'unordered' '{' ( ( ANNOTATION )* activityDef )* '}' -> ^( PARALLEL ( ^( BRANCH activityDef ) )+ ) )
+                # Monitor.g:117:15: 'unordered' '{' ( ( ANNOTATION )* activityDef )* '}'
                 pass 
                 string_literal148=self.match(self.input, 51, self.FOLLOW_51_in_unorderedDef1076) 
                 if self._state.backtracking == 0:
@@ -4337,7 +4337,7 @@ class MonitorParser(Parser):
                 char_literal149=self.match(self.input, 32, self.FOLLOW_32_in_unorderedDef1078) 
                 if self._state.backtracking == 0:
                     stream_32.add(char_literal149)
-                # src/Monitor.g:117:31: ( ( ANNOTATION )* activityDef )*
+                # Monitor.g:117:31: ( ( ANNOTATION )* activityDef )*
                 while True: #loop43
                     alt43 = 2
                     LA43_0 = self.input.LA(1)
@@ -4347,9 +4347,9 @@ class MonitorParser(Parser):
 
 
                     if alt43 == 1:
-                        # src/Monitor.g:117:33: ( ANNOTATION )* activityDef
+                        # Monitor.g:117:33: ( ANNOTATION )* activityDef
                         pass 
-                        # src/Monitor.g:117:33: ( ANNOTATION )*
+                        # Monitor.g:117:33: ( ANNOTATION )*
                         while True: #loop42
                             alt42 = 2
                             LA42_0 = self.input.LA(1)
@@ -4359,7 +4359,7 @@ class MonitorParser(Parser):
 
 
                             if alt42 == 1:
-                                # src/Monitor.g:117:35: ANNOTATION
+                                # Monitor.g:117:35: ANNOTATION
                                 pass 
                                 ANNOTATION150=self.match(self.input, ANNOTATION, self.FOLLOW_ANNOTATION_in_unorderedDef1084) 
                                 if self._state.backtracking == 0:
@@ -4401,16 +4401,16 @@ class MonitorParser(Parser):
 
                     root_0 = self._adaptor.nil()
                     # 117:68: -> ^( PARALLEL ( ^( BRANCH activityDef ) )+ )
-                    # src/Monitor.g:117:71: ^( PARALLEL ( ^( BRANCH activityDef ) )+ )
+                    # Monitor.g:117:71: ^( PARALLEL ( ^( BRANCH activityDef ) )+ )
                     root_1 = self._adaptor.nil()
                     root_1 = self._adaptor.becomeRoot(self._adaptor.createFromType(PARALLEL, "PARALLEL"), root_1)
 
-                    # src/Monitor.g:117:82: ( ^( BRANCH activityDef ) )+
+                    # Monitor.g:117:82: ( ^( BRANCH activityDef ) )+
                     if not (stream_activityDef.hasNext()):
                         raise RewriteEarlyExitException()
 
                     while stream_activityDef.hasNext():
-                        # src/Monitor.g:117:82: ^( BRANCH activityDef )
+                        # Monitor.g:117:82: ^( BRANCH activityDef )
                         root_2 = self._adaptor.nil()
                         root_2 = self._adaptor.becomeRoot(self._adaptor.createFromType(BRANCH, "BRANCH"), root_2)
 
@@ -4458,7 +4458,7 @@ class MonitorParser(Parser):
 
 
     # $ANTLR start "expr"
-    # src/Monitor.g:126:1: expr : term ( ( PLUS | MINUS ) term )* ;
+    # Monitor.g:126:1: expr : term ( ( PLUS | MINUS ) term )* ;
     def expr(self, ):
 
         retval = self.expr_return()
@@ -4476,8 +4476,8 @@ class MonitorParser(Parser):
 
         try:
             try:
-                # src/Monitor.g:126:6: ( term ( ( PLUS | MINUS ) term )* )
-                # src/Monitor.g:126:8: term ( ( PLUS | MINUS ) term )*
+                # Monitor.g:126:6: ( term ( ( PLUS | MINUS ) term )* )
+                # Monitor.g:126:8: term ( ( PLUS | MINUS ) term )*
                 pass 
                 root_0 = self._adaptor.nil()
 
@@ -4487,7 +4487,7 @@ class MonitorParser(Parser):
                 self._state.following.pop()
                 if self._state.backtracking == 0:
                     self._adaptor.addChild(root_0, term153.tree)
-                # src/Monitor.g:126:13: ( ( PLUS | MINUS ) term )*
+                # Monitor.g:126:13: ( ( PLUS | MINUS ) term )*
                 while True: #loop44
                     alt44 = 2
                     LA44_0 = self.input.LA(1)
@@ -4497,7 +4497,7 @@ class MonitorParser(Parser):
 
 
                     if alt44 == 1:
-                        # src/Monitor.g:126:15: ( PLUS | MINUS ) term
+                        # Monitor.g:126:15: ( PLUS | MINUS ) term
                         pass 
                         set154 = self.input.LT(1)
                         if (PLUS <= self.input.LA(1) <= MINUS):
@@ -4556,7 +4556,7 @@ class MonitorParser(Parser):
 
 
     # $ANTLR start "term"
-    # src/Monitor.g:128:1: term : factor ( ( MULT | DIV ) factor )* ;
+    # Monitor.g:128:1: term : factor ( ( MULT | DIV ) factor )* ;
     def term(self, ):
 
         retval = self.term_return()
@@ -4574,8 +4574,8 @@ class MonitorParser(Parser):
 
         try:
             try:
-                # src/Monitor.g:128:6: ( factor ( ( MULT | DIV ) factor )* )
-                # src/Monitor.g:128:8: factor ( ( MULT | DIV ) factor )*
+                # Monitor.g:128:6: ( factor ( ( MULT | DIV ) factor )* )
+                # Monitor.g:128:8: factor ( ( MULT | DIV ) factor )*
                 pass 
                 root_0 = self._adaptor.nil()
 
@@ -4585,7 +4585,7 @@ class MonitorParser(Parser):
                 self._state.following.pop()
                 if self._state.backtracking == 0:
                     self._adaptor.addChild(root_0, factor156.tree)
-                # src/Monitor.g:128:15: ( ( MULT | DIV ) factor )*
+                # Monitor.g:128:15: ( ( MULT | DIV ) factor )*
                 while True: #loop45
                     alt45 = 2
                     LA45_0 = self.input.LA(1)
@@ -4595,7 +4595,7 @@ class MonitorParser(Parser):
 
 
                     if alt45 == 1:
-                        # src/Monitor.g:128:17: ( MULT | DIV ) factor
+                        # Monitor.g:128:17: ( MULT | DIV ) factor
                         pass 
                         set157 = self.input.LT(1)
                         if (MULT <= self.input.LA(1) <= DIV):
@@ -4654,7 +4654,7 @@ class MonitorParser(Parser):
 
 
     # $ANTLR start "factor"
-    # src/Monitor.g:130:1: factor : NUMBER ;
+    # Monitor.g:130:1: factor : NUMBER ;
     def factor(self, ):
 
         retval = self.factor_return()
@@ -4668,8 +4668,8 @@ class MonitorParser(Parser):
 
         try:
             try:
-                # src/Monitor.g:130:8: ( NUMBER )
-                # src/Monitor.g:130:10: NUMBER
+                # Monitor.g:130:8: ( NUMBER )
+                # Monitor.g:130:10: NUMBER
                 pass 
                 root_0 = self._adaptor.nil()
 
@@ -4773,8 +4773,8 @@ class MonitorParser(Parser):
 
             
     DFA17_transition = [
-        DFA.unpack(u"\1\1\1\3\7\uffff\1\2\2\uffff\1\3\2\uffff\1\3\1\2\4\uffff"
-        u"\2\3\2\uffff\6\3\1\uffff\1\3\1\uffff\1\3"),
+        DFA.unpack(u"\1\1\1\3\7\uffff\1\2\2\uffff\1\3\2\uffff\1\3\1\2\4"
+        u"\uffff\2\3\2\uffff\6\3\1\uffff\1\3\1\uffff\1\3"),
         DFA.unpack(u"\1\1\1\3\7\uffff\1\2\2\uffff\1\3\2\uffff\1\3\5\uffff"
         u"\2\3\2\uffff\6\3\1\uffff\1\3\1\uffff\1\3"),
         DFA.unpack(u""),

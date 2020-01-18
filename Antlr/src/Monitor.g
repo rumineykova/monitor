@@ -1,13 +1,15 @@
 grammar Monitor;
 
 options {
-        language=Python;
+        language=Java;
 	output=AST;
 	backtrack=true;
 }
 
 tokens {
 	INTERACTION = 'interaction';
+	INT = 'int';
+	STRING = 'string';
 	PLUS 	= '+' ;
 	MINUS	= '-' ;
 	MULT	= '*' ;
@@ -15,11 +17,16 @@ tokens {
 	FULLSTOP = '.' ;
 	RESV = 'RESV';
 	SEND = 'SEND';
+	TYPE = 'TYPE';
+	VALUE = 'VALUE';
 	BRANCH = 'BRANCH';
 	UNORDERED = 'UNORDERED';
 	RECLABEL = 'RECLABEL';
 	PARALLEL = 'PARALLEL';
 	PROTOCOL = 'PROTOCOL';
+	ASSERT = 'ASSERT';
+	INT = 'int';
+	STRING = 'string';
 }
 
 /*------------------------------------------------------------------
@@ -52,8 +59,13 @@ parameterDef: ( typeReferenceDef | 'role' ) simpleName ;
 protocolBlockDef: activityListDef -> activityListDef;
 
 blockDef: '{' activityListDef '}' -> ^(BRANCH activityListDef);
+	 	  
+assertDef : (ASSERTION)? -> ^(ASSERT ASSERTION?);
 
 activityListDef: ( ( ANNOTATION )* activityDef )* -> activityDef+;
+
+primitivetype :(INT -> INT
+               |STRING-> STRING);
 
 activityDef: ( introducesDef | interactionDef | inlineDef | runDef | recursionDef | endDef ) ';'! | 
 			choiceDef | directedChoiceDef | parallelDef | repeatDef | unorderedDef |
@@ -65,15 +77,15 @@ roleDef: ID -> ID;
 
 roleName: ID -> ID;
 
-typeReferenceDef: ID -> ID ;
+typeReferenceDef: ID ->ID ;
 
-interactionSignatureDef: ( typeReferenceDef | ID '('! ( typeReferenceDef ( ','! typeReferenceDef )* )? ')'! );
+interactionSignatureDef: (typeReferenceDef ('(' ID ':' primitivetype ')')? -> ^(VALUE ID* primitivetype*) typeReferenceDef);
 
 // TODO: add the to roleNames
 interactionDef: 
 	     interactionSignatureDef (
-		'from' role= roleName  -> ^(RESV interactionSignatureDef $role )
-	      | 'to' roleName  -> ^(SEND interactionSignatureDef roleName));
+		'from' role= roleName  (assertDef)-> ^(RESV interactionSignatureDef $role assertDef)
+	      | 'to' roleName  (assertDef) -> ^(SEND interactionSignatureDef roleName assertDef));
 
 choiceDef: 'choice' ( 'at' roleName )? blockDef ( 'or' blockDef )* -> ^('choice' blockDef+);
 
@@ -133,6 +145,7 @@ factor	: NUMBER ;
 /*------------------------------------------------------------------
  * LEXER RULES
  *------------------------------------------------------------------*/
+	 
 
 ID : ('a'..'z'|'A'..'Z'|'_')('a'..'z'|'A'..'Z'|'0'..'9'|'_')* ;
 
@@ -141,6 +154,8 @@ NUMBER	: (DIGIT)+ ;
 WHITESPACE : ( '\t' | ' ' | '\r' | '\n'| '\u000C' )+ 	{ $channel = HIDDEN; } ;
 
 fragment DIGIT	: '0'..'9' ;
+
+ASSERTION : '@{' (options {greedy=false;} : .)* '}' ;
 
 ANNOTATION : '[[' (options {greedy=false;} : .)* ']]' ;
 

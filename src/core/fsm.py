@@ -1,8 +1,5 @@
-"""
-Noah Spurrier 20020822
-"""
-from collections import deque
 from pydoc import deque
+
 class ExceptionFSM(Exception):
     """This is the FSM Exception class."""
 
@@ -11,6 +8,17 @@ class ExceptionFSM(Exception):
 
     def __str__(self):
         return `self.value`
+
+class ExceptionFailAssertion(ExceptionFSM):
+    """This is the FSM Exception class for Assertion Errors."""
+
+    def __init__(self, value):
+        self.value = value
+ 
+    def __str__(self):
+        return `self.value`
+
+type_converter = {'int':int, 'string':str}
 
 class FSM:
 
@@ -22,12 +30,6 @@ class FSM:
     END_PAR_TRANSITION = 'END_PAR'
     
     def __init__(self, initial_state, memory=None):
-
-        """This creates the FSM. You set the initial state here. The "memory"
-        attribute is any object that you want to pass along to the action
-        functions. It is not used by the FSM. For parsing you would typically
-        pass a list to be used as a stack. """
-
         # Map (input_symbol, current_state) --> (action, next_state).
         self.state_transitions = {}
         # Map (current_state) --> (action, next_state).
@@ -36,6 +38,7 @@ class FSM:
         self.error_transition = self.ERROR_TRANSITION
         self.empty_transition = self.EMPTY_TRANSITION
         self.input_symbol = None
+        print 'initial_state is: %s' %(initial_state)
         self.initial_state = initial_state
         self.current_state = self.initial_state
         self.next_state = None
@@ -43,6 +46,17 @@ class FSM:
         # TODO: Delete the memory from the interface of the fsm.
         if memory is None: self.memory = dict() 
         else: self.memory = {}
+        self.context = {}
+        self.current_payload = None
+        self.check_assertions = True
+        self.has_reach_end_state = False
+        
+        self.interrupt_transition = None
+        self.interrupt_start_state = None
+        self.final_state = -1
+     
+    def set_assertion_check(self, is_on):
+        self.check_assertions = is_on
          
     def reset (self):
 
@@ -56,9 +70,10 @@ class FSM:
     def copy_transitions(self, from_state, to_state):
         for (input_symbol, state) in self.state_transitions.keys():
             if (state==from_state):
-                (action, next_state) = self.state_transitions[((input_symbol, state))]
-                self.add_transition(input_symbol, to_state, action, next_state)
-    def add_transition (self, input_symbol, state, action=None, next_state=None):
+                (transition_context, action, next_state) = self.state_transitions[((input_symbol, state))]
+                self.add_transition(input_symbol, to_state, next_state, action, transition_context)
+                
+    def add_transition (self, input_symbol, state, next_state=None, action=None, transition_context = None):
 
         """This adds a transition that associates:
 
@@ -73,9 +88,11 @@ class FSM:
 
         if next_state is None:
             next_state = state
-        self.state_transitions[(input_symbol, state)] = (action, next_state)
+        print "%s-%s" %(state, next_state)
+        self.state_transitions[(input_symbol, state)] = (transition_context, action, next_state)
 
-    def add_transition_list (self, list_input_symbols, state, action=None, next_state=None):
+    def add_transition_list (self, list_input_symbols, state, next_state=None, 
+                             action=None, transition_context=None):
 
         """This adds the same transition for a list of input symbols.
         You can pass a list or a string. Note that it is handy to use
@@ -89,7 +106,7 @@ class FSM:
         if next_state is None:
             next_state = state
         for input_symbol in list_input_symbols:
-            self.add_transition (input_symbol, state, action, next_state)
+            self.add_transition (input_symbol, state, next_state, action, transition_context)
 
     def add_transition_any (self, state, action=None, next_state=None):
 
@@ -107,9 +124,10 @@ class FSM:
 
         if next_state is None:
             next_state = state
-        self.state_transitions_any [state] = (action, next_state)
+        self.state_transitions_any [state] = (None, action, next_state)
 
     # This is used whenever we want to represent state that represent parallel construct 
+  
     def add_transition_to_memory_old(self, input_symbol, state, startNewTransitionQueue, action):
         """ We use startNewTransitionQueue when we have finished with pushing all the actions.
             Then we start new parallel branch. Thus we create a new FSA for that branch and put it in the list of FSAs
@@ -134,8 +152,10 @@ class FSM:
     
     """ Used for parallel constructs """
     def add_nested_transition(self, input_symbol, state, 
-                                 nested_state, action, 
-                                 next_nested_state):
+                                 nested_state, 
+                                 next_nested_state, 
+                                 action, 
+                                 transition_context):
         """ We use startNewTransitionQueue when we have finished with pushing all the actions.
             Then we start new parallel branch. Thus we create a new FSA for that branch and put it in the list of FSAs
             for the state """
@@ -147,7 +167,7 @@ class FSM:
         cur_memory_state = self.memory.get(state)     
         
         # add_transition to the last FSM. Note that cur_memory_state[-1] returns the last inserted FSM 
-        cur_memory_state[-1].add_transition(input_symbol, nested_state, action, next_nested_state)
+        cur_memory_state[-1].add_transition(input_symbol, nested_state, next_nested_state, action, transition_context)
             
     def set_default_transition (self, action, next_state):
 
@@ -160,13 +180,27 @@ class FSM:
         The default transition can be removed by setting the attribute
         default_transition to None. """
 
-        self.default_transition = (action, next_state)
-    
+        self.default_transition = (None, action, next_state)
+      
+    #-------------------------------------------Methods for handling global interrupt-------------------------
+  
+    def add_interrupt_transition(self, transition, next_state):
+        print 'Add interrupt transition %s' %(transition)
+        self.interrupt_transition = transition
+        self.interrupt_start_state = next_state 
+        
+    def get_interrupt_transition(self, input_transition):
+        if ((self.interrupt_transition is not None) and (str(input_transition) == str(self.interrupt_transition))):
+            return self.interrupt_start_state
+        else: return None
+    #-------------------------------------------End of Methods for handling global interrupt-------------------
+
     def set_error_transition (self, action, next_state):
-        self.error_transition = (action, next_state)
- 
+        self.error_transition = (None, action, next_state)
+    
 
     # Set the default action here 
+    
     def get_transition_from_memory_old(self, input_symbol, state):
         stackToPop = None
         transitionStacks = self.memory[state]
@@ -180,34 +214,30 @@ class FSM:
                 stackToPop.popleft()
                 if not(stackToPop):
                     self.memory[state].remove(stackToPop)
-                return (None, state)
-        
-        elif (self.memory[state] is None):
-                return self.state_transitions_any(state)
+                return (None, None, state)
         
         else:
             raise ExceptionFSM ('Transition is undefined: (%s, %s).' %
                                 (str(input_symbol), str(state)) )
             
     def get_transition_from_memory(self, input_symbol, state):
-        (action, next_state) = (None, None)
+        (local_context, action, next_state) = (None, None, None)
         fsmList = self.memory[state]
         fired_fsm = None
         for cur_fsm in fsmList:
-            (action, next_state) = cur_fsm.get_transition(input_symbol, cur_fsm.current_state, (None, None))
+            (local_context, action, next_state) = cur_fsm.get_transition(input_symbol, 
+                                                                         cur_fsm.current_state, 
+                                                                         (None, None, None))
             if (next_state is not None):
                 fired_fsm = cur_fsm
-                cur_fsm.current_satte  = next_state 
+                cur_fsm.current_state  = next_state 
                 break 
 
         # Important: here we assume that recursion has a control message that is send in order to end the reccursion
         if fired_fsm is not None:
             if ((next_state == state) or (cur_fsm.has_transition(self.END_PAR_TRANSITION, next_state))):
                 self.memory[state].remove(cur_fsm)
-            return (action, state)
-        
-        elif (self.memory[state] is None):
-            return self.state_transitions_any(state)
+            return (local_context, action, state)
         else:
             raise ExceptionFSM ('Transition is undefined: (%s, %s).' %
                                 (str(input_symbol), str(state)) )
@@ -247,12 +277,12 @@ class FSM:
         elif self.default_transition is not None:
             return self.default_transition
         else:
+            print "Wrooooooooooooooooooooooooooooooooooooooooooooooooong messageeeeeeeeeeeeeeeeeeeeeeee"
             raise ExceptionFSM ('Transition is undefined: (%s, %s).' %
                 (str(input_symbol), str(state)) )
     
-        
     def has_transition (self, input_symbol, state):
-        (_, next_state) = self.get_transition(input_symbol, state, (None, None))
+        (_, _, next_state) = self.get_transition(input_symbol, state, (None, None, None))
         
         if next_state is None:
             return False
@@ -284,7 +314,15 @@ class FSM:
     
             4. No transition was defined. If we get here then raise an exception.
             """
+            
             has_memory = self.memory.get(state, None)
+            # TODO: Change to fsm to work without empty state 
+            while (((self.empty_transition, state) in self.state_transitions) and
+                    (state not in self.memory or not has_memory)):
+                    (self.current_context, self.action, self.current_state) = self.state_transitions[(self.EMPTY_TRANSITION, state)]
+            
+            
+                    state = self.current_state
             if ((input_symbol is not self.EMPTY_TRANSITION) and has_memory):
                 return self.get_transition_from_memory(input_symbol, state)
             if self.state_transitions.has_key((input_symbol, state)):
@@ -299,8 +337,17 @@ class FSM:
                 raise ExceptionFSM ('Transition is undefined: (%s, %s).' %
                                     (str(input_symbol), str(state)) )
 
-     
-    def process (self, input_symbol):
+    def process_list (self, inputs, payloads = None):
+        if payloads is not None:
+            if (len(inputs)!=len(payloads)):
+                raise ExceptionFSM('The payload values does not match the number of messages.')
+            for input_transition, payload in zip(inputs, payloads):
+                self.process (input_transition, payload)
+        else:
+            for input_transition in inputs:
+                self.process (input_transition)
+            
+    def process (self, input_transition, payload = None):
 
         """This is the main method that you call to process input. This may
         cause the FSM to change state and call an action. This method calls
@@ -309,130 +356,61 @@ class FSM:
         is not called and only the current state is changed. This method
         processes one complete input symbol. You can process a list of symbols
         (or a string) by calling process_list(). """
+        
+        print 'current state: %s, final_state: %s' %(self.current_state, self.final_state)
+        if (self.current_state == self.final_state):
+            raise ExceptionFSM('What are you sending?.The communication has finished.')
+        
+        #First, check for global interrupt
+        start_interrupt_state = self.get_interrupt_transition(input_transition)
+        if (start_interrupt_state is not None):
+            self.current_state = start_interrupt_state
             
-        self.input_symbol = input_symbol
-        has_state = self.memory.get(self.current_state, None)
-        # TODO: Change to fsm to work without empty state 
-        if (((self.empty_transition, self.current_state) in self.state_transitions) and
-            (self.current_state not in self.memory or not has_state)) :
-            (self.action, self.current_state) =  self.get_transition(self.empty_transition, self.current_state)
+        self.input_symbol = input_transition
+        self.current_payload = payload
+        
             
-        (self.action, self.next_state) = self.get_transition (self.input_symbol, self.current_state)
-        if self.action is not None:
-            self.action (self)
+        (self.current_context, self.action, self.next_state) = self.get_transition(self.input_symbol,
+                                                                                    self.current_state)
+        print 'Payload: %s' %(payload)
+        if (self.check_assertions):
+            print 'Assertions are checked'
+            if (self.current_context is not None):
+                self.add_to_context(self.current_context)
+            
+            if self.action is not None:
+                print 'Action is not none'
+                self.execute_transition_action (self.action, self.context)
+           
         self.current_state = self.next_state
         self.next_state = None
-
-    def process_list (self, input_symbols):
-
-        """This takes a list and sends each element to process(). The list may
-        be a string or any iterable object. """
-
-        for s in input_symbols:
-            self.process (s)
+    
+    def add_to_context(self, local_context):
+        if len(local_context) >0:
+            if self.current_payload is None: 
+                raise ExceptionFSM('Payload is required when the assertion_ckech is enabled')
+            if len(local_context) != len(self.current_payload):
+                raise ExceptionFSM('Wrong number of payloads for the current message')
+            [self.__update_context(value, type_converter[type_sig](payload))
+             for (value, type_sig), payload in zip(local_context, self.current_payload)]
+            
+    def execute_transition_action(self, assertion, context):
+        print 'context is' %(context)
+        result =  assertion.check(context)
+        if not result: 
+            msg = 'Assertion fail for input transition:%s , and assertion:%s' %(self.input_symbol, assertion.statement)
+            print msg
+            raise ExceptionFailAssertion(msg)
+        else: print 'Message %s is checked' %(self.input_symbol)
+    
+    def __update_context(self, key, value):
+        self.context[key] = value
+       
     def __eq__(self, other) : 
         return self.__dict__ == other.__dict__
     
     def __str__(self):
         return "<transition_table:%s;memory: %s>" %(self.state_transitions, self.memory.__repr__())
+    
     def __repr__(self):
         return "<transition_table:%s;memory: %s>" %(self.state_transitions, self.memory.__repr__())
-
-##############################################################################
-# The following is an example that demonstrates the use of the FSM class to
-# process an RPN expression. Run this module from the command line. You will
-# get a prompt > for input. Enter an RPN Expression. Numbers may be integers.
-# Operators are * / + - Use the = sign to evaluate and print the expression.
-# For example: 
-#
-#    167 3 2 2 * * * 1 - =
-#
-# will print:
-#
-#    2003
-##############################################################################
-
-import sys, os, traceback, optparse, time, string
-
-#
-# These define the actions. 
-# Note that "memory" is a list being used as a stack.
-#
-
-def BeginBuildNumber (fsm):
-    fsm.memory.append (fsm.input_symbol)
-
-def BuildNumber (fsm):
-    s = fsm.memory.pop ()
-    s = s + fsm.input_symbol
-    fsm.memory.append (s)
-
-def EndBuildNumber (fsm):
-    s = fsm.memory.pop ()
-    fsm.memory.append (int(s))
-
-def DoOperator (fsm):
-    ar = fsm.memory.pop()
-    al = fsm.memory.pop()
-    if fsm.input_symbol == '+':
-        fsm.memory.append (al + ar)
-        
-    elif fsm.input_symbol == '-':
-        fsm.memory.append (al - ar)
-    elif fsm.input_symbol == '*':
-        fsm.memory.append (al * ar)
-    elif fsm.input_symbol == '/':
-        fsm.memory.append (al / ar)
-
-def DoEqual (fsm):
-    print str(fsm.memory.pop())
-
-def Error (fsm):
-    print 'That does not compute.'
-    print str(fsm.input_symbol)
-
-def main():
-
-    """This is where the example starts and the FSM state transitions are
-    defined. Note that states are strings (such as 'INIT'). This is not
-    necessary, but it makes the example easier to read. """
-
-    f = FSM ('INIT', []) # "memory" will be used as a stack.
-    f.set_default_transition (Error, 'INIT')
-    f.add_transition_any  ('INIT', None, 'INIT')
-    f.add_transition      ('=',               'INIT',            DoEqual,          'INIT')
-    f.add_transition_list (string.digits,     'INIT',            BeginBuildNumber, 'BUILDING_NUMBER')
-    f.add_transition_list (string.digits,     'BUILDING_NUMBER', BuildNumber,      'BUILDING_NUMBER')
-    f.add_transition_list (string.whitespace, 'BUILDING_NUMBER', EndBuildNumber,   'INIT')
-    f.add_transition_list ('+-*/',            'INIT',            DoOperator,       'INIT')
-
-    print
-    print 'Enter an RPN Expression.'
-    print 'Numbers may be integers. Operators are * / + -'
-    print 'Use the = sign to evaluate and print the expression.'
-    print 'For example: '
-    print '    167 3 2 2 * * * 1 - ='
-    inputstr = raw_input ('> ')
-    f.process_list(inputstr)
-
-if __name__ == '__main__':
-    try:
-        start_time = time.time()
-        parser = optparse.OptionParser(formatter=optparse.TitledHelpFormatter(), usage=globals()['__doc__'], version='$Id: FSM.py 128 2007-12-07 15:47:32Z root $')
-        parser.add_option ('-v', '--verbose', action='store_true', default=False, help='verbose output')
-        (options, args) = parser.parse_args()
-        if options.verbose: print time.asctime()
-        main()
-        if options.verbose: print time.asctime()
-        if options.verbose: print 'TOTAL TIME IN MINUTES:',
-        if options.verbose: print (time.time() - start_time) / 60.0
-        sys.exit(0)
-    except KeyboardInterrupt, e: # Ctrl-C
-        raise e
-    except SystemExit, e: # sys.exit()
-        raise e
-    except Exception, e:
-        print 'ERROR_TRANSITION, UNEXPECTED EXCEPTION'
-        print str(e)
-        traceback.print_exc()
-        os._exit(1)

@@ -1,4 +1,4 @@
-# $ANTLR 3.1.3 Mar 18, 2009 10:09:25 src\\BuildFSM.g 2011-11-23 03:06:35
+# $ANTLR 3.1.3 Mar 18, 2009 10:09:25 src\\BuildFSM.g 2012-01-22 21:27:30
 
 import sys
 from antlr3 import *
@@ -19,26 +19,19 @@ def generate_ints():
         	yield x
         	x += 1
 
-def format_state_name(state, parent_state = None):
-	if parent_state is not None:
-		return "%s_%s" %(parent_state, state)
-	else: return state
-
-
 class FSMBuilderState(object):
-	def __init__(self, parent= None):
-	    self.current_state = 1
-	    if (parent is not None): self.fsm = FSM(format_state_name(self.current_state, parent.fsm.current_state))
-	    else: self.fsm = FSM(self.current_state)
-	    self.processing_par_state = False
-	    self.start_new_par_branch = False
-	    self.state_gen = generate_ints()
-	    # Choice States
-	    self.choice_start_state = -1
-	    self.choice_end_state = -1
-	    # Recursion states
-	    self.recursions_states = {}
-	    self.parent = parent
+    def __init__(self, parent= None):
+        self.current_state = 1
+        self.fsm = FSM(self.current_state)
+        self.processing_par_state = False
+        self.start_new_par_branch = False
+        self.state_gen = generate_ints()
+        # Choice States
+        self.choice_start_state = -1
+        self.choice_end_state = -1
+        # Recursion states
+        self.recursions_states = {}
+        self.parent = parentFSM
         
 	def move_current_state(self, value = None):
 		if value is None:
@@ -50,13 +43,11 @@ class FSMBuilderState(object):
 		return self.current_state
 		
 	def add_transition(self, transition):
-		if self.parent is not None: 
-			prefix = self.parent.get_current_state()
-			self.parent.fsm.add_nested_transition(transition, 
-								self.parent.get_current_state(),
-								format_state_name(prefix, self.get_current_state()),
-								checkMessages, 
-								format_state_name(prefix, self.move_current_state()))
+		elif self.current_fsm.parent is not None: 
+			self.fsm.add_nested_transition(transition, 
+	  					       self.parent.get_current_state()
+						       self.get_current_state(),
+		  				       checkMessages, self.move_current_state())
 		else:
 			self.fsm.add_transition(transition, 
 						self.get_current_state(), 
@@ -68,24 +59,29 @@ class FSMBuilderState(object):
 HIDDEN = BaseRecognizer.HIDDEN
 
 # token types
-T__29=29
-T__28=28
-T__27=27
-T__26=26
-T__25=25
-RESV=10
-ANNOTATION=17
-PARALLEL=15
-ID=18
+RESV=12
+ANNOTATION=23
+ASSERTION=26
+PARALLEL=19
+ID=24
 EOF=-1
-PROTOCOL=16
+PROTOCOL=20
+TYPE=14
+T__55=55
 INTERACTION=4
-ML_COMMENT=23
+T__56=56
+ML_COMMENT=30
+T__57=57
+T__58=58
 T__51=51
-FULLSTOP=9
-SEND=11
-PLUS=5
-DIGIT=21
+T__52=52
+T__53=53
+T__54=54
+T__59=59
+FULLSTOP=11
+PLUS=7
+SEND=13
+DIGIT=28
 T__50=50
 T__42=42
 T__43=43
@@ -95,39 +91,43 @@ T__46=46
 T__47=47
 T__44=44
 T__45=45
-LINE_COMMENT=24
+LINE_COMMENT=31
 T__48=48
 T__49=49
-RECLABEL=14
-NUMBER=20
-WHITESPACE=22
-MINUS=6
-MULT=7
-UNORDERED=13
-StringLiteral=19
-T__30=30
-T__31=31
+RECLABEL=18
+NUMBER=27
+WHITESPACE=29
+INT=5
+VALUE=15
+MINUS=8
+MULT=9
+ASSERT=21
+UNORDERED=17
+StringLiteral=25
 T__32=32
 T__33=33
 T__34=34
+GLOBAL_ESCAPE=22
 T__35=35
 T__36=36
 T__37=37
 T__38=38
 T__39=39
-BRANCH=12
-DIV=8
+BRANCH=16
+DIV=10
+STRING=6
 
 # token names
 tokenNames = [
     "<invalid>", "<EOR>", "<DOWN>", "<UP>", 
-    "INTERACTION", "PLUS", "MINUS", "MULT", "DIV", "FULLSTOP", "RESV", 
-    "SEND", "BRANCH", "UNORDERED", "RECLABEL", "PARALLEL", "PROTOCOL", "ANNOTATION", 
-    "ID", "StringLiteral", "NUMBER", "DIGIT", "WHITESPACE", "ML_COMMENT", 
+    "INTERACTION", "INT", "STRING", "PLUS", "MINUS", "MULT", "DIV", "FULLSTOP", 
+    "RESV", "SEND", "TYPE", "VALUE", "BRANCH", "UNORDERED", "RECLABEL", 
+    "PARALLEL", "PROTOCOL", "ASSERT", "GLOBAL_ESCAPE", "ANNOTATION", "ID", 
+    "StringLiteral", "ASSERTION", "NUMBER", "DIGIT", "WHITESPACE", "ML_COMMENT", 
     "LINE_COMMENT", "'import'", "'protocol'", "','", "';'", "'from'", "'as'", 
-    "'at'", "'{'", "'}'", "'('", "')'", "'role'", "'introduces'", "'to'", 
-    "'choice'", "'or'", "':'", "'repeat'", "'rec'", "'end'", "'run'", "'inline'", 
-    "'parallel'", "'and'", "'do'", "'interrupt'", "'unordered'"
+    "'at'", "'{'", "'}'", "'('", "')'", "'role'", "'introduces'", "':'", 
+    "'to'", "'choice'", "'or'", "'repeat'", "'rec'", "'end'", "'run'", "'inline'", 
+    "'parallel'", "'and'", "'do'", "'interrupt'", "'by'", "'unordered'"
 ]
 
 
@@ -152,7 +152,7 @@ class BuildFSM(TreeParser):
         # We append bebugging information to memory so we can print it later. 
         self.memory = []
         self.main_fsm = FSMBuilderState()
-        self.current_fsm = self.main_fsm
+        self.current_fsm = main_fsm
 
 
 
@@ -165,29 +165,29 @@ class BuildFSM(TreeParser):
 
 
     # $ANTLR start "description"
-    # src\\BuildFSM.g:77:1: description : ^( PROTOCOL ( activityDef )+ ) ;
+    # src\\BuildFSM.g:68:1: description : ^( PROTOCOL ( activityDef )+ ) ;
     def description(self, ):
 
         try:
             try:
-                # src\\BuildFSM.g:77:12: ( ^( PROTOCOL ( activityDef )+ ) )
-                # src\\BuildFSM.g:77:14: ^( PROTOCOL ( activityDef )+ )
+                # src\\BuildFSM.g:68:12: ( ^( PROTOCOL ( activityDef )+ ) )
+                # src\\BuildFSM.g:68:14: ^( PROTOCOL ( activityDef )+ )
                 pass 
                 self.match(self.input, PROTOCOL, self.FOLLOW_PROTOCOL_in_description52)
 
                 self.match(self.input, DOWN, None)
-                # src\\BuildFSM.g:77:25: ( activityDef )+
+                # src\\BuildFSM.g:68:25: ( activityDef )+
                 cnt1 = 0
                 while True: #loop1
                     alt1 = 2
                     LA1_0 = self.input.LA(1)
 
-                    if ((RESV <= LA1_0 <= SEND) or (RECLABEL <= LA1_0 <= PARALLEL) or LA1_0 == 39 or (42 <= LA1_0 <= 43)) :
+                    if ((RESV <= LA1_0 <= SEND) or (RECLABEL <= LA1_0 <= PARALLEL) or LA1_0 == 47 or (49 <= LA1_0 <= 50)) :
                         alt1 = 1
 
 
                     if alt1 == 1:
-                        # src\\BuildFSM.g:77:25: activityDef
+                        # src\\BuildFSM.g:68:25: activityDef
                         pass 
                         self._state.following.append(self.FOLLOW_activityDef_in_description54)
                         self.activityDef()
@@ -224,12 +224,15 @@ class BuildFSM(TreeParser):
 
 
     # $ANTLR start "activityDef"
-    # src\\BuildFSM.g:78:1: activityDef : ( ^( RESV rlabel= ID (rtype= ID )* role= ID ) | ^( SEND slabel= ID (stype= ID )* role= ID ) | ^( 'choice' ( ^( BRANCH ( activityDef )+ ) )+ ) | ^( PARALLEL ( ^( BRANCH ( activityDef )+ ) )+ ) | ^( 'repeat' ( ^( BRANCH ( activityDef )+ ) ) ) | ^( 'rec' label= ID ( ^( BRANCH ( activityDef )+ ) ) ) | ^( 'RECLABEL' labelID= ID ) );
+    # src\\BuildFSM.g:69:1: activityDef : ( ^( RESV ^( VALUE (val= ID type= ID )* ) rlabel= ID (rtype= ID )* role= ID ^( ASSERT (assertion= ASSERTION )? ) ) | ^( SEND ^( VALUE (val= ID type= ID )* ) slabel= ID (stype= ID )* role= ID ^( ASSERT (assertion= ASSERTION )? ) ) | ^( 'choice' ( ^( BRANCH ( activityDef )+ ) )+ ) | ^( PARALLEL ( ^( BRANCH ( activityDef )+ ) )+ ) | ^( 'repeat' ( ^( BRANCH ( activityDef )+ ) ) ) | ^( 'rec' label= ID ( ^( BRANCH ( activityDef )+ ) ) ) | ^( 'RECLABEL' labelID= ID ) );
     def activityDef(self, ):
 
+        val = None
+        type = None
         rlabel = None
         rtype = None
         role = None
+        assertion = None
         slabel = None
         stype = None
         label = None
@@ -237,82 +240,67 @@ class BuildFSM(TreeParser):
 
         try:
             try:
-                # src\\BuildFSM.g:78:12: ( ^( RESV rlabel= ID (rtype= ID )* role= ID ) | ^( SEND slabel= ID (stype= ID )* role= ID ) | ^( 'choice' ( ^( BRANCH ( activityDef )+ ) )+ ) | ^( PARALLEL ( ^( BRANCH ( activityDef )+ ) )+ ) | ^( 'repeat' ( ^( BRANCH ( activityDef )+ ) ) ) | ^( 'rec' label= ID ( ^( BRANCH ( activityDef )+ ) ) ) | ^( 'RECLABEL' labelID= ID ) )
-                alt10 = 7
-                LA10 = self.input.LA(1)
-                if LA10 == RESV:
-                    alt10 = 1
-                elif LA10 == SEND:
-                    alt10 = 2
-                elif LA10 == 39:
-                    alt10 = 3
-                elif LA10 == PARALLEL:
-                    alt10 = 4
-                elif LA10 == 42:
-                    alt10 = 5
-                elif LA10 == 43:
-                    alt10 = 6
-                elif LA10 == RECLABEL:
-                    alt10 = 7
+                # src\\BuildFSM.g:69:12: ( ^( RESV ^( VALUE (val= ID type= ID )* ) rlabel= ID (rtype= ID )* role= ID ^( ASSERT (assertion= ASSERTION )? ) ) | ^( SEND ^( VALUE (val= ID type= ID )* ) slabel= ID (stype= ID )* role= ID ^( ASSERT (assertion= ASSERTION )? ) ) | ^( 'choice' ( ^( BRANCH ( activityDef )+ ) )+ ) | ^( PARALLEL ( ^( BRANCH ( activityDef )+ ) )+ ) | ^( 'repeat' ( ^( BRANCH ( activityDef )+ ) ) ) | ^( 'rec' label= ID ( ^( BRANCH ( activityDef )+ ) ) ) | ^( 'RECLABEL' labelID= ID ) )
+                alt14 = 7
+                LA14 = self.input.LA(1)
+                if LA14 == RESV:
+                    alt14 = 1
+                elif LA14 == SEND:
+                    alt14 = 2
+                elif LA14 == 47:
+                    alt14 = 3
+                elif LA14 == PARALLEL:
+                    alt14 = 4
+                elif LA14 == 49:
+                    alt14 = 5
+                elif LA14 == 50:
+                    alt14 = 6
+                elif LA14 == RECLABEL:
+                    alt14 = 7
                 else:
-                    nvae = NoViableAltException("", 10, 0, self.input)
+                    nvae = NoViableAltException("", 14, 0, self.input)
 
                     raise nvae
 
-                if alt10 == 1:
-                    # src\\BuildFSM.g:79:4: ^( RESV rlabel= ID (rtype= ID )* role= ID )
+                if alt14 == 1:
+                    # src\\BuildFSM.g:70:4: ^( RESV ^( VALUE (val= ID type= ID )* ) rlabel= ID (rtype= ID )* role= ID ^( ASSERT (assertion= ASSERTION )? ) )
                     pass 
                     self.match(self.input, RESV, self.FOLLOW_RESV_in_activityDef68)
 
                     self.match(self.input, DOWN, None)
-                    rlabel=self.match(self.input, ID, self.FOLLOW_ID_in_activityDef74)
-                    #action start
-                    #INFO: This is the way to write comments in actions self.memory.append('resv' + rlabel.text)
-                    #action end
-                    # src\\BuildFSM.g:81:4: (rtype= ID )*
-                    while True: #loop2
-                        alt2 = 2
-                        LA2_0 = self.input.LA(1)
+                    self.match(self.input, VALUE, self.FOLLOW_VALUE_in_activityDef75)
 
-                        if (LA2_0 == ID) :
-                            LA2_1 = self.input.LA(2)
+                    if self.input.LA(1) == DOWN:
+                        self.match(self.input, DOWN, None)
+                        # src\\BuildFSM.g:71:12: (val= ID type= ID )*
+                        while True: #loop2
+                            alt2 = 2
+                            LA2_0 = self.input.LA(1)
 
-                            if (LA2_1 == ID) :
+                            if (LA2_0 == ID) :
                                 alt2 = 1
 
 
+                            if alt2 == 1:
+                                # src\\BuildFSM.g:71:13: val= ID type= ID
+                                pass 
+                                val=self.match(self.input, ID, self.FOLLOW_ID_in_activityDef80)
+                                type=self.match(self.input, ID, self.FOLLOW_ID_in_activityDef85)
 
 
-                        if alt2 == 1:
-                            # src\\BuildFSM.g:81:6: rtype= ID
-                            pass 
-                            rtype=self.match(self.input, ID, self.FOLLOW_ID_in_activityDef92)
-                            #action start
-                            self.memory.append(rtype.text)
-                            #action end
+                            else:
+                                break #loop2
 
+                        self.match(self.input, UP, None)
 
-                        else:
-                            break #loop2
-                    role=self.match(self.input, ID, self.FOLLOW_ID_in_activityDef102)
-
-                    self.match(self.input, UP, None)
                     #action start
-                    self.current_fsm.add_transition(TransitionFactory.create(LocalType.RESV,rlabel, role))
+                    self.memory.append('In RESV value')
                     #action end
-
-
-                elif alt10 == 2:
-                    # src\\BuildFSM.g:84:4: ^( SEND slabel= ID (stype= ID )* role= ID )
-                    pass 
-                    self.match(self.input, SEND, self.FOLLOW_SEND_in_activityDef116)
-
-                    self.match(self.input, DOWN, None)
-                    slabel=self.match(self.input, ID, self.FOLLOW_ID_in_activityDef122)
+                    rlabel=self.match(self.input, ID, self.FOLLOW_ID_in_activityDef99)
                     #action start
-                    self.memory.append('send' + slabel.text)
+                    #INFO: This is the way to write comments in actions self.memory.append('resv' + rlabel.text)
                     #action end
-                    # src\\BuildFSM.g:84:67: (stype= ID )*
+                    # src\\BuildFSM.g:74:4: (rtype= ID )*
                     while True: #loop3
                         alt3 = 2
                         LA3_0 = self.input.LA(1)
@@ -327,51 +315,168 @@ class BuildFSM(TreeParser):
 
 
                         if alt3 == 1:
-                            # src\\BuildFSM.g:84:69: stype= ID
+                            # src\\BuildFSM.g:74:6: rtype= ID
                             pass 
-                            stype=self.match(self.input, ID, self.FOLLOW_ID_in_activityDef132)
+                            rtype=self.match(self.input, ID, self.FOLLOW_ID_in_activityDef117)
+                            #action start
+                            self.memory.append(rtype.text)
+                            #action end
+
+
+                        else:
+                            break #loop3
+                    role=self.match(self.input, ID, self.FOLLOW_ID_in_activityDef127)
+                    #action start
+                    self.current_fsm.add_transition(TransitionFactory.create(LocalType.RESV,rlabel, role))
+                    #action end
+                    self.match(self.input, ASSERT, self.FOLLOW_ASSERT_in_activityDef138)
+
+                    if self.input.LA(1) == DOWN:
+                        self.match(self.input, DOWN, None)
+                        # src\\BuildFSM.g:76:13: (assertion= ASSERTION )?
+                        alt4 = 2
+                        LA4_0 = self.input.LA(1)
+
+                        if (LA4_0 == ASSERTION) :
+                            alt4 = 1
+                        if alt4 == 1:
+                            # src\\BuildFSM.g:76:14: assertion= ASSERTION
+                            pass 
+                            assertion=self.match(self.input, ASSERTION, self.FOLLOW_ASSERTION_in_activityDef143)
+
+
+
+
+                        self.match(self.input, UP, None)
+
+                    #action start
+                    self.memory.append('In RESV assertion')
+                    #action end
+
+                    self.match(self.input, UP, None)
+
+
+                elif alt14 == 2:
+                    # src\\BuildFSM.g:78:4: ^( SEND ^( VALUE (val= ID type= ID )* ) slabel= ID (stype= ID )* role= ID ^( ASSERT (assertion= ASSERTION )? ) )
+                    pass 
+                    self.match(self.input, SEND, self.FOLLOW_SEND_in_activityDef159)
+
+                    self.match(self.input, DOWN, None)
+                    self.match(self.input, VALUE, self.FOLLOW_VALUE_in_activityDef164)
+
+                    if self.input.LA(1) == DOWN:
+                        self.match(self.input, DOWN, None)
+                        # src\\BuildFSM.g:79:10: (val= ID type= ID )*
+                        while True: #loop5
+                            alt5 = 2
+                            LA5_0 = self.input.LA(1)
+
+                            if (LA5_0 == ID) :
+                                alt5 = 1
+
+
+                            if alt5 == 1:
+                                # src\\BuildFSM.g:79:11: val= ID type= ID
+                                pass 
+                                val=self.match(self.input, ID, self.FOLLOW_ID_in_activityDef169)
+                                type=self.match(self.input, ID, self.FOLLOW_ID_in_activityDef174)
+
+
+                            else:
+                                break #loop5
+
+                        self.match(self.input, UP, None)
+
+                    #action start
+                    self.memory.append('In SEND value')
+                    #action end
+                    slabel=self.match(self.input, ID, self.FOLLOW_ID_in_activityDef187)
+                    #action start
+                    self.memory.append('send' + slabel.text)
+                    #action end
+                    # src\\BuildFSM.g:80:58: (stype= ID )*
+                    while True: #loop6
+                        alt6 = 2
+                        LA6_0 = self.input.LA(1)
+
+                        if (LA6_0 == ID) :
+                            LA6_1 = self.input.LA(2)
+
+                            if (LA6_1 == ID) :
+                                alt6 = 1
+
+
+
+
+                        if alt6 == 1:
+                            # src\\BuildFSM.g:80:60: stype= ID
+                            pass 
+                            stype=self.match(self.input, ID, self.FOLLOW_ID_in_activityDef197)
                             #action start
                             self.memory.append(stype.text)
                             #action end
 
 
                         else:
-                            break #loop3
-                    role=self.match(self.input, ID, self.FOLLOW_ID_in_activityDef142)
-
-                    self.match(self.input, UP, None)
+                            break #loop6
+                    role=self.match(self.input, ID, self.FOLLOW_ID_in_activityDef207)
                     #action start
                     self.current_fsm.add_transition(TransitionFactory.create(LocalType.SEND,slabel, role))
                     #action end
+                    self.match(self.input, ASSERT, self.FOLLOW_ASSERT_in_activityDef215)
+
+                    if self.input.LA(1) == DOWN:
+                        self.match(self.input, DOWN, None)
+                        # src\\BuildFSM.g:82:11: (assertion= ASSERTION )?
+                        alt7 = 2
+                        LA7_0 = self.input.LA(1)
+
+                        if (LA7_0 == ASSERTION) :
+                            alt7 = 1
+                        if alt7 == 1:
+                            # src\\BuildFSM.g:82:12: assertion= ASSERTION
+                            pass 
+                            assertion=self.match(self.input, ASSERTION, self.FOLLOW_ASSERTION_in_activityDef220)
 
 
-                elif alt10 == 3:
-                    # src\\BuildFSM.g:87:3: ^( 'choice' ( ^( BRANCH ( activityDef )+ ) )+ )
+
+
+                        self.match(self.input, UP, None)
+
+                    #action start
+                    self.memory.append('In SEND assertion')
+                    #action end
+
+                    self.match(self.input, UP, None)
+
+
+                elif alt14 == 3:
+                    # src\\BuildFSM.g:84:3: ^( 'choice' ( ^( BRANCH ( activityDef )+ ) )+ )
                     pass 
-                    self.match(self.input, 39, self.FOLLOW_39_in_activityDef157)
+                    self.match(self.input, 47, self.FOLLOW_47_in_activityDef234)
 
                     #action start
                     self.memory.append('enter choice state')
-                    self.current_fsm.choice_start_state = self.current_fsm.get_current_state()
+                    self.current_fsm.choice_start_stat. = self.current_fsm.get_current_state()
                     self.current_fsm.choice_end_state = self.current_fsm.state_gen.next()
                     	
                     #action end
 
                     self.match(self.input, DOWN, None)
-                    # src\\BuildFSM.g:92:2: ( ^( BRANCH ( activityDef )+ ) )+
-                    cnt5 = 0
-                    while True: #loop5
-                        alt5 = 2
-                        LA5_0 = self.input.LA(1)
+                    # src\\BuildFSM.g:89:2: ( ^( BRANCH ( activityDef )+ ) )+
+                    cnt9 = 0
+                    while True: #loop9
+                        alt9 = 2
+                        LA9_0 = self.input.LA(1)
 
-                        if (LA5_0 == BRANCH) :
-                            alt5 = 1
+                        if (LA9_0 == BRANCH) :
+                            alt9 = 1
 
 
-                        if alt5 == 1:
-                            # src\\BuildFSM.g:92:3: ^( BRANCH ( activityDef )+ )
+                        if alt9 == 1:
+                            # src\\BuildFSM.g:89:3: ^( BRANCH ( activityDef )+ )
                             pass 
-                            self.match(self.input, BRANCH, self.FOLLOW_BRANCH_in_activityDef167)
+                            self.match(self.input, BRANCH, self.FOLLOW_BRANCH_in_activityDef244)
 
                             #action start
                               
@@ -381,257 +486,40 @@ class BuildFSM(TreeParser):
                             #action end
 
                             self.match(self.input, DOWN, None)
-                            # src\\BuildFSM.g:96:4: ( activityDef )+
-                            cnt4 = 0
-                            while True: #loop4
-                                alt4 = 2
-                                LA4_0 = self.input.LA(1)
+                            # src\\BuildFSM.g:93:4: ( activityDef )+
+                            cnt8 = 0
+                            while True: #loop8
+                                alt8 = 2
+                                LA8_0 = self.input.LA(1)
 
-                                if ((RESV <= LA4_0 <= SEND) or (RECLABEL <= LA4_0 <= PARALLEL) or LA4_0 == 39 or (42 <= LA4_0 <= 43)) :
-                                    alt4 = 1
+                                if ((RESV <= LA8_0 <= SEND) or (RECLABEL <= LA8_0 <= PARALLEL) or LA8_0 == 47 or (49 <= LA8_0 <= 50)) :
+                                    alt8 = 1
 
 
-                                if alt4 == 1:
-                                    # src\\BuildFSM.g:96:4: activityDef
+                                if alt8 == 1:
+                                    # src\\BuildFSM.g:93:4: activityDef
                                     pass 
-                                    self._state.following.append(self.FOLLOW_activityDef_in_activityDef173)
+                                    self._state.following.append(self.FOLLOW_activityDef_in_activityDef250)
                                     self.activityDef()
 
                                     self._state.following.pop()
 
 
                                 else:
-                                    if cnt4 >= 1:
-                                        break #loop4
+                                    if cnt8 >= 1:
+                                        break #loop8
 
-                                    eee = EarlyExitException(4, self.input)
+                                    eee = EarlyExitException(8, self.input)
                                     raise eee
 
-                                cnt4 += 1
+                                cnt8 += 1
 
                             self.match(self.input, UP, None)
                             #action start
                               
                             self.memory.append('exit choice branch and set the current state to the end state for the choice')
-                            self.current_fsm.fsm.add_transition(self.current_fsm.fsm.EMPTY_TRANSITION, self.current_fsm.get_current_state(), nothing, self.current_fsm.choice_end_state)
+                            self.current_fsm.add_transition(self.fsm.EMPTY_TRANSITION, self.current_fsm.get_current_state(), nothing, self.current_fsm.choice_end_state)
                             	
-                            #action end
-
-
-                        else:
-                            if cnt5 >= 1:
-                                break #loop5
-
-                            eee = EarlyExitException(5, self.input)
-                            raise eee
-
-                        cnt5 += 1
-
-                    self.match(self.input, UP, None)
-                    #action start
-                      
-                    self.memory.append('set the current state to be equal to the end state for the choice')
-                    self.current_fsm.move_current_state(self.current_fsm.choice_end_state)
-                    	
-                    #action end
-
-
-                elif alt10 == 4:
-                    # src\\BuildFSM.g:106:4: ^( PARALLEL ( ^( BRANCH ( activityDef )+ ) )+ )
-                    pass 
-                    self.match(self.input, PARALLEL, self.FOLLOW_PARALLEL_in_activityDef192)
-
-                    #action start
-                             
-                    self.memory.append('enter parallel state')
-                    self.current_fsm.processing_par_state = True
-                    self.parallel_root = self.current_fsm
-                            
-                    #action end
-
-                    self.match(self.input, DOWN, None)
-                    # src\\BuildFSM.g:112:2: ( ^( BRANCH ( activityDef )+ ) )+
-                    cnt7 = 0
-                    while True: #loop7
-                        alt7 = 2
-                        LA7_0 = self.input.LA(1)
-
-                        if (LA7_0 == BRANCH) :
-                            alt7 = 1
-
-
-                        if alt7 == 1:
-                            # src\\BuildFSM.g:112:3: ^( BRANCH ( activityDef )+ )
-                            pass 
-                            self.match(self.input, BRANCH, self.FOLLOW_BRANCH_in_activityDef209)
-
-                            #action start
-                              
-                            self.memory.append('enter parallel branch')
-                            self.current_fsm.start_new_par_branch = True
-                            nested_fsm = FSMBuilderState(self.parallel_root)
-                            self.parallel_root.fsm.add_fsm_to_memory(self.parallel_root.get_current_state(), nested_fsm.fsm)
-                            self.current_fsm = nested_fsm
-                            	
-                            	
-                            #action end
-
-                            self.match(self.input, DOWN, None)
-                            # src\\BuildFSM.g:121:2: ( activityDef )+
-                            cnt6 = 0
-                            while True: #loop6
-                                alt6 = 2
-                                LA6_0 = self.input.LA(1)
-
-                                if ((RESV <= LA6_0 <= SEND) or (RECLABEL <= LA6_0 <= PARALLEL) or LA6_0 == 39 or (42 <= LA6_0 <= 43)) :
-                                    alt6 = 1
-
-
-                                if alt6 == 1:
-                                    # src\\BuildFSM.g:121:3: activityDef
-                                    pass 
-                                    self._state.following.append(self.FOLLOW_activityDef_in_activityDef218)
-                                    self.activityDef()
-
-                                    self._state.following.pop()
-                                    #action start
-                                    self.start_new_branch = False
-                                    #action end
-
-
-                                else:
-                                    if cnt6 >= 1:
-                                        break #loop6
-
-                                    eee = EarlyExitException(6, self.input)
-                                    raise eee
-
-                                cnt6 += 1
-
-                            self.match(self.input, UP, None)
-                            #action start
-                              
-                            self.memory.append('exit parallel branch')
-                            self.current_fsm.start_new_par_branch = True
-                            self.current_fsm.add_transition(self.current_fsm.fsm.END_PAR_TRANSITION)
-                            	
-                            #action end
-
-
-                        else:
-                            if cnt7 >= 1:
-                                break #loop7
-
-                            eee = EarlyExitException(7, self.input)
-                            raise eee
-
-                        cnt7 += 1
-
-                    self.match(self.input, UP, None)
-                    #action start
-                    self.memory.append('exit parallel state')
-                    self.current_fsm.processing_par_state = False
-                    self.current_fsm = self.current_fsm.parent
-                    self.current_fsm.fsm.add_transition(self.current_fsm.fsm.EMPTY_TRANSITION, self.current_fsm.get_current_state(), nothing, self.current_fsm.move_current_state())
-                    	
-                    #action end
-
-
-                elif alt10 == 5:
-                    # src\\BuildFSM.g:133:3: ^( 'repeat' ( ^( BRANCH ( activityDef )+ ) ) )
-                    pass 
-                    self.match(self.input, 42, self.FOLLOW_42_in_activityDef241)
-
-                    #action start
-                    self.memory.append('enter repeat state')
-                    #action end
-
-                    self.match(self.input, DOWN, None)
-                    # src\\BuildFSM.g:135:2: ( ^( BRANCH ( activityDef )+ ) )
-                    # src\\BuildFSM.g:135:3: ^( BRANCH ( activityDef )+ )
-                    pass 
-                    self.match(self.input, BRANCH, self.FOLLOW_BRANCH_in_activityDef250)
-
-                    self.match(self.input, DOWN, None)
-                    # src\\BuildFSM.g:135:12: ( activityDef )+
-                    cnt8 = 0
-                    while True: #loop8
-                        alt8 = 2
-                        LA8_0 = self.input.LA(1)
-
-                        if ((RESV <= LA8_0 <= SEND) or (RECLABEL <= LA8_0 <= PARALLEL) or LA8_0 == 39 or (42 <= LA8_0 <= 43)) :
-                            alt8 = 1
-
-
-                        if alt8 == 1:
-                            # src\\BuildFSM.g:135:13: activityDef
-                            pass 
-                            self._state.following.append(self.FOLLOW_activityDef_in_activityDef253)
-                            self.activityDef()
-
-                            self._state.following.pop()
-                            #action start
-                            self.memory.append('repeat statement')
-                            #action end
-
-
-                        else:
-                            if cnt8 >= 1:
-                                break #loop8
-
-                            eee = EarlyExitException(8, self.input)
-                            raise eee
-
-                        cnt8 += 1
-
-                    self.match(self.input, UP, None)
-
-
-
-
-                    self.match(self.input, UP, None)
-                    #action start
-                    self.memory.append('exit repeat state')
-                    #action end
-
-
-                elif alt10 == 6:
-                    # src\\BuildFSM.g:138:10: ^( 'rec' label= ID ( ^( BRANCH ( activityDef )+ ) ) )
-                    pass 
-                    self.match(self.input, 43, self.FOLLOW_43_in_activityDef278)
-
-                    self.match(self.input, DOWN, None)
-                    label=self.match(self.input, ID, self.FOLLOW_ID_in_activityDef284)
-                    #action start
-                    self.memory.append('enter rec state ' + label.text)
-                    self.current_fsm.recursions_states.setdefault(label.text, self.current_fsm.get_current_state())
-                            
-                    #action end
-                    # src\\BuildFSM.g:142:2: ( ^( BRANCH ( activityDef )+ ) )
-                    # src\\BuildFSM.g:142:3: ^( BRANCH ( activityDef )+ )
-                    pass 
-                    self.match(self.input, BRANCH, self.FOLLOW_BRANCH_in_activityDef300)
-
-                    self.match(self.input, DOWN, None)
-                    # src\\BuildFSM.g:142:12: ( activityDef )+
-                    cnt9 = 0
-                    while True: #loop9
-                        alt9 = 2
-                        LA9_0 = self.input.LA(1)
-
-                        if ((RESV <= LA9_0 <= SEND) or (RECLABEL <= LA9_0 <= PARALLEL) or LA9_0 == 39 or (42 <= LA9_0 <= 43)) :
-                            alt9 = 1
-
-
-                        if alt9 == 1:
-                            # src\\BuildFSM.g:142:13: activityDef
-                            pass 
-                            self._state.following.append(self.FOLLOW_activityDef_in_activityDef303)
-                            self.activityDef()
-
-                            self._state.following.pop()
-                            #action start
-                            self.memory.append('rec statement')
                             #action end
 
 
@@ -645,6 +533,220 @@ class BuildFSM(TreeParser):
                         cnt9 += 1
 
                     self.match(self.input, UP, None)
+                    #action start
+                      
+                    self.memory.append('set the current state to be equal to the end state for the choice')
+                    self.current_fsm.move_current_state(self.choice_end_state)
+                    	
+                    #action end
+
+
+                elif alt14 == 4:
+                    # src\\BuildFSM.g:103:4: ^( PARALLEL ( ^( BRANCH ( activityDef )+ ) )+ )
+                    pass 
+                    self.match(self.input, PARALLEL, self.FOLLOW_PARALLEL_in_activityDef269)
+
+                    #action start
+                             
+                    self.memory.append('enter parallel state')
+                    self.current_fsm.processing_par_state = True
+                            
+                    #action end
+
+                    self.match(self.input, DOWN, None)
+                    # src\\BuildFSM.g:108:2: ( ^( BRANCH ( activityDef )+ ) )+
+                    cnt11 = 0
+                    while True: #loop11
+                        alt11 = 2
+                        LA11_0 = self.input.LA(1)
+
+                        if (LA11_0 == BRANCH) :
+                            alt11 = 1
+
+
+                        if alt11 == 1:
+                            # src\\BuildFSM.g:108:3: ^( BRANCH ( activityDef )+ )
+                            pass 
+                            self.match(self.input, BRANCH, self.FOLLOW_BRANCH_in_activityDef286)
+
+                            #action start
+                              
+                            self.memory.append('enter parallel branch')
+                            self.current_fsm.start_new_par_branch = True
+                            nested_fsm = FSMBuilderState(self.fsm)
+                            self.current_fsm.add_fsm_to_memory(self.current_fsm.get_current_state(), nested_fsm)
+                            self.current_fsm = nested_fsm
+                            	
+                            	
+                            #action end
+
+                            self.match(self.input, DOWN, None)
+                            # src\\BuildFSM.g:117:2: ( activityDef )+
+                            cnt10 = 0
+                            while True: #loop10
+                                alt10 = 2
+                                LA10_0 = self.input.LA(1)
+
+                                if ((RESV <= LA10_0 <= SEND) or (RECLABEL <= LA10_0 <= PARALLEL) or LA10_0 == 47 or (49 <= LA10_0 <= 50)) :
+                                    alt10 = 1
+
+
+                                if alt10 == 1:
+                                    # src\\BuildFSM.g:117:3: activityDef
+                                    pass 
+                                    self._state.following.append(self.FOLLOW_activityDef_in_activityDef295)
+                                    self.activityDef()
+
+                                    self._state.following.pop()
+                                    #action start
+                                    self.start_new_branch = False
+                                    #action end
+
+
+                                else:
+                                    if cnt10 >= 1:
+                                        break #loop10
+
+                                    eee = EarlyExitException(10, self.input)
+                                    raise eee
+
+                                cnt10 += 1
+
+                            self.match(self.input, UP, None)
+                            #action start
+                              
+                            self.memory.append('exit parallel branch')
+                            self.current_fsm.start_new_par_branch = True
+                            #action end
+
+
+                        else:
+                            if cnt11 >= 1:
+                                break #loop11
+
+                            eee = EarlyExitException(11, self.input)
+                            raise eee
+
+                        cnt11 += 1
+
+                    self.match(self.input, UP, None)
+                    #action start
+                    self.memory.append('exit parallel state')
+                    self.current_fsm.processing_par_state = False
+                    self.current_fsm = self.current_fsm.parent
+                    self.current_fsm.add_transition(self.fsm.EMPTY_TRANSITION, self.current_fsm.get_current_state(), nothing, self.current_fsm.move_current_state())
+                    	
+                    #action end
+
+
+                elif alt14 == 5:
+                    # src\\BuildFSM.g:127:3: ^( 'repeat' ( ^( BRANCH ( activityDef )+ ) ) )
+                    pass 
+                    self.match(self.input, 49, self.FOLLOW_49_in_activityDef318)
+
+                    #action start
+                    self.memory.append('enter repeat state')
+                    #action end
+
+                    self.match(self.input, DOWN, None)
+                    # src\\BuildFSM.g:129:2: ( ^( BRANCH ( activityDef )+ ) )
+                    # src\\BuildFSM.g:129:3: ^( BRANCH ( activityDef )+ )
+                    pass 
+                    self.match(self.input, BRANCH, self.FOLLOW_BRANCH_in_activityDef327)
+
+                    self.match(self.input, DOWN, None)
+                    # src\\BuildFSM.g:129:12: ( activityDef )+
+                    cnt12 = 0
+                    while True: #loop12
+                        alt12 = 2
+                        LA12_0 = self.input.LA(1)
+
+                        if ((RESV <= LA12_0 <= SEND) or (RECLABEL <= LA12_0 <= PARALLEL) or LA12_0 == 47 or (49 <= LA12_0 <= 50)) :
+                            alt12 = 1
+
+
+                        if alt12 == 1:
+                            # src\\BuildFSM.g:129:13: activityDef
+                            pass 
+                            self._state.following.append(self.FOLLOW_activityDef_in_activityDef330)
+                            self.activityDef()
+
+                            self._state.following.pop()
+                            #action start
+                            self.memory.append('repeat statement')
+                            #action end
+
+
+                        else:
+                            if cnt12 >= 1:
+                                break #loop12
+
+                            eee = EarlyExitException(12, self.input)
+                            raise eee
+
+                        cnt12 += 1
+
+                    self.match(self.input, UP, None)
+
+
+
+
+                    self.match(self.input, UP, None)
+                    #action start
+                    self.memory.append('exit repeat state')
+                    #action end
+
+
+                elif alt14 == 6:
+                    # src\\BuildFSM.g:132:10: ^( 'rec' label= ID ( ^( BRANCH ( activityDef )+ ) ) )
+                    pass 
+                    self.match(self.input, 50, self.FOLLOW_50_in_activityDef354)
+
+                    self.match(self.input, DOWN, None)
+                    label=self.match(self.input, ID, self.FOLLOW_ID_in_activityDef360)
+                    #action start
+                    self.memory.append('enter rec state ' + label.text)
+                    self.current_fsm.recursions_states.setdefault(label.text, self.current_fsm.get_current_state())
+                            
+                    #action end
+                    # src\\BuildFSM.g:136:2: ( ^( BRANCH ( activityDef )+ ) )
+                    # src\\BuildFSM.g:136:3: ^( BRANCH ( activityDef )+ )
+                    pass 
+                    self.match(self.input, BRANCH, self.FOLLOW_BRANCH_in_activityDef376)
+
+                    self.match(self.input, DOWN, None)
+                    # src\\BuildFSM.g:136:12: ( activityDef )+
+                    cnt13 = 0
+                    while True: #loop13
+                        alt13 = 2
+                        LA13_0 = self.input.LA(1)
+
+                        if ((RESV <= LA13_0 <= SEND) or (RECLABEL <= LA13_0 <= PARALLEL) or LA13_0 == 47 or (49 <= LA13_0 <= 50)) :
+                            alt13 = 1
+
+
+                        if alt13 == 1:
+                            # src\\BuildFSM.g:136:13: activityDef
+                            pass 
+                            self._state.following.append(self.FOLLOW_activityDef_in_activityDef379)
+                            self.activityDef()
+
+                            self._state.following.pop()
+                            #action start
+                            self.memory.append('rec statement')
+                            #action end
+
+
+                        else:
+                            if cnt13 >= 1:
+                                break #loop13
+
+                            eee = EarlyExitException(13, self.input)
+                            raise eee
+
+                        cnt13 += 1
+
+                    self.match(self.input, UP, None)
 
 
 
@@ -655,17 +757,17 @@ class BuildFSM(TreeParser):
                     #action end
 
 
-                elif alt10 == 7:
-                    # src\\BuildFSM.g:145:3: ^( 'RECLABEL' labelID= ID )
+                elif alt14 == 7:
+                    # src\\BuildFSM.g:139:3: ^( 'RECLABEL' labelID= ID )
                     pass 
-                    self.match(self.input, RECLABEL, self.FOLLOW_RECLABEL_in_activityDef321)
+                    self.match(self.input, RECLABEL, self.FOLLOW_RECLABEL_in_activityDef397)
 
                     self.match(self.input, DOWN, None)
-                    labelID=self.match(self.input, ID, self.FOLLOW_ID_in_activityDef328)
+                    labelID=self.match(self.input, ID, self.FOLLOW_ID_in_activityDef404)
                     #action start
                                                   
                     self.memory.append('repeat rec again ' + labelID.text)
-                    self.current_fsm.fsm.copy_transitions(self.current_fsm.recursions_states[labelID.text], self.current_fsm.get_current_state())
+                    self.current_fsm.copy_transitions(self.current_fsm.recursions_states[labelID.text], self.current_fsm.get_current_state())
                     	
                     #action end
 
@@ -685,15 +787,15 @@ class BuildFSM(TreeParser):
 
 
     # $ANTLR start "roleName"
-    # src\\BuildFSM.g:150:1: roleName : ID ;
+    # src\\BuildFSM.g:144:1: roleName : ID ;
     def roleName(self, ):
 
         try:
             try:
-                # src\\BuildFSM.g:150:9: ( ID )
-                # src\\BuildFSM.g:150:11: ID
+                # src\\BuildFSM.g:144:9: ( ID )
+                # src\\BuildFSM.g:144:11: ID
                 pass 
-                self.match(self.input, ID, self.FOLLOW_ID_in_roleName339)
+                self.match(self.input, ID, self.FOLLOW_ID_in_roleName415)
 
 
 
@@ -710,15 +812,15 @@ class BuildFSM(TreeParser):
 
 
     # $ANTLR start "labelName"
-    # src\\BuildFSM.g:151:1: labelName : ID ;
+    # src\\BuildFSM.g:145:1: labelName : ID ;
     def labelName(self, ):
 
         try:
             try:
-                # src\\BuildFSM.g:151:10: ( ID )
-                # src\\BuildFSM.g:151:12: ID
+                # src\\BuildFSM.g:145:10: ( ID )
+                # src\\BuildFSM.g:145:12: ID
                 pass 
-                self.match(self.input, ID, self.FOLLOW_ID_in_labelName345)
+                self.match(self.input, ID, self.FOLLOW_ID_in_labelName421)
 
 
 
@@ -735,15 +837,15 @@ class BuildFSM(TreeParser):
 
 
     # $ANTLR start "roleDef"
-    # src\\BuildFSM.g:152:1: roleDef : ID ;
+    # src\\BuildFSM.g:146:1: roleDef : ID ;
     def roleDef(self, ):
 
         try:
             try:
-                # src\\BuildFSM.g:152:8: ( ID )
-                # src\\BuildFSM.g:152:10: ID
+                # src\\BuildFSM.g:146:8: ( ID )
+                # src\\BuildFSM.g:146:10: ID
                 pass 
-                self.match(self.input, ID, self.FOLLOW_ID_in_roleDef351)
+                self.match(self.input, ID, self.FOLLOW_ID_in_roleDef427)
 
 
 
@@ -765,33 +867,43 @@ class BuildFSM(TreeParser):
  
 
     FOLLOW_PROTOCOL_in_description52 = frozenset([2])
-    FOLLOW_activityDef_in_description54 = frozenset([3, 10, 11, 14, 15, 39, 42, 43])
+    FOLLOW_activityDef_in_description54 = frozenset([3, 12, 13, 18, 19, 47, 49, 50])
     FOLLOW_RESV_in_activityDef68 = frozenset([2])
-    FOLLOW_ID_in_activityDef74 = frozenset([18])
-    FOLLOW_ID_in_activityDef92 = frozenset([18])
-    FOLLOW_ID_in_activityDef102 = frozenset([3])
-    FOLLOW_SEND_in_activityDef116 = frozenset([2])
-    FOLLOW_ID_in_activityDef122 = frozenset([18])
-    FOLLOW_ID_in_activityDef132 = frozenset([18])
-    FOLLOW_ID_in_activityDef142 = frozenset([3])
-    FOLLOW_39_in_activityDef157 = frozenset([2])
-    FOLLOW_BRANCH_in_activityDef167 = frozenset([2])
-    FOLLOW_activityDef_in_activityDef173 = frozenset([3, 10, 11, 14, 15, 39, 42, 43])
-    FOLLOW_PARALLEL_in_activityDef192 = frozenset([2])
-    FOLLOW_BRANCH_in_activityDef209 = frozenset([2])
-    FOLLOW_activityDef_in_activityDef218 = frozenset([3, 10, 11, 14, 15, 39, 42, 43])
-    FOLLOW_42_in_activityDef241 = frozenset([2])
-    FOLLOW_BRANCH_in_activityDef250 = frozenset([2])
-    FOLLOW_activityDef_in_activityDef253 = frozenset([3, 10, 11, 14, 15, 39, 42, 43])
-    FOLLOW_43_in_activityDef278 = frozenset([2])
-    FOLLOW_ID_in_activityDef284 = frozenset([12])
-    FOLLOW_BRANCH_in_activityDef300 = frozenset([2])
-    FOLLOW_activityDef_in_activityDef303 = frozenset([3, 10, 11, 14, 15, 39, 42, 43])
-    FOLLOW_RECLABEL_in_activityDef321 = frozenset([2])
-    FOLLOW_ID_in_activityDef328 = frozenset([3])
-    FOLLOW_ID_in_roleName339 = frozenset([1])
-    FOLLOW_ID_in_labelName345 = frozenset([1])
-    FOLLOW_ID_in_roleDef351 = frozenset([1])
+    FOLLOW_VALUE_in_activityDef75 = frozenset([2])
+    FOLLOW_ID_in_activityDef80 = frozenset([24])
+    FOLLOW_ID_in_activityDef85 = frozenset([3, 24])
+    FOLLOW_ID_in_activityDef99 = frozenset([24])
+    FOLLOW_ID_in_activityDef117 = frozenset([24])
+    FOLLOW_ID_in_activityDef127 = frozenset([21])
+    FOLLOW_ASSERT_in_activityDef138 = frozenset([2])
+    FOLLOW_ASSERTION_in_activityDef143 = frozenset([3])
+    FOLLOW_SEND_in_activityDef159 = frozenset([2])
+    FOLLOW_VALUE_in_activityDef164 = frozenset([2])
+    FOLLOW_ID_in_activityDef169 = frozenset([24])
+    FOLLOW_ID_in_activityDef174 = frozenset([3, 24])
+    FOLLOW_ID_in_activityDef187 = frozenset([24])
+    FOLLOW_ID_in_activityDef197 = frozenset([24])
+    FOLLOW_ID_in_activityDef207 = frozenset([21])
+    FOLLOW_ASSERT_in_activityDef215 = frozenset([2])
+    FOLLOW_ASSERTION_in_activityDef220 = frozenset([3])
+    FOLLOW_47_in_activityDef234 = frozenset([2])
+    FOLLOW_BRANCH_in_activityDef244 = frozenset([2])
+    FOLLOW_activityDef_in_activityDef250 = frozenset([3, 12, 13, 18, 19, 47, 49, 50])
+    FOLLOW_PARALLEL_in_activityDef269 = frozenset([2])
+    FOLLOW_BRANCH_in_activityDef286 = frozenset([2])
+    FOLLOW_activityDef_in_activityDef295 = frozenset([3, 12, 13, 18, 19, 47, 49, 50])
+    FOLLOW_49_in_activityDef318 = frozenset([2])
+    FOLLOW_BRANCH_in_activityDef327 = frozenset([2])
+    FOLLOW_activityDef_in_activityDef330 = frozenset([3, 12, 13, 18, 19, 47, 49, 50])
+    FOLLOW_50_in_activityDef354 = frozenset([2])
+    FOLLOW_ID_in_activityDef360 = frozenset([16])
+    FOLLOW_BRANCH_in_activityDef376 = frozenset([2])
+    FOLLOW_activityDef_in_activityDef379 = frozenset([3, 12, 13, 18, 19, 47, 49, 50])
+    FOLLOW_RECLABEL_in_activityDef397 = frozenset([2])
+    FOLLOW_ID_in_activityDef404 = frozenset([3])
+    FOLLOW_ID_in_roleName415 = frozenset([1])
+    FOLLOW_ID_in_labelName421 = frozenset([1])
+    FOLLOW_ID_in_roleDef427 = frozenset([1])
 
 
 

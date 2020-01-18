@@ -67,13 +67,19 @@ self.current_fsm = main_fsm
 
 description: ^(PROTOCOL activityDef+) {print "ProtocolDefinition"};
 activityDef:
-	  ^(RESV rlabel = ID 
+	  ^(RESV 
+	  ^(VALUE (val=ID type= ID)*){self.memory.append('In RESV value')} 
+	  rlabel = ID 
 	  {#INFO: This is the way to write comments in actions self.memory.append('resv' + $rlabel.text)} 
-	  ( rtype = ID {self.memory.append($rtype.text)})* role = ID) 
+	  ( rtype = ID {self.memory.append($rtype.text)})* role = ID
 	  {self.current_fsm.add_transition(TransitionFactory.create(LocalType.RESV,$rlabel, $role))}
+	  ^(ASSERT (assertion=ASSERTION)?)	  {self.memory.append('In RESV assertion')} )
 
-	| ^(SEND slabel = ID {self.memory.append('send' + $slabel.text)} ( stype = ID {self.memory.append($stype.text)})* role = ID)
-	   {self.current_fsm.add_transition(TransitionFactory.create(LocalType.SEND,$slabel, $role))} 
+	| ^(SEND 
+	^(VALUE (val=ID type= primitivetype)*) {self.memory.append('In SEND value')} 
+	slabel = ID {self.memory.append('send' + $slabel.text)} ( stype = ID {self.memory.append($stype.text)})* role = ID
+	{self.current_fsm.add_transition(TransitionFactory.create(LocalType.SEND,$slabel, $role))} 
+	^(ASSERT (assertion=ASSERTION)?) {self.memory.append('In SEND assertion')} )
 	
 	|^('choice' 
 	{self.memory.append('enter choice state')
@@ -138,5 +144,7 @@ activityDef:
 roleName: ID;
 labelName: ID;
 roleDef: ID;
+primitivetype : INT
+		|STRING;
 
 

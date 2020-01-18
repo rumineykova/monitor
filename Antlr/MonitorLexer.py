@@ -1,4 +1,4 @@
-# $ANTLR 3.1.3 Mar 18, 2009 10:09:25 src/Monitor.g 2011-11-23 21:43:03
+# $ANTLR 3.1.3 Mar 18, 2009 10:09:25 Monitor.g 2011-12-06 02:38:04
 
 import sys
 from antlr3 import *
@@ -62,7 +62,7 @@ DIV=8
 
 class MonitorLexer(Lexer):
 
-    grammarFileName = "src/Monitor.g"
+    grammarFileName = "Monitor.g"
     antlr_version = version_str_to_tuple("3.1.3 Mar 18, 2009 10:09:25")
     antlr_version_str = "3.1.3 Mar 18, 2009 10:09:25"
 
@@ -95,8 +95,8 @@ class MonitorLexer(Lexer):
             _type = INTERACTION
             _channel = DEFAULT_CHANNEL
 
-            # src/Monitor.g:7:13: ( 'interaction' )
-            # src/Monitor.g:7:15: 'interaction'
+            # Monitor.g:7:13: ( 'interaction' )
+            # Monitor.g:7:15: 'interaction'
             pass 
             self.match("interaction")
 
@@ -120,8 +120,8 @@ class MonitorLexer(Lexer):
             _type = PLUS
             _channel = DEFAULT_CHANNEL
 
-            # src/Monitor.g:8:6: ( '+' )
-            # src/Monitor.g:8:8: '+'
+            # Monitor.g:8:6: ( '+' )
+            # Monitor.g:8:8: '+'
             pass 
             self.match(43)
 
@@ -145,8 +145,8 @@ class MonitorLexer(Lexer):
             _type = MINUS
             _channel = DEFAULT_CHANNEL
 
-            # src/Monitor.g:9:7: ( '-' )
-            # src/Monitor.g:9:9: '-'
+            # Monitor.g:9:7: ( '-' )
+            # Monitor.g:9:9: '-'
             pass 
             self.match(45)
 
@@ -170,8 +170,8 @@ class MonitorLexer(Lexer):
             _type = MULT
             _channel = DEFAULT_CHANNEL
 
-            # src/Monitor.g:10:6: ( '*' )
-            # src/Monitor.g:10:8: '*'
+            # Monitor.g:10:6: ( '*' )
+            # Monitor.g:10:8: '*'
             pass 
             self.match(42)
 
@@ -195,8 +195,8 @@ class MonitorLexer(Lexer):
             _type = DIV
             _channel = DEFAULT_CHANNEL
 
-            # src/Monitor.g:11:5: ( '/' )
-            # src/Monitor.g:11:7: '/'
+            # Monitor.g:11:5: ( '/' )
+            # Monitor.g:11:7: '/'
             pass 
             self.match(47)
 
@@ -220,8 +220,8 @@ class MonitorLexer(Lexer):
             _type = FULLSTOP
             _channel = DEFAULT_CHANNEL
 
-            # src/Monitor.g:12:10: ( '.' )
-            # src/Monitor.g:12:12: '.'
+            # Monitor.g:12:10: ( '.' )
+            # Monitor.g:12:12: '.'
             pass 
             self.match(46)
 
@@ -245,8 +245,8 @@ class MonitorLexer(Lexer):
             _type = RESV
             _channel = DEFAULT_CHANNEL
 
-            # src/Monitor.g:13:6: ( 'RESV' )
-            # src/Monitor.g:13:8: 'RESV'
+            # Monitor.g:13:6: ( 'RESV' )
+            # Monitor.g:13:8: 'RESV'
             pass 
             self.match("RESV")
 
@@ -270,8 +270,8 @@ class MonitorLexer(Lexer):
             _type = SEND
             _channel = DEFAULT_CHANNEL
 
-            # src/Monitor.g:14:6: ( 'SEND' )
-            # src/Monitor.g:14:8: 'SEND'
+            # Monitor.g:14:6: ( 'SEND' )
+            # Monitor.g:14:8: 'SEND'
             pass 
             self.match("SEND")
 
@@ -295,8 +295,8 @@ class MonitorLexer(Lexer):
             _type = BRANCH
             _channel = DEFAULT_CHANNEL
 
-            # src/Monitor.g:15:8: ( 'BRANCH' )
-            # src/Monitor.g:15:10: 'BRANCH'
+            # Monitor.g:15:8: ( 'BRANCH' )
+            # Monitor.g:15:10: 'BRANCH'
             pass 
             self.match("BRANCH")
 
@@ -320,8 +320,8 @@ class MonitorLexer(Lexer):
             _type = UNORDERED
             _channel = DEFAULT_CHANNEL
 
-            # src/Monitor.g:16:11: ( 'UNORDERED' )
-            # src/Monitor.g:16:13: 'UNORDERED'
+            # Monitor.g:16:11: ( 'UNORDERED' )
+            # Monitor.g:16:13: 'UNORDERED'
             pass 
             self.match("UNORDERED")
 
@@ -345,8 +345,8 @@ class MonitorLexer(Lexer):
             _type = RECLABEL
             _channel = DEFAULT_CHANNEL
 
-            # src/Monitor.g:17:10: ( 'RECLABEL' )
-            # src/Monitor.g:17:12: 'RECLABEL'
+            # Monitor.g:17:10: ( 'RECLABEL' )
+            # Monitor.g:17:12: 'RECLABEL'
             pass 
             self.match("RECLABEL")
 
@@ -370,8 +370,8 @@ class MonitorLexer(Lexer):
             _type = PARALLEL
             _channel = DEFAULT_CHANNEL
 
-            # src/Monitor.g:18:10: ( 'PARALLEL' )
-            # src/Monitor.g:18:12: 'PARALLEL'
+            # Monitor.g:18:10: ( 'PARALLEL' )
+            # Monitor.g:18:12: 'PARALLEL'
             pass 
             self.match("PARALLEL")
 
@@ -395,8 +395,8 @@ class MonitorLexer(Lexer):
             _type = PROTOCOL
             _channel = DEFAULT_CHANNEL
 
-            # src/Monitor.g:19:10: ( 'PROTOCOL' )
-            # src/Monitor.g:19:12: 'PROTOCOL'
+            # Monitor.g:19:10: ( 'PROTOCOL' )
+            # Monitor.g:19:12: 'PROTOCOL'
             pass 
             self.match("PROTOCOL")
 
@@ -420,8 +420,8 @@ class MonitorLexer(Lexer):
             _type = T__25
             _channel = DEFAULT_CHANNEL
 
-            # src/Monitor.g:20:7: ( 'import' )
-            # src/Monitor.g:20:9: 'import'
+            # Monitor.g:20:7: ( 'import' )
+            # Monitor.g:20:9: 'import'
             pass 
             self.match("import")
 
@@ -445,8 +445,8 @@ class MonitorLexer(Lexer):
             _type = T__26
             _channel = DEFAULT_CHANNEL
 
-            # src/Monitor.g:21:7: ( 'protocol' )
-            # src/Monitor.g:21:9: 'protocol'
+            # Monitor.g:21:7: ( 'protocol' )
+            # Monitor.g:21:9: 'protocol'
             pass 
             self.match("protocol")
 
@@ -470,8 +470,8 @@ class MonitorLexer(Lexer):
             _type = T__27
             _channel = DEFAULT_CHANNEL
 
-            # src/Monitor.g:22:7: ( ',' )
-            # src/Monitor.g:22:9: ','
+            # Monitor.g:22:7: ( ',' )
+            # Monitor.g:22:9: ','
             pass 
             self.match(44)
 
@@ -495,8 +495,8 @@ class MonitorLexer(Lexer):
             _type = T__28
             _channel = DEFAULT_CHANNEL
 
-            # src/Monitor.g:23:7: ( ';' )
-            # src/Monitor.g:23:9: ';'
+            # Monitor.g:23:7: ( ';' )
+            # Monitor.g:23:9: ';'
             pass 
             self.match(59)
 
@@ -520,8 +520,8 @@ class MonitorLexer(Lexer):
             _type = T__29
             _channel = DEFAULT_CHANNEL
 
-            # src/Monitor.g:24:7: ( 'from' )
-            # src/Monitor.g:24:9: 'from'
+            # Monitor.g:24:7: ( 'from' )
+            # Monitor.g:24:9: 'from'
             pass 
             self.match("from")
 
@@ -545,8 +545,8 @@ class MonitorLexer(Lexer):
             _type = T__30
             _channel = DEFAULT_CHANNEL
 
-            # src/Monitor.g:25:7: ( 'as' )
-            # src/Monitor.g:25:9: 'as'
+            # Monitor.g:25:7: ( 'as' )
+            # Monitor.g:25:9: 'as'
             pass 
             self.match("as")
 
@@ -570,8 +570,8 @@ class MonitorLexer(Lexer):
             _type = T__31
             _channel = DEFAULT_CHANNEL
 
-            # src/Monitor.g:26:7: ( 'at' )
-            # src/Monitor.g:26:9: 'at'
+            # Monitor.g:26:7: ( 'at' )
+            # Monitor.g:26:9: 'at'
             pass 
             self.match("at")
 
@@ -595,8 +595,8 @@ class MonitorLexer(Lexer):
             _type = T__32
             _channel = DEFAULT_CHANNEL
 
-            # src/Monitor.g:27:7: ( '{' )
-            # src/Monitor.g:27:9: '{'
+            # Monitor.g:27:7: ( '{' )
+            # Monitor.g:27:9: '{'
             pass 
             self.match(123)
 
@@ -620,8 +620,8 @@ class MonitorLexer(Lexer):
             _type = T__33
             _channel = DEFAULT_CHANNEL
 
-            # src/Monitor.g:28:7: ( '}' )
-            # src/Monitor.g:28:9: '}'
+            # Monitor.g:28:7: ( '}' )
+            # Monitor.g:28:9: '}'
             pass 
             self.match(125)
 
@@ -645,8 +645,8 @@ class MonitorLexer(Lexer):
             _type = T__34
             _channel = DEFAULT_CHANNEL
 
-            # src/Monitor.g:29:7: ( '(' )
-            # src/Monitor.g:29:9: '('
+            # Monitor.g:29:7: ( '(' )
+            # Monitor.g:29:9: '('
             pass 
             self.match(40)
 
@@ -670,8 +670,8 @@ class MonitorLexer(Lexer):
             _type = T__35
             _channel = DEFAULT_CHANNEL
 
-            # src/Monitor.g:30:7: ( ')' )
-            # src/Monitor.g:30:9: ')'
+            # Monitor.g:30:7: ( ')' )
+            # Monitor.g:30:9: ')'
             pass 
             self.match(41)
 
@@ -695,8 +695,8 @@ class MonitorLexer(Lexer):
             _type = T__36
             _channel = DEFAULT_CHANNEL
 
-            # src/Monitor.g:31:7: ( 'role' )
-            # src/Monitor.g:31:9: 'role'
+            # Monitor.g:31:7: ( 'role' )
+            # Monitor.g:31:9: 'role'
             pass 
             self.match("role")
 
@@ -720,8 +720,8 @@ class MonitorLexer(Lexer):
             _type = T__37
             _channel = DEFAULT_CHANNEL
 
-            # src/Monitor.g:32:7: ( 'introduces' )
-            # src/Monitor.g:32:9: 'introduces'
+            # Monitor.g:32:7: ( 'introduces' )
+            # Monitor.g:32:9: 'introduces'
             pass 
             self.match("introduces")
 
@@ -745,8 +745,8 @@ class MonitorLexer(Lexer):
             _type = T__38
             _channel = DEFAULT_CHANNEL
 
-            # src/Monitor.g:33:7: ( 'to' )
-            # src/Monitor.g:33:9: 'to'
+            # Monitor.g:33:7: ( 'to' )
+            # Monitor.g:33:9: 'to'
             pass 
             self.match("to")
 
@@ -770,8 +770,8 @@ class MonitorLexer(Lexer):
             _type = T__39
             _channel = DEFAULT_CHANNEL
 
-            # src/Monitor.g:34:7: ( 'choice' )
-            # src/Monitor.g:34:9: 'choice'
+            # Monitor.g:34:7: ( 'choice' )
+            # Monitor.g:34:9: 'choice'
             pass 
             self.match("choice")
 
@@ -795,8 +795,8 @@ class MonitorLexer(Lexer):
             _type = T__40
             _channel = DEFAULT_CHANNEL
 
-            # src/Monitor.g:35:7: ( 'or' )
-            # src/Monitor.g:35:9: 'or'
+            # Monitor.g:35:7: ( 'or' )
+            # Monitor.g:35:9: 'or'
             pass 
             self.match("or")
 
@@ -820,8 +820,8 @@ class MonitorLexer(Lexer):
             _type = T__41
             _channel = DEFAULT_CHANNEL
 
-            # src/Monitor.g:36:7: ( ':' )
-            # src/Monitor.g:36:9: ':'
+            # Monitor.g:36:7: ( ':' )
+            # Monitor.g:36:9: ':'
             pass 
             self.match(58)
 
@@ -845,8 +845,8 @@ class MonitorLexer(Lexer):
             _type = T__42
             _channel = DEFAULT_CHANNEL
 
-            # src/Monitor.g:37:7: ( 'repeat' )
-            # src/Monitor.g:37:9: 'repeat'
+            # Monitor.g:37:7: ( 'repeat' )
+            # Monitor.g:37:9: 'repeat'
             pass 
             self.match("repeat")
 
@@ -870,8 +870,8 @@ class MonitorLexer(Lexer):
             _type = T__43
             _channel = DEFAULT_CHANNEL
 
-            # src/Monitor.g:38:7: ( 'rec' )
-            # src/Monitor.g:38:9: 'rec'
+            # Monitor.g:38:7: ( 'rec' )
+            # Monitor.g:38:9: 'rec'
             pass 
             self.match("rec")
 
@@ -895,8 +895,8 @@ class MonitorLexer(Lexer):
             _type = T__44
             _channel = DEFAULT_CHANNEL
 
-            # src/Monitor.g:39:7: ( 'end' )
-            # src/Monitor.g:39:9: 'end'
+            # Monitor.g:39:7: ( 'end' )
+            # Monitor.g:39:9: 'end'
             pass 
             self.match("end")
 
@@ -920,8 +920,8 @@ class MonitorLexer(Lexer):
             _type = T__45
             _channel = DEFAULT_CHANNEL
 
-            # src/Monitor.g:40:7: ( 'run' )
-            # src/Monitor.g:40:9: 'run'
+            # Monitor.g:40:7: ( 'run' )
+            # Monitor.g:40:9: 'run'
             pass 
             self.match("run")
 
@@ -945,8 +945,8 @@ class MonitorLexer(Lexer):
             _type = T__46
             _channel = DEFAULT_CHANNEL
 
-            # src/Monitor.g:41:7: ( 'inline' )
-            # src/Monitor.g:41:9: 'inline'
+            # Monitor.g:41:7: ( 'inline' )
+            # Monitor.g:41:9: 'inline'
             pass 
             self.match("inline")
 
@@ -970,8 +970,8 @@ class MonitorLexer(Lexer):
             _type = T__47
             _channel = DEFAULT_CHANNEL
 
-            # src/Monitor.g:42:7: ( 'parallel' )
-            # src/Monitor.g:42:9: 'parallel'
+            # Monitor.g:42:7: ( 'parallel' )
+            # Monitor.g:42:9: 'parallel'
             pass 
             self.match("parallel")
 
@@ -995,8 +995,8 @@ class MonitorLexer(Lexer):
             _type = T__48
             _channel = DEFAULT_CHANNEL
 
-            # src/Monitor.g:43:7: ( 'and' )
-            # src/Monitor.g:43:9: 'and'
+            # Monitor.g:43:7: ( 'and' )
+            # Monitor.g:43:9: 'and'
             pass 
             self.match("and")
 
@@ -1020,8 +1020,8 @@ class MonitorLexer(Lexer):
             _type = T__49
             _channel = DEFAULT_CHANNEL
 
-            # src/Monitor.g:44:7: ( 'do' )
-            # src/Monitor.g:44:9: 'do'
+            # Monitor.g:44:7: ( 'do' )
+            # Monitor.g:44:9: 'do'
             pass 
             self.match("do")
 
@@ -1045,8 +1045,8 @@ class MonitorLexer(Lexer):
             _type = T__50
             _channel = DEFAULT_CHANNEL
 
-            # src/Monitor.g:45:7: ( 'interrupt' )
-            # src/Monitor.g:45:9: 'interrupt'
+            # Monitor.g:45:7: ( 'interrupt' )
+            # Monitor.g:45:9: 'interrupt'
             pass 
             self.match("interrupt")
 
@@ -1070,8 +1070,8 @@ class MonitorLexer(Lexer):
             _type = T__51
             _channel = DEFAULT_CHANNEL
 
-            # src/Monitor.g:46:7: ( 'unordered' )
-            # src/Monitor.g:46:9: 'unordered'
+            # Monitor.g:46:7: ( 'unordered' )
+            # Monitor.g:46:9: 'unordered'
             pass 
             self.match("unordered")
 
@@ -1095,8 +1095,8 @@ class MonitorLexer(Lexer):
             _type = ID
             _channel = DEFAULT_CHANNEL
 
-            # src/Monitor.g:137:4: ( ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )* )
-            # src/Monitor.g:137:6: ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )*
+            # Monitor.g:137:4: ( ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )* )
+            # Monitor.g:137:6: ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )*
             pass 
             if (65 <= self.input.LA(1) <= 90) or self.input.LA(1) == 95 or (97 <= self.input.LA(1) <= 122):
                 self.input.consume()
@@ -1105,7 +1105,7 @@ class MonitorLexer(Lexer):
                 self.recover(mse)
                 raise mse
 
-            # src/Monitor.g:137:29: ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )*
+            # Monitor.g:137:29: ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )*
             while True: #loop1
                 alt1 = 2
                 LA1_0 = self.input.LA(1)
@@ -1115,7 +1115,7 @@ class MonitorLexer(Lexer):
 
 
                 if alt1 == 1:
-                    # src/Monitor.g:
+                    # Monitor.g:
                     pass 
                     if (48 <= self.input.LA(1) <= 57) or (65 <= self.input.LA(1) <= 90) or self.input.LA(1) == 95 or (97 <= self.input.LA(1) <= 122):
                         self.input.consume()
@@ -1149,10 +1149,10 @@ class MonitorLexer(Lexer):
             _type = NUMBER
             _channel = DEFAULT_CHANNEL
 
-            # src/Monitor.g:139:8: ( ( DIGIT )+ )
-            # src/Monitor.g:139:10: ( DIGIT )+
+            # Monitor.g:139:8: ( ( DIGIT )+ )
+            # Monitor.g:139:10: ( DIGIT )+
             pass 
-            # src/Monitor.g:139:10: ( DIGIT )+
+            # Monitor.g:139:10: ( DIGIT )+
             cnt2 = 0
             while True: #loop2
                 alt2 = 2
@@ -1163,7 +1163,7 @@ class MonitorLexer(Lexer):
 
 
                 if alt2 == 1:
-                    # src/Monitor.g:139:11: DIGIT
+                    # Monitor.g:139:11: DIGIT
                     pass 
                     self.mDIGIT()
 
@@ -1197,10 +1197,10 @@ class MonitorLexer(Lexer):
             _type = WHITESPACE
             _channel = DEFAULT_CHANNEL
 
-            # src/Monitor.g:141:12: ( ( '\\t' | ' ' | '\\r' | '\\n' | '\\u000C' )+ )
-            # src/Monitor.g:141:14: ( '\\t' | ' ' | '\\r' | '\\n' | '\\u000C' )+
+            # Monitor.g:141:12: ( ( '\\t' | ' ' | '\\r' | '\\n' | '\\u000C' )+ )
+            # Monitor.g:141:14: ( '\\t' | ' ' | '\\r' | '\\n' | '\\u000C' )+
             pass 
-            # src/Monitor.g:141:14: ( '\\t' | ' ' | '\\r' | '\\n' | '\\u000C' )+
+            # Monitor.g:141:14: ( '\\t' | ' ' | '\\r' | '\\n' | '\\u000C' )+
             cnt3 = 0
             while True: #loop3
                 alt3 = 2
@@ -1211,7 +1211,7 @@ class MonitorLexer(Lexer):
 
 
                 if alt3 == 1:
-                    # src/Monitor.g:
+                    # Monitor.g:
                     pass 
                     if (9 <= self.input.LA(1) <= 10) or (12 <= self.input.LA(1) <= 13) or self.input.LA(1) == 32:
                         self.input.consume()
@@ -1251,8 +1251,8 @@ class MonitorLexer(Lexer):
     def mDIGIT(self, ):
 
         try:
-            # src/Monitor.g:143:16: ( '0' .. '9' )
-            # src/Monitor.g:143:18: '0' .. '9'
+            # Monitor.g:143:16: ( '0' .. '9' )
+            # Monitor.g:143:18: '0' .. '9'
             pass 
             self.matchRange(48, 57)
 
@@ -1274,11 +1274,11 @@ class MonitorLexer(Lexer):
             _type = ANNOTATION
             _channel = DEFAULT_CHANNEL
 
-            # src/Monitor.g:145:12: ( '[[' ( options {greedy=false; } : . )* ']]' )
-            # src/Monitor.g:145:14: '[[' ( options {greedy=false; } : . )* ']]'
+            # Monitor.g:145:12: ( '[[' ( options {greedy=false; } : . )* ']]' )
+            # Monitor.g:145:14: '[[' ( options {greedy=false; } : . )* ']]'
             pass 
             self.match("[[")
-            # src/Monitor.g:145:19: ( options {greedy=false; } : . )*
+            # Monitor.g:145:19: ( options {greedy=false; } : . )*
             while True: #loop4
                 alt4 = 2
                 LA4_0 = self.input.LA(1)
@@ -1297,7 +1297,7 @@ class MonitorLexer(Lexer):
 
 
                 if alt4 == 1:
-                    # src/Monitor.g:145:46: .
+                    # Monitor.g:145:46: .
                     pass 
                     self.matchAny()
 
@@ -1326,11 +1326,11 @@ class MonitorLexer(Lexer):
             _type = ML_COMMENT
             _channel = DEFAULT_CHANNEL
 
-            # src/Monitor.g:148:5: ( '/*' ( options {greedy=false; } : . )* '*/' )
-            # src/Monitor.g:148:9: '/*' ( options {greedy=false; } : . )* '*/'
+            # Monitor.g:148:5: ( '/*' ( options {greedy=false; } : . )* '*/' )
+            # Monitor.g:148:9: '/*' ( options {greedy=false; } : . )* '*/'
             pass 
             self.match("/*")
-            # src/Monitor.g:148:14: ( options {greedy=false; } : . )*
+            # Monitor.g:148:14: ( options {greedy=false; } : . )*
             while True: #loop5
                 alt5 = 2
                 LA5_0 = self.input.LA(1)
@@ -1349,7 +1349,7 @@ class MonitorLexer(Lexer):
 
 
                 if alt5 == 1:
-                    # src/Monitor.g:148:41: .
+                    # Monitor.g:148:41: .
                     pass 
                     self.matchAny()
 
@@ -1381,11 +1381,11 @@ class MonitorLexer(Lexer):
             _type = LINE_COMMENT
             _channel = DEFAULT_CHANNEL
 
-            # src/Monitor.g:151:14: ( '//' ( options {greedy=false; } : . )* '\\n' )
-            # src/Monitor.g:151:16: '//' ( options {greedy=false; } : . )* '\\n'
+            # Monitor.g:151:14: ( '//' ( options {greedy=false; } : . )* '\\n' )
+            # Monitor.g:151:16: '//' ( options {greedy=false; } : . )* '\\n'
             pass 
             self.match("//")
-            # src/Monitor.g:151:21: ( options {greedy=false; } : . )*
+            # Monitor.g:151:21: ( options {greedy=false; } : . )*
             while True: #loop6
                 alt6 = 2
                 LA6_0 = self.input.LA(1)
@@ -1397,7 +1397,7 @@ class MonitorLexer(Lexer):
 
 
                 if alt6 == 1:
-                    # src/Monitor.g:151:48: .
+                    # Monitor.g:151:48: .
                     pass 
                     self.matchAny()
 
@@ -1429,11 +1429,11 @@ class MonitorLexer(Lexer):
             _type = StringLiteral
             _channel = DEFAULT_CHANNEL
 
-            # src/Monitor.g:153:14: ( '\"' (~ ( '\\\\' | '\"' ) )* '\"' )
-            # src/Monitor.g:153:16: '\"' (~ ( '\\\\' | '\"' ) )* '\"'
+            # Monitor.g:153:14: ( '\"' (~ ( '\\\\' | '\"' ) )* '\"' )
+            # Monitor.g:153:16: '\"' (~ ( '\\\\' | '\"' ) )* '\"'
             pass 
             self.match(34)
-            # src/Monitor.g:153:20: (~ ( '\\\\' | '\"' ) )*
+            # Monitor.g:153:20: (~ ( '\\\\' | '\"' ) )*
             while True: #loop7
                 alt7 = 2
                 LA7_0 = self.input.LA(1)
@@ -1443,7 +1443,7 @@ class MonitorLexer(Lexer):
 
 
                 if alt7 == 1:
-                    # src/Monitor.g:153:22: ~ ( '\\\\' | '\"' )
+                    # Monitor.g:153:22: ~ ( '\\\\' | '\"' )
                     pass 
                     if (0 <= self.input.LA(1) <= 33) or (35 <= self.input.LA(1) <= 91) or (93 <= self.input.LA(1) <= 65535):
                         self.input.consume()
@@ -1472,287 +1472,287 @@ class MonitorLexer(Lexer):
 
 
     def mTokens(self):
-        # src/Monitor.g:1:8: ( INTERACTION | PLUS | MINUS | MULT | DIV | FULLSTOP | RESV | SEND | BRANCH | UNORDERED | RECLABEL | PARALLEL | PROTOCOL | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | T__36 | T__37 | T__38 | T__39 | T__40 | T__41 | T__42 | T__43 | T__44 | T__45 | T__46 | T__47 | T__48 | T__49 | T__50 | T__51 | ID | NUMBER | WHITESPACE | ANNOTATION | ML_COMMENT | LINE_COMMENT | StringLiteral )
+        # Monitor.g:1:8: ( INTERACTION | PLUS | MINUS | MULT | DIV | FULLSTOP | RESV | SEND | BRANCH | UNORDERED | RECLABEL | PARALLEL | PROTOCOL | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | T__36 | T__37 | T__38 | T__39 | T__40 | T__41 | T__42 | T__43 | T__44 | T__45 | T__46 | T__47 | T__48 | T__49 | T__50 | T__51 | ID | NUMBER | WHITESPACE | ANNOTATION | ML_COMMENT | LINE_COMMENT | StringLiteral )
         alt8 = 47
         alt8 = self.dfa8.predict(self.input)
         if alt8 == 1:
-            # src/Monitor.g:1:10: INTERACTION
+            # Monitor.g:1:10: INTERACTION
             pass 
             self.mINTERACTION()
 
 
         elif alt8 == 2:
-            # src/Monitor.g:1:22: PLUS
+            # Monitor.g:1:22: PLUS
             pass 
             self.mPLUS()
 
 
         elif alt8 == 3:
-            # src/Monitor.g:1:27: MINUS
+            # Monitor.g:1:27: MINUS
             pass 
             self.mMINUS()
 
 
         elif alt8 == 4:
-            # src/Monitor.g:1:33: MULT
+            # Monitor.g:1:33: MULT
             pass 
             self.mMULT()
 
 
         elif alt8 == 5:
-            # src/Monitor.g:1:38: DIV
+            # Monitor.g:1:38: DIV
             pass 
             self.mDIV()
 
 
         elif alt8 == 6:
-            # src/Monitor.g:1:42: FULLSTOP
+            # Monitor.g:1:42: FULLSTOP
             pass 
             self.mFULLSTOP()
 
 
         elif alt8 == 7:
-            # src/Monitor.g:1:51: RESV
+            # Monitor.g:1:51: RESV
             pass 
             self.mRESV()
 
 
         elif alt8 == 8:
-            # src/Monitor.g:1:56: SEND
+            # Monitor.g:1:56: SEND
             pass 
             self.mSEND()
 
 
         elif alt8 == 9:
-            # src/Monitor.g:1:61: BRANCH
+            # Monitor.g:1:61: BRANCH
             pass 
             self.mBRANCH()
 
 
         elif alt8 == 10:
-            # src/Monitor.g:1:68: UNORDERED
+            # Monitor.g:1:68: UNORDERED
             pass 
             self.mUNORDERED()
 
 
         elif alt8 == 11:
-            # src/Monitor.g:1:78: RECLABEL
+            # Monitor.g:1:78: RECLABEL
             pass 
             self.mRECLABEL()
 
 
         elif alt8 == 12:
-            # src/Monitor.g:1:87: PARALLEL
+            # Monitor.g:1:87: PARALLEL
             pass 
             self.mPARALLEL()
 
 
         elif alt8 == 13:
-            # src/Monitor.g:1:96: PROTOCOL
+            # Monitor.g:1:96: PROTOCOL
             pass 
             self.mPROTOCOL()
 
 
         elif alt8 == 14:
-            # src/Monitor.g:1:105: T__25
+            # Monitor.g:1:105: T__25
             pass 
             self.mT__25()
 
 
         elif alt8 == 15:
-            # src/Monitor.g:1:111: T__26
+            # Monitor.g:1:111: T__26
             pass 
             self.mT__26()
 
 
         elif alt8 == 16:
-            # src/Monitor.g:1:117: T__27
+            # Monitor.g:1:117: T__27
             pass 
             self.mT__27()
 
 
         elif alt8 == 17:
-            # src/Monitor.g:1:123: T__28
+            # Monitor.g:1:123: T__28
             pass 
             self.mT__28()
 
 
         elif alt8 == 18:
-            # src/Monitor.g:1:129: T__29
+            # Monitor.g:1:129: T__29
             pass 
             self.mT__29()
 
 
         elif alt8 == 19:
-            # src/Monitor.g:1:135: T__30
+            # Monitor.g:1:135: T__30
             pass 
             self.mT__30()
 
 
         elif alt8 == 20:
-            # src/Monitor.g:1:141: T__31
+            # Monitor.g:1:141: T__31
             pass 
             self.mT__31()
 
 
         elif alt8 == 21:
-            # src/Monitor.g:1:147: T__32
+            # Monitor.g:1:147: T__32
             pass 
             self.mT__32()
 
 
         elif alt8 == 22:
-            # src/Monitor.g:1:153: T__33
+            # Monitor.g:1:153: T__33
             pass 
             self.mT__33()
 
 
         elif alt8 == 23:
-            # src/Monitor.g:1:159: T__34
+            # Monitor.g:1:159: T__34
             pass 
             self.mT__34()
 
 
         elif alt8 == 24:
-            # src/Monitor.g:1:165: T__35
+            # Monitor.g:1:165: T__35
             pass 
             self.mT__35()
 
 
         elif alt8 == 25:
-            # src/Monitor.g:1:171: T__36
+            # Monitor.g:1:171: T__36
             pass 
             self.mT__36()
 
 
         elif alt8 == 26:
-            # src/Monitor.g:1:177: T__37
+            # Monitor.g:1:177: T__37
             pass 
             self.mT__37()
 
 
         elif alt8 == 27:
-            # src/Monitor.g:1:183: T__38
+            # Monitor.g:1:183: T__38
             pass 
             self.mT__38()
 
 
         elif alt8 == 28:
-            # src/Monitor.g:1:189: T__39
+            # Monitor.g:1:189: T__39
             pass 
             self.mT__39()
 
 
         elif alt8 == 29:
-            # src/Monitor.g:1:195: T__40
+            # Monitor.g:1:195: T__40
             pass 
             self.mT__40()
 
 
         elif alt8 == 30:
-            # src/Monitor.g:1:201: T__41
+            # Monitor.g:1:201: T__41
             pass 
             self.mT__41()
 
 
         elif alt8 == 31:
-            # src/Monitor.g:1:207: T__42
+            # Monitor.g:1:207: T__42
             pass 
             self.mT__42()
 
 
         elif alt8 == 32:
-            # src/Monitor.g:1:213: T__43
+            # Monitor.g:1:213: T__43
             pass 
             self.mT__43()
 
 
         elif alt8 == 33:
-            # src/Monitor.g:1:219: T__44
+            # Monitor.g:1:219: T__44
             pass 
             self.mT__44()
 
 
         elif alt8 == 34:
-            # src/Monitor.g:1:225: T__45
+            # Monitor.g:1:225: T__45
             pass 
             self.mT__45()
 
 
         elif alt8 == 35:
-            # src/Monitor.g:1:231: T__46
+            # Monitor.g:1:231: T__46
             pass 
             self.mT__46()
 
 
         elif alt8 == 36:
-            # src/Monitor.g:1:237: T__47
+            # Monitor.g:1:237: T__47
             pass 
             self.mT__47()
 
 
         elif alt8 == 37:
-            # src/Monitor.g:1:243: T__48
+            # Monitor.g:1:243: T__48
             pass 
             self.mT__48()
 
 
         elif alt8 == 38:
-            # src/Monitor.g:1:249: T__49
+            # Monitor.g:1:249: T__49
             pass 
             self.mT__49()
 
 
         elif alt8 == 39:
-            # src/Monitor.g:1:255: T__50
+            # Monitor.g:1:255: T__50
             pass 
             self.mT__50()
 
 
         elif alt8 == 40:
-            # src/Monitor.g:1:261: T__51
+            # Monitor.g:1:261: T__51
             pass 
             self.mT__51()
 
 
         elif alt8 == 41:
-            # src/Monitor.g:1:267: ID
+            # Monitor.g:1:267: ID
             pass 
             self.mID()
 
 
         elif alt8 == 42:
-            # src/Monitor.g:1:270: NUMBER
+            # Monitor.g:1:270: NUMBER
             pass 
             self.mNUMBER()
 
 
         elif alt8 == 43:
-            # src/Monitor.g:1:277: WHITESPACE
+            # Monitor.g:1:277: WHITESPACE
             pass 
             self.mWHITESPACE()
 
 
         elif alt8 == 44:
-            # src/Monitor.g:1:288: ANNOTATION
+            # Monitor.g:1:288: ANNOTATION
             pass 
             self.mANNOTATION()
 
 
         elif alt8 == 45:
-            # src/Monitor.g:1:299: ML_COMMENT
+            # Monitor.g:1:299: ML_COMMENT
             pass 
             self.mML_COMMENT()
 
 
         elif alt8 == 46:
-            # src/Monitor.g:1:310: LINE_COMMENT
+            # Monitor.g:1:310: LINE_COMMENT
             pass 
             self.mLINE_COMMENT()
 
 
         elif alt8 == 47:
-            # src/Monitor.g:1:323: StringLiteral
+            # Monitor.g:1:323: StringLiteral
             pass 
             self.mStringLiteral()
 

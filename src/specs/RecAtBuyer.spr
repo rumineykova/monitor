@@ -6,6 +6,4 @@ protocol Purchasing at Buyer {
 		Invoice from Seller;
 		Transaction;
 	}
-OK to Seller;
-
 }

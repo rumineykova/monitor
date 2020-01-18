@@ -1,0 +1,14 @@
+0.Forwarder from default exchange to allice
+1. Start listening on the default echange
+   on the allice queue (invitations are delivered on allice queue)
+   set callback for in_incoming _invitation
+
+2.Add the invitation to the invitation table, set the role as enaled
+3.Start listening on allice queue for reply 
+4. on_accept_invitation
+call monitor.on_accept_invitation 
+-> initialise (invitation.cid, invitation.role, invitation.local_capability)
+(This generates the FSM)
+add to protocolStateMachine(cid, role, FSM)
+
+ 

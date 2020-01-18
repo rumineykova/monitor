@@ -1,0 +1,12 @@
+protocol OnlineWallet at Server
+{
+rec Loop{
+	Balance(x:int) to Client;
+	OverdraftLimit(y:int) to Client @{y>=0 and x >= -y}; 
+	choice 
+	   {MakePayment(z:int) from Client @{z<=x+y}; 
+	    Loop;
+	   } 
+	or {CloseAccount from Client @{x>=0} ;} 
+	or {Quit from Client;}
+}} 

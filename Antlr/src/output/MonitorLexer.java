@@ -1,4 +1,4 @@
-// $ANTLR 3.2 Sep 23, 2009 12:02:23 /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g 2011-11-18 22:38:23
+// $ANTLR 3.2 Sep 23, 2009 12:02:23 /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g 2011-12-08 17:39:05
 
 import org.antlr.runtime.*;
 import java.util.Stack;
@@ -6,24 +6,27 @@ import java.util.List;
 import java.util.ArrayList;
 
 public class MonitorLexer extends Lexer {
-    public static final int T__29=29;
-    public static final int T__28=28;
-    public static final int T__27=27;
-    public static final int T__26=26;
-    public static final int T__25=25;
-    public static final int RESV=10;
-    public static final int ANNOTATION=17;
-    public static final int PARALLEL=15;
-    public static final int ID=18;
+    public static final int RESV=12;
+    public static final int ANNOTATION=22;
+    public static final int ASSERTION=25;
+    public static final int PARALLEL=19;
+    public static final int ID=23;
     public static final int EOF=-1;
-    public static final int PROTOCOL=16;
+    public static final int PROTOCOL=20;
+    public static final int TYPE=14;
+    public static final int T__55=55;
     public static final int INTERACTION=4;
-    public static final int ML_COMMENT=23;
+    public static final int T__56=56;
+    public static final int ML_COMMENT=29;
+    public static final int T__57=57;
     public static final int T__51=51;
-    public static final int FULLSTOP=9;
-    public static final int SEND=11;
-    public static final int PLUS=5;
-    public static final int DIGIT=21;
+    public static final int T__52=52;
+    public static final int T__53=53;
+    public static final int T__54=54;
+    public static final int FULLSTOP=11;
+    public static final int PLUS=7;
+    public static final int SEND=13;
+    public static final int DIGIT=27;
     public static final int T__50=50;
     public static final int T__42=42;
     public static final int T__43=43;
@@ -33,17 +36,19 @@ public class MonitorLexer extends Lexer {
     public static final int T__47=47;
     public static final int T__44=44;
     public static final int T__45=45;
-    public static final int LINE_COMMENT=24;
+    public static final int LINE_COMMENT=30;
     public static final int T__48=48;
     public static final int T__49=49;
-    public static final int RECLABEL=14;
-    public static final int NUMBER=20;
-    public static final int WHITESPACE=22;
-    public static final int MINUS=6;
-    public static final int MULT=7;
-    public static final int UNORDERED=13;
-    public static final int StringLiteral=19;
-    public static final int T__30=30;
+    public static final int RECLABEL=18;
+    public static final int NUMBER=26;
+    public static final int WHITESPACE=28;
+    public static final int INT=5;
+    public static final int MINUS=8;
+    public static final int MULT=9;
+    public static final int VALUE=15;
+    public static final int ASSERT=21;
+    public static final int UNORDERED=17;
+    public static final int StringLiteral=24;
     public static final int T__31=31;
     public static final int T__32=32;
     public static final int T__33=33;
@@ -53,8 +58,9 @@ public class MonitorLexer extends Lexer {
     public static final int T__37=37;
     public static final int T__38=38;
     public static final int T__39=39;
-    public static final int BRANCH=12;
-    public static final int DIV=8;
+    public static final int BRANCH=16;
+    public static final int DIV=10;
+    public static final int STRING=6;
 
     // delegates
     // delegators
@@ -90,13 +96,55 @@ public class MonitorLexer extends Lexer {
     }
     // $ANTLR end "INTERACTION"
 
+    // $ANTLR start "INT"
+    public final void mINT() throws RecognitionException {
+        try {
+            int _type = INT;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:8:5: ( 'int' )
+            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:8:7: 'int'
+            {
+            match("int"); 
+
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "INT"
+
+    // $ANTLR start "STRING"
+    public final void mSTRING() throws RecognitionException {
+        try {
+            int _type = STRING;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:9:8: ( 'string' )
+            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:9:10: 'string'
+            {
+            match("string"); 
+
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "STRING"
+
     // $ANTLR start "PLUS"
     public final void mPLUS() throws RecognitionException {
         try {
             int _type = PLUS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:8:6: ( '+' )
-            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:8:8: '+'
+            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:10:6: ( '+' )
+            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:10:8: '+'
             {
             match('+'); 
 
@@ -115,8 +163,8 @@ public class MonitorLexer extends Lexer {
         try {
             int _type = MINUS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:9:7: ( '-' )
-            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:9:9: '-'
+            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:11:7: ( '-' )
+            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:11:9: '-'
             {
             match('-'); 
 
@@ -135,8 +183,8 @@ public class MonitorLexer extends Lexer {
         try {
             int _type = MULT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:10:6: ( '*' )
-            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:10:8: '*'
+            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:12:6: ( '*' )
+            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:12:8: '*'
             {
             match('*'); 
 
@@ -155,8 +203,8 @@ public class MonitorLexer extends Lexer {
         try {
             int _type = DIV;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:11:5: ( '/' )
-            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:11:7: '/'
+            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:13:5: ( '/' )
+            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:13:7: '/'
             {
             match('/'); 
 
@@ -175,8 +223,8 @@ public class MonitorLexer extends Lexer {
         try {
             int _type = FULLSTOP;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:12:10: ( '.' )
-            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:12:12: '.'
+            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:14:10: ( '.' )
+            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:14:12: '.'
             {
             match('.'); 
 
@@ -195,8 +243,8 @@ public class MonitorLexer extends Lexer {
         try {
             int _type = RESV;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:13:6: ( 'RESV' )
-            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:13:8: 'RESV'
+            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:15:6: ( 'RESV' )
+            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:15:8: 'RESV'
             {
             match("RESV"); 
 
@@ -216,8 +264,8 @@ public class MonitorLexer extends Lexer {
         try {
             int _type = SEND;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:14:6: ( 'SEND' )
-            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:14:8: 'SEND'
+            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:16:6: ( 'SEND' )
+            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:16:8: 'SEND'
             {
             match("SEND"); 
 
@@ -232,13 +280,55 @@ public class MonitorLexer extends Lexer {
     }
     // $ANTLR end "SEND"
 
+    // $ANTLR start "TYPE"
+    public final void mTYPE() throws RecognitionException {
+        try {
+            int _type = TYPE;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:17:6: ( 'TYPE' )
+            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:17:8: 'TYPE'
+            {
+            match("TYPE"); 
+
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "TYPE"
+
+    // $ANTLR start "VALUE"
+    public final void mVALUE() throws RecognitionException {
+        try {
+            int _type = VALUE;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:18:7: ( 'VALUE' )
+            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:18:9: 'VALUE'
+            {
+            match("VALUE"); 
+
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "VALUE"
+
     // $ANTLR start "BRANCH"
     public final void mBRANCH() throws RecognitionException {
         try {
             int _type = BRANCH;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:15:8: ( 'BRANCH' )
-            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:15:10: 'BRANCH'
+            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:19:8: ( 'BRANCH' )
+            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:19:10: 'BRANCH'
             {
             match("BRANCH"); 
 
@@ -258,8 +348,8 @@ public class MonitorLexer extends Lexer {
         try {
             int _type = UNORDERED;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:16:11: ( 'UNORDERED' )
-            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:16:13: 'UNORDERED'
+            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:20:11: ( 'UNORDERED' )
+            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:20:13: 'UNORDERED'
             {
             match("UNORDERED"); 
 
@@ -279,8 +369,8 @@ public class MonitorLexer extends Lexer {
         try {
             int _type = RECLABEL;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:17:10: ( 'RECLABEL' )
-            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:17:12: 'RECLABEL'
+            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:21:10: ( 'RECLABEL' )
+            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:21:12: 'RECLABEL'
             {
             match("RECLABEL"); 
 
@@ -300,8 +390,8 @@ public class MonitorLexer extends Lexer {
         try {
             int _type = PARALLEL;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:18:10: ( 'PARALLEL' )
-            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:18:12: 'PARALLEL'
+            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:22:10: ( 'PARALLEL' )
+            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:22:12: 'PARALLEL'
             {
             match("PARALLEL"); 
 
@@ -321,8 +411,8 @@ public class MonitorLexer extends Lexer {
         try {
             int _type = PROTOCOL;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:19:10: ( 'PROTOCOL' )
-            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:19:12: 'PROTOCOL'
+            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:23:10: ( 'PROTOCOL' )
+            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:23:12: 'PROTOCOL'
             {
             match("PROTOCOL"); 
 
@@ -337,15 +427,15 @@ public class MonitorLexer extends Lexer {
     }
     // $ANTLR end "PROTOCOL"
 
-    // $ANTLR start "T__25"
-    public final void mT__25() throws RecognitionException {
+    // $ANTLR start "ASSERT"
+    public final void mASSERT() throws RecognitionException {
         try {
-            int _type = T__25;
+            int _type = ASSERT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:20:7: ( 'import' )
-            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:20:9: 'import'
+            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:24:8: ( 'ASSERT' )
+            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:24:10: 'ASSERT'
             {
-            match("import"); 
+            match("ASSERT"); 
 
 
             }
@@ -356,120 +446,17 @@ public class MonitorLexer extends Lexer {
         finally {
         }
     }
-    // $ANTLR end "T__25"
-
-    // $ANTLR start "T__26"
-    public final void mT__26() throws RecognitionException {
-        try {
-            int _type = T__26;
-            int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:21:7: ( 'protocol' )
-            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:21:9: 'protocol'
-            {
-            match("protocol"); 
-
-
-            }
-
-            state.type = _type;
-            state.channel = _channel;
-        }
-        finally {
-        }
-    }
-    // $ANTLR end "T__26"
-
-    // $ANTLR start "T__27"
-    public final void mT__27() throws RecognitionException {
-        try {
-            int _type = T__27;
-            int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:22:7: ( ',' )
-            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:22:9: ','
-            {
-            match(','); 
-
-            }
-
-            state.type = _type;
-            state.channel = _channel;
-        }
-        finally {
-        }
-    }
-    // $ANTLR end "T__27"
-
-    // $ANTLR start "T__28"
-    public final void mT__28() throws RecognitionException {
-        try {
-            int _type = T__28;
-            int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:23:7: ( ';' )
-            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:23:9: ';'
-            {
-            match(';'); 
-
-            }
-
-            state.type = _type;
-            state.channel = _channel;
-        }
-        finally {
-        }
-    }
-    // $ANTLR end "T__28"
-
-    // $ANTLR start "T__29"
-    public final void mT__29() throws RecognitionException {
-        try {
-            int _type = T__29;
-            int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:24:7: ( 'from' )
-            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:24:9: 'from'
-            {
-            match("from"); 
-
-
-            }
-
-            state.type = _type;
-            state.channel = _channel;
-        }
-        finally {
-        }
-    }
-    // $ANTLR end "T__29"
-
-    // $ANTLR start "T__30"
-    public final void mT__30() throws RecognitionException {
-        try {
-            int _type = T__30;
-            int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:25:7: ( 'as' )
-            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:25:9: 'as'
-            {
-            match("as"); 
-
-
-            }
-
-            state.type = _type;
-            state.channel = _channel;
-        }
-        finally {
-        }
-    }
-    // $ANTLR end "T__30"
+    // $ANTLR end "ASSERT"
 
     // $ANTLR start "T__31"
     public final void mT__31() throws RecognitionException {
         try {
             int _type = T__31;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:26:7: ( 'at' )
-            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:26:9: 'at'
+            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:25:7: ( 'import' )
+            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:25:9: 'import'
             {
-            match("at"); 
+            match("import"); 
 
 
             }
@@ -487,10 +474,11 @@ public class MonitorLexer extends Lexer {
         try {
             int _type = T__32;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:27:7: ( '{' )
-            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:27:9: '{'
+            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:26:7: ( 'protocol' )
+            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:26:9: 'protocol'
             {
-            match('{'); 
+            match("protocol"); 
+
 
             }
 
@@ -507,10 +495,10 @@ public class MonitorLexer extends Lexer {
         try {
             int _type = T__33;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:28:7: ( '}' )
-            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:28:9: '}'
+            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:27:7: ( ',' )
+            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:27:9: ','
             {
-            match('}'); 
+            match(','); 
 
             }
 
@@ -527,10 +515,10 @@ public class MonitorLexer extends Lexer {
         try {
             int _type = T__34;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:29:7: ( '(' )
-            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:29:9: '('
+            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:28:7: ( ';' )
+            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:28:9: ';'
             {
-            match('('); 
+            match(';'); 
 
             }
 
@@ -547,10 +535,11 @@ public class MonitorLexer extends Lexer {
         try {
             int _type = T__35;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:30:7: ( ')' )
-            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:30:9: ')'
+            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:29:7: ( 'from' )
+            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:29:9: 'from'
             {
-            match(')'); 
+            match("from"); 
+
 
             }
 
@@ -567,10 +556,10 @@ public class MonitorLexer extends Lexer {
         try {
             int _type = T__36;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:31:7: ( 'role' )
-            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:31:9: 'role'
+            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:30:7: ( 'as' )
+            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:30:9: 'as'
             {
-            match("role"); 
+            match("as"); 
 
 
             }
@@ -588,10 +577,10 @@ public class MonitorLexer extends Lexer {
         try {
             int _type = T__37;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:32:7: ( 'introduces' )
-            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:32:9: 'introduces'
+            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:31:7: ( 'at' )
+            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:31:9: 'at'
             {
-            match("introduces"); 
+            match("at"); 
 
 
             }
@@ -609,11 +598,10 @@ public class MonitorLexer extends Lexer {
         try {
             int _type = T__38;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:33:7: ( 'to' )
-            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:33:9: 'to'
+            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:32:7: ( '{' )
+            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:32:9: '{'
             {
-            match("to"); 
-
+            match('{'); 
 
             }
 
@@ -630,11 +618,10 @@ public class MonitorLexer extends Lexer {
         try {
             int _type = T__39;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:34:7: ( 'choice' )
-            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:34:9: 'choice'
+            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:33:7: ( '}' )
+            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:33:9: '}'
             {
-            match("choice"); 
-
+            match('}'); 
 
             }
 
@@ -651,11 +638,10 @@ public class MonitorLexer extends Lexer {
         try {
             int _type = T__40;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:35:7: ( 'or' )
-            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:35:9: 'or'
+            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:34:7: ( '(' )
+            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:34:9: '('
             {
-            match("or"); 
-
+            match('('); 
 
             }
 
@@ -672,10 +658,10 @@ public class MonitorLexer extends Lexer {
         try {
             int _type = T__41;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:36:7: ( ':' )
-            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:36:9: ':'
+            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:35:7: ( ')' )
+            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:35:9: ')'
             {
-            match(':'); 
+            match(')'); 
 
             }
 
@@ -692,10 +678,10 @@ public class MonitorLexer extends Lexer {
         try {
             int _type = T__42;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:37:7: ( 'repeat' )
-            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:37:9: 'repeat'
+            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:36:7: ( 'role' )
+            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:36:9: 'role'
             {
-            match("repeat"); 
+            match("role"); 
 
 
             }
@@ -713,10 +699,10 @@ public class MonitorLexer extends Lexer {
         try {
             int _type = T__43;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:38:7: ( 'rec' )
-            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:38:9: 'rec'
+            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:37:7: ( 'introduces' )
+            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:37:9: 'introduces'
             {
-            match("rec"); 
+            match("introduces"); 
 
 
             }
@@ -734,11 +720,10 @@ public class MonitorLexer extends Lexer {
         try {
             int _type = T__44;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:39:7: ( 'end' )
-            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:39:9: 'end'
+            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:38:7: ( ':' )
+            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:38:9: ':'
             {
-            match("end"); 
-
+            match(':'); 
 
             }
 
@@ -755,10 +740,10 @@ public class MonitorLexer extends Lexer {
         try {
             int _type = T__45;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:40:7: ( 'run' )
-            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:40:9: 'run'
+            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:39:7: ( 'to' )
+            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:39:9: 'to'
             {
-            match("run"); 
+            match("to"); 
 
 
             }
@@ -776,10 +761,10 @@ public class MonitorLexer extends Lexer {
         try {
             int _type = T__46;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:41:7: ( 'inline' )
-            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:41:9: 'inline'
+            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:40:7: ( 'choice' )
+            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:40:9: 'choice'
             {
-            match("inline"); 
+            match("choice"); 
 
 
             }
@@ -797,10 +782,10 @@ public class MonitorLexer extends Lexer {
         try {
             int _type = T__47;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:42:7: ( 'parallel' )
-            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:42:9: 'parallel'
+            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:41:7: ( 'or' )
+            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:41:9: 'or'
             {
-            match("parallel"); 
+            match("or"); 
 
 
             }
@@ -818,10 +803,10 @@ public class MonitorLexer extends Lexer {
         try {
             int _type = T__48;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:43:7: ( 'and' )
-            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:43:9: 'and'
+            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:42:7: ( 'repeat' )
+            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:42:9: 'repeat'
             {
-            match("and"); 
+            match("repeat"); 
 
 
             }
@@ -839,10 +824,10 @@ public class MonitorLexer extends Lexer {
         try {
             int _type = T__49;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:44:7: ( 'do' )
-            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:44:9: 'do'
+            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:43:7: ( 'rec' )
+            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:43:9: 'rec'
             {
-            match("do"); 
+            match("rec"); 
 
 
             }
@@ -860,10 +845,10 @@ public class MonitorLexer extends Lexer {
         try {
             int _type = T__50;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:45:7: ( 'interrupt' )
-            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:45:9: 'interrupt'
+            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:44:7: ( 'end' )
+            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:44:9: 'end'
             {
-            match("interrupt"); 
+            match("end"); 
 
 
             }
@@ -881,10 +866,10 @@ public class MonitorLexer extends Lexer {
         try {
             int _type = T__51;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:46:7: ( 'unordered' )
-            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:46:9: 'unordered'
+            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:45:7: ( 'run' )
+            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:45:9: 'run'
             {
-            match("unordered"); 
+            match("run"); 
 
 
             }
@@ -897,13 +882,139 @@ public class MonitorLexer extends Lexer {
     }
     // $ANTLR end "T__51"
 
+    // $ANTLR start "T__52"
+    public final void mT__52() throws RecognitionException {
+        try {
+            int _type = T__52;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:46:7: ( 'inline' )
+            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:46:9: 'inline'
+            {
+            match("inline"); 
+
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "T__52"
+
+    // $ANTLR start "T__53"
+    public final void mT__53() throws RecognitionException {
+        try {
+            int _type = T__53;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:47:7: ( 'parallel' )
+            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:47:9: 'parallel'
+            {
+            match("parallel"); 
+
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "T__53"
+
+    // $ANTLR start "T__54"
+    public final void mT__54() throws RecognitionException {
+        try {
+            int _type = T__54;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:48:7: ( 'and' )
+            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:48:9: 'and'
+            {
+            match("and"); 
+
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "T__54"
+
+    // $ANTLR start "T__55"
+    public final void mT__55() throws RecognitionException {
+        try {
+            int _type = T__55;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:49:7: ( 'do' )
+            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:49:9: 'do'
+            {
+            match("do"); 
+
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "T__55"
+
+    // $ANTLR start "T__56"
+    public final void mT__56() throws RecognitionException {
+        try {
+            int _type = T__56;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:50:7: ( 'interrupt' )
+            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:50:9: 'interrupt'
+            {
+            match("interrupt"); 
+
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "T__56"
+
+    // $ANTLR start "T__57"
+    public final void mT__57() throws RecognitionException {
+        try {
+            int _type = T__57;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:51:7: ( 'unordered' )
+            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:51:9: 'unordered'
+            {
+            match("unordered"); 
+
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "T__57"
+
     // $ANTLR start "ID"
     public final void mID() throws RecognitionException {
         try {
             int _type = ID;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:137:4: ( ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )* )
-            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:137:6: ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )*
+            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:150:4: ( ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )* )
+            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:150:6: ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )*
             {
             if ( (input.LA(1)>='A' && input.LA(1)<='Z')||input.LA(1)=='_'||(input.LA(1)>='a' && input.LA(1)<='z') ) {
                 input.consume();
@@ -914,7 +1025,7 @@ public class MonitorLexer extends Lexer {
                 recover(mse);
                 throw mse;}
 
-            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:137:29: ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )*
+            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:150:29: ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )*
             loop1:
             do {
                 int alt1=2;
@@ -963,10 +1074,10 @@ public class MonitorLexer extends Lexer {
         try {
             int _type = NUMBER;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:139:8: ( ( DIGIT )+ )
-            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:139:10: ( DIGIT )+
+            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:152:8: ( ( DIGIT )+ )
+            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:152:10: ( DIGIT )+
             {
-            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:139:10: ( DIGIT )+
+            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:152:10: ( DIGIT )+
             int cnt2=0;
             loop2:
             do {
@@ -980,7 +1091,7 @@ public class MonitorLexer extends Lexer {
 
                 switch (alt2) {
             	case 1 :
-            	    // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:139:11: DIGIT
+            	    // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:152:11: DIGIT
             	    {
             	    mDIGIT(); 
 
@@ -1012,10 +1123,10 @@ public class MonitorLexer extends Lexer {
         try {
             int _type = WHITESPACE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:141:12: ( ( '\\t' | ' ' | '\\r' | '\\n' | '\\u000C' )+ )
-            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:141:14: ( '\\t' | ' ' | '\\r' | '\\n' | '\\u000C' )+
+            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:154:12: ( ( '\\t' | ' ' | '\\r' | '\\n' | '\\u000C' )+ )
+            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:154:14: ( '\\t' | ' ' | '\\r' | '\\n' | '\\u000C' )+
             {
-            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:141:14: ( '\\t' | ' ' | '\\r' | '\\n' | '\\u000C' )+
+            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:154:14: ( '\\t' | ' ' | '\\r' | '\\n' | '\\u000C' )+
             int cnt3=0;
             loop3:
             do {
@@ -1068,8 +1179,8 @@ public class MonitorLexer extends Lexer {
     // $ANTLR start "DIGIT"
     public final void mDIGIT() throws RecognitionException {
         try {
-            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:143:16: ( '0' .. '9' )
-            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:143:18: '0' .. '9'
+            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:156:16: ( '0' .. '9' )
+            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:156:18: '0' .. '9'
             {
             matchRange('0','9'); 
 
@@ -1081,42 +1192,33 @@ public class MonitorLexer extends Lexer {
     }
     // $ANTLR end "DIGIT"
 
-    // $ANTLR start "ANNOTATION"
-    public final void mANNOTATION() throws RecognitionException {
+    // $ANTLR start "ASSERTION"
+    public final void mASSERTION() throws RecognitionException {
         try {
-            int _type = ANNOTATION;
+            int _type = ASSERTION;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:145:12: ( '[[' ( options {greedy=false; } : . )* ']]' )
-            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:145:14: '[[' ( options {greedy=false; } : . )* ']]'
+            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:158:11: ( '@{' ( options {greedy=false; } : . )* '}' )
+            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:158:13: '@{' ( options {greedy=false; } : . )* '}'
             {
-            match("[["); 
+            match("@{"); 
 
-            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:145:19: ( options {greedy=false; } : . )*
+            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:158:18: ( options {greedy=false; } : . )*
             loop4:
             do {
                 int alt4=2;
                 int LA4_0 = input.LA(1);
 
-                if ( (LA4_0==']') ) {
-                    int LA4_1 = input.LA(2);
-
-                    if ( (LA4_1==']') ) {
-                        alt4=2;
-                    }
-                    else if ( ((LA4_1>='\u0000' && LA4_1<='\\')||(LA4_1>='^' && LA4_1<='\uFFFF')) ) {
-                        alt4=1;
-                    }
-
-
+                if ( (LA4_0=='}') ) {
+                    alt4=2;
                 }
-                else if ( ((LA4_0>='\u0000' && LA4_0<='\\')||(LA4_0>='^' && LA4_0<='\uFFFF')) ) {
+                else if ( ((LA4_0>='\u0000' && LA4_0<='|')||(LA4_0>='~' && LA4_0<='\uFFFF')) ) {
                     alt4=1;
                 }
 
 
                 switch (alt4) {
             	case 1 :
-            	    // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:145:46: .
+            	    // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:158:45: .
             	    {
             	    matchAny(); 
 
@@ -1125,6 +1227,65 @@ public class MonitorLexer extends Lexer {
 
             	default :
             	    break loop4;
+                }
+            } while (true);
+
+            match('}'); 
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "ASSERTION"
+
+    // $ANTLR start "ANNOTATION"
+    public final void mANNOTATION() throws RecognitionException {
+        try {
+            int _type = ANNOTATION;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:160:12: ( '[[' ( options {greedy=false; } : . )* ']]' )
+            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:160:14: '[[' ( options {greedy=false; } : . )* ']]'
+            {
+            match("[["); 
+
+            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:160:19: ( options {greedy=false; } : . )*
+            loop5:
+            do {
+                int alt5=2;
+                int LA5_0 = input.LA(1);
+
+                if ( (LA5_0==']') ) {
+                    int LA5_1 = input.LA(2);
+
+                    if ( (LA5_1==']') ) {
+                        alt5=2;
+                    }
+                    else if ( ((LA5_1>='\u0000' && LA5_1<='\\')||(LA5_1>='^' && LA5_1<='\uFFFF')) ) {
+                        alt5=1;
+                    }
+
+
+                }
+                else if ( ((LA5_0>='\u0000' && LA5_0<='\\')||(LA5_0>='^' && LA5_0<='\uFFFF')) ) {
+                    alt5=1;
+                }
+
+
+                switch (alt5) {
+            	case 1 :
+            	    // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:160:46: .
+            	    {
+            	    matchAny(); 
+
+            	    }
+            	    break;
+
+            	default :
+            	    break loop5;
                 }
             } while (true);
 
@@ -1146,37 +1307,37 @@ public class MonitorLexer extends Lexer {
         try {
             int _type = ML_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:148:5: ( '/*' ( options {greedy=false; } : . )* '*/' )
-            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:148:9: '/*' ( options {greedy=false; } : . )* '*/'
+            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:163:5: ( '/*' ( options {greedy=false; } : . )* '*/' )
+            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:163:9: '/*' ( options {greedy=false; } : . )* '*/'
             {
             match("/*"); 
 
-            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:148:14: ( options {greedy=false; } : . )*
-            loop5:
+            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:163:14: ( options {greedy=false; } : . )*
+            loop6:
             do {
-                int alt5=2;
-                int LA5_0 = input.LA(1);
+                int alt6=2;
+                int LA6_0 = input.LA(1);
 
-                if ( (LA5_0=='*') ) {
-                    int LA5_1 = input.LA(2);
+                if ( (LA6_0=='*') ) {
+                    int LA6_1 = input.LA(2);
 
-                    if ( (LA5_1=='/') ) {
-                        alt5=2;
+                    if ( (LA6_1=='/') ) {
+                        alt6=2;
                     }
-                    else if ( ((LA5_1>='\u0000' && LA5_1<='.')||(LA5_1>='0' && LA5_1<='\uFFFF')) ) {
-                        alt5=1;
+                    else if ( ((LA6_1>='\u0000' && LA6_1<='.')||(LA6_1>='0' && LA6_1<='\uFFFF')) ) {
+                        alt6=1;
                     }
 
 
                 }
-                else if ( ((LA5_0>='\u0000' && LA5_0<=')')||(LA5_0>='+' && LA5_0<='\uFFFF')) ) {
-                    alt5=1;
+                else if ( ((LA6_0>='\u0000' && LA6_0<=')')||(LA6_0>='+' && LA6_0<='\uFFFF')) ) {
+                    alt6=1;
                 }
 
 
-                switch (alt5) {
+                switch (alt6) {
             	case 1 :
-            	    // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:148:41: .
+            	    // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:163:41: .
             	    {
             	    matchAny(); 
 
@@ -1184,7 +1345,7 @@ public class MonitorLexer extends Lexer {
             	    break;
 
             	default :
-            	    break loop5;
+            	    break loop6;
                 }
             } while (true);
 
@@ -1207,28 +1368,28 @@ public class MonitorLexer extends Lexer {
         try {
             int _type = LINE_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:151:14: ( '//' ( options {greedy=false; } : . )* '\\n' )
-            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:151:16: '//' ( options {greedy=false; } : . )* '\\n'
+            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:166:14: ( '//' ( options {greedy=false; } : . )* '\\n' )
+            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:166:16: '//' ( options {greedy=false; } : . )* '\\n'
             {
             match("//"); 
 
-            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:151:21: ( options {greedy=false; } : . )*
-            loop6:
+            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:166:21: ( options {greedy=false; } : . )*
+            loop7:
             do {
-                int alt6=2;
-                int LA6_0 = input.LA(1);
+                int alt7=2;
+                int LA7_0 = input.LA(1);
 
-                if ( (LA6_0=='\n') ) {
-                    alt6=2;
+                if ( (LA7_0=='\n') ) {
+                    alt7=2;
                 }
-                else if ( ((LA6_0>='\u0000' && LA6_0<='\t')||(LA6_0>='\u000B' && LA6_0<='\uFFFF')) ) {
-                    alt6=1;
+                else if ( ((LA7_0>='\u0000' && LA7_0<='\t')||(LA7_0>='\u000B' && LA7_0<='\uFFFF')) ) {
+                    alt7=1;
                 }
 
 
-                switch (alt6) {
+                switch (alt7) {
             	case 1 :
-            	    // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:151:48: .
+            	    // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:166:48: .
             	    {
             	    matchAny(); 
 
@@ -1236,7 +1397,7 @@ public class MonitorLexer extends Lexer {
             	    break;
 
             	default :
-            	    break loop6;
+            	    break loop7;
                 }
             } while (true);
 
@@ -1258,24 +1419,24 @@ public class MonitorLexer extends Lexer {
         try {
             int _type = StringLiteral;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:153:14: ( '\"' (~ ( '\\\\' | '\"' ) )* '\"' )
-            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:153:16: '\"' (~ ( '\\\\' | '\"' ) )* '\"'
+            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:168:14: ( '\"' (~ ( '\\\\' | '\"' ) )* '\"' )
+            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:168:16: '\"' (~ ( '\\\\' | '\"' ) )* '\"'
             {
             match('\"'); 
-            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:153:20: (~ ( '\\\\' | '\"' ) )*
-            loop7:
+            // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:168:20: (~ ( '\\\\' | '\"' ) )*
+            loop8:
             do {
-                int alt7=2;
-                int LA7_0 = input.LA(1);
+                int alt8=2;
+                int LA8_0 = input.LA(1);
 
-                if ( ((LA7_0>='\u0000' && LA7_0<='!')||(LA7_0>='#' && LA7_0<='[')||(LA7_0>=']' && LA7_0<='\uFFFF')) ) {
-                    alt7=1;
+                if ( ((LA8_0>='\u0000' && LA8_0<='!')||(LA8_0>='#' && LA8_0<='[')||(LA8_0>=']' && LA8_0<='\uFFFF')) ) {
+                    alt8=1;
                 }
 
 
-                switch (alt7) {
+                switch (alt8) {
             	case 1 :
-            	    // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:153:22: ~ ( '\\\\' | '\"' )
+            	    // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:168:22: ~ ( '\\\\' | '\"' )
             	    {
             	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='!')||(input.LA(1)>='#' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
             	        input.consume();
@@ -1291,7 +1452,7 @@ public class MonitorLexer extends Lexer {
             	    break;
 
             	default :
-            	    break loop7;
+            	    break loop8;
                 }
             } while (true);
 
@@ -1308,10 +1469,10 @@ public class MonitorLexer extends Lexer {
     // $ANTLR end "StringLiteral"
 
     public void mTokens() throws RecognitionException {
-        // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:1:8: ( INTERACTION | PLUS | MINUS | MULT | DIV | FULLSTOP | RESV | SEND | BRANCH | UNORDERED | RECLABEL | PARALLEL | PROTOCOL | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | T__36 | T__37 | T__38 | T__39 | T__40 | T__41 | T__42 | T__43 | T__44 | T__45 | T__46 | T__47 | T__48 | T__49 | T__50 | T__51 | ID | NUMBER | WHITESPACE | ANNOTATION | ML_COMMENT | LINE_COMMENT | StringLiteral )
-        int alt8=47;
-        alt8 = dfa8.predict(input);
-        switch (alt8) {
+        // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:1:8: ( INTERACTION | INT | STRING | PLUS | MINUS | MULT | DIV | FULLSTOP | RESV | SEND | TYPE | VALUE | BRANCH | UNORDERED | RECLABEL | PARALLEL | PROTOCOL | ASSERT | T__31 | T__32 | T__33 | T__34 | T__35 | T__36 | T__37 | T__38 | T__39 | T__40 | T__41 | T__42 | T__43 | T__44 | T__45 | T__46 | T__47 | T__48 | T__49 | T__50 | T__51 | T__52 | T__53 | T__54 | T__55 | T__56 | T__57 | ID | NUMBER | WHITESPACE | ASSERTION | ANNOTATION | ML_COMMENT | LINE_COMMENT | StringLiteral )
+        int alt9=53;
+        alt9 = dfa9.predict(input);
+        switch (alt9) {
             case 1 :
                 // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:1:10: INTERACTION
                 {
@@ -1320,322 +1481,364 @@ public class MonitorLexer extends Lexer {
                 }
                 break;
             case 2 :
-                // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:1:22: PLUS
+                // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:1:22: INT
+                {
+                mINT(); 
+
+                }
+                break;
+            case 3 :
+                // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:1:26: STRING
+                {
+                mSTRING(); 
+
+                }
+                break;
+            case 4 :
+                // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:1:33: PLUS
                 {
                 mPLUS(); 
 
                 }
                 break;
-            case 3 :
-                // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:1:27: MINUS
+            case 5 :
+                // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:1:38: MINUS
                 {
                 mMINUS(); 
 
                 }
                 break;
-            case 4 :
-                // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:1:33: MULT
+            case 6 :
+                // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:1:44: MULT
                 {
                 mMULT(); 
 
                 }
                 break;
-            case 5 :
-                // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:1:38: DIV
+            case 7 :
+                // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:1:49: DIV
                 {
                 mDIV(); 
 
                 }
                 break;
-            case 6 :
-                // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:1:42: FULLSTOP
+            case 8 :
+                // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:1:53: FULLSTOP
                 {
                 mFULLSTOP(); 
 
                 }
                 break;
-            case 7 :
-                // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:1:51: RESV
+            case 9 :
+                // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:1:62: RESV
                 {
                 mRESV(); 
 
                 }
                 break;
-            case 8 :
-                // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:1:56: SEND
+            case 10 :
+                // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:1:67: SEND
                 {
                 mSEND(); 
 
                 }
                 break;
-            case 9 :
-                // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:1:61: BRANCH
+            case 11 :
+                // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:1:72: TYPE
+                {
+                mTYPE(); 
+
+                }
+                break;
+            case 12 :
+                // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:1:77: VALUE
+                {
+                mVALUE(); 
+
+                }
+                break;
+            case 13 :
+                // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:1:83: BRANCH
                 {
                 mBRANCH(); 
 
                 }
                 break;
-            case 10 :
-                // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:1:68: UNORDERED
+            case 14 :
+                // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:1:90: UNORDERED
                 {
                 mUNORDERED(); 
 
                 }
                 break;
-            case 11 :
-                // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:1:78: RECLABEL
+            case 15 :
+                // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:1:100: RECLABEL
                 {
                 mRECLABEL(); 
 
                 }
                 break;
-            case 12 :
-                // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:1:87: PARALLEL
+            case 16 :
+                // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:1:109: PARALLEL
                 {
                 mPARALLEL(); 
 
                 }
                 break;
-            case 13 :
-                // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:1:96: PROTOCOL
+            case 17 :
+                // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:1:118: PROTOCOL
                 {
                 mPROTOCOL(); 
 
                 }
                 break;
-            case 14 :
-                // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:1:105: T__25
-                {
-                mT__25(); 
-
-                }
-                break;
-            case 15 :
-                // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:1:111: T__26
-                {
-                mT__26(); 
-
-                }
-                break;
-            case 16 :
-                // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:1:117: T__27
-                {
-                mT__27(); 
-
-                }
-                break;
-            case 17 :
-                // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:1:123: T__28
-                {
-                mT__28(); 
-
-                }
-                break;
             case 18 :
-                // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:1:129: T__29
+                // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:1:127: ASSERT
                 {
-                mT__29(); 
+                mASSERT(); 
 
                 }
                 break;
             case 19 :
-                // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:1:135: T__30
-                {
-                mT__30(); 
-
-                }
-                break;
-            case 20 :
-                // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:1:141: T__31
+                // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:1:134: T__31
                 {
                 mT__31(); 
 
                 }
                 break;
-            case 21 :
-                // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:1:147: T__32
+            case 20 :
+                // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:1:140: T__32
                 {
                 mT__32(); 
 
                 }
                 break;
-            case 22 :
-                // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:1:153: T__33
+            case 21 :
+                // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:1:146: T__33
                 {
                 mT__33(); 
 
                 }
                 break;
-            case 23 :
-                // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:1:159: T__34
+            case 22 :
+                // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:1:152: T__34
                 {
                 mT__34(); 
 
                 }
                 break;
-            case 24 :
-                // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:1:165: T__35
+            case 23 :
+                // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:1:158: T__35
                 {
                 mT__35(); 
 
                 }
                 break;
-            case 25 :
-                // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:1:171: T__36
+            case 24 :
+                // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:1:164: T__36
                 {
                 mT__36(); 
 
                 }
                 break;
-            case 26 :
-                // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:1:177: T__37
+            case 25 :
+                // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:1:170: T__37
                 {
                 mT__37(); 
 
                 }
                 break;
-            case 27 :
-                // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:1:183: T__38
+            case 26 :
+                // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:1:176: T__38
                 {
                 mT__38(); 
 
                 }
                 break;
-            case 28 :
-                // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:1:189: T__39
+            case 27 :
+                // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:1:182: T__39
                 {
                 mT__39(); 
 
                 }
                 break;
-            case 29 :
-                // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:1:195: T__40
+            case 28 :
+                // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:1:188: T__40
                 {
                 mT__40(); 
 
                 }
                 break;
-            case 30 :
-                // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:1:201: T__41
+            case 29 :
+                // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:1:194: T__41
                 {
                 mT__41(); 
 
                 }
                 break;
-            case 31 :
-                // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:1:207: T__42
+            case 30 :
+                // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:1:200: T__42
                 {
                 mT__42(); 
 
                 }
                 break;
-            case 32 :
-                // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:1:213: T__43
+            case 31 :
+                // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:1:206: T__43
                 {
                 mT__43(); 
 
                 }
                 break;
-            case 33 :
-                // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:1:219: T__44
+            case 32 :
+                // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:1:212: T__44
                 {
                 mT__44(); 
 
                 }
                 break;
-            case 34 :
-                // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:1:225: T__45
+            case 33 :
+                // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:1:218: T__45
                 {
                 mT__45(); 
 
                 }
                 break;
-            case 35 :
-                // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:1:231: T__46
+            case 34 :
+                // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:1:224: T__46
                 {
                 mT__46(); 
 
                 }
                 break;
-            case 36 :
-                // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:1:237: T__47
+            case 35 :
+                // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:1:230: T__47
                 {
                 mT__47(); 
 
                 }
                 break;
-            case 37 :
-                // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:1:243: T__48
+            case 36 :
+                // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:1:236: T__48
                 {
                 mT__48(); 
 
                 }
                 break;
-            case 38 :
-                // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:1:249: T__49
+            case 37 :
+                // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:1:242: T__49
                 {
                 mT__49(); 
 
                 }
                 break;
-            case 39 :
-                // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:1:255: T__50
+            case 38 :
+                // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:1:248: T__50
                 {
                 mT__50(); 
 
                 }
                 break;
-            case 40 :
-                // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:1:261: T__51
+            case 39 :
+                // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:1:254: T__51
                 {
                 mT__51(); 
 
                 }
                 break;
+            case 40 :
+                // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:1:260: T__52
+                {
+                mT__52(); 
+
+                }
+                break;
             case 41 :
-                // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:1:267: ID
+                // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:1:266: T__53
+                {
+                mT__53(); 
+
+                }
+                break;
+            case 42 :
+                // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:1:272: T__54
+                {
+                mT__54(); 
+
+                }
+                break;
+            case 43 :
+                // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:1:278: T__55
+                {
+                mT__55(); 
+
+                }
+                break;
+            case 44 :
+                // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:1:284: T__56
+                {
+                mT__56(); 
+
+                }
+                break;
+            case 45 :
+                // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:1:290: T__57
+                {
+                mT__57(); 
+
+                }
+                break;
+            case 46 :
+                // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:1:296: ID
                 {
                 mID(); 
 
                 }
                 break;
-            case 42 :
-                // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:1:270: NUMBER
+            case 47 :
+                // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:1:299: NUMBER
                 {
                 mNUMBER(); 
 
                 }
                 break;
-            case 43 :
-                // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:1:277: WHITESPACE
+            case 48 :
+                // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:1:306: WHITESPACE
                 {
                 mWHITESPACE(); 
 
                 }
                 break;
-            case 44 :
-                // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:1:288: ANNOTATION
+            case 49 :
+                // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:1:317: ASSERTION
+                {
+                mASSERTION(); 
+
+                }
+                break;
+            case 50 :
+                // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:1:327: ANNOTATION
                 {
                 mANNOTATION(); 
 
                 }
                 break;
-            case 45 :
-                // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:1:299: ML_COMMENT
+            case 51 :
+                // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:1:338: ML_COMMENT
                 {
                 mML_COMMENT(); 
 
                 }
                 break;
-            case 46 :
-                // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:1:310: LINE_COMMENT
+            case 52 :
+                // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:1:349: LINE_COMMENT
                 {
                 mLINE_COMMENT(); 
 
                 }
                 break;
-            case 47 :
-                // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:1:323: StringLiteral
+            case 53 :
+                // /homes/rn710/workspace/MonitorPrototype/Antlr/src/Monitor.g:1:362: StringLiteral
                 {
                 mStringLiteral(); 
 
@@ -1647,283 +1850,319 @@ public class MonitorLexer extends Lexer {
     }
 
 
-    protected DFA8 dfa8 = new DFA8(this);
-    static final String DFA8_eotS =
-        "\1\uffff\1\35\3\uffff\1\46\1\uffff\6\35\2\uffff\2\35\4\uffff\4\35"+
-        "\1\uffff\3\35\5\uffff\2\35\3\uffff\11\35\1\111\1\112\4\35\1\120"+
-        "\1\35\1\122\1\35\1\124\16\35\2\uffff\1\144\2\35\1\147\1\150\1\uffff"+
-        "\1\35\1\uffff\1\152\1\uffff\5\35\1\160\1\35\1\162\6\35\1\171\1\uffff"+
-        "\1\172\1\35\2\uffff\1\35\1\uffff\5\35\1\uffff\1\35\1\uffff\6\35"+
-        "\2\uffff\6\35\1\u0090\1\u0091\1\35\1\u0093\5\35\1\u0099\1\u009a"+
-        "\4\35\2\uffff\1\35\1\uffff\5\35\2\uffff\4\35\1\u00a9\1\35\1\u00ab"+
-        "\1\u00ac\1\u00ad\1\u00ae\2\35\1\u00b1\1\35\1\uffff\1\u00b3\4\uffff"+
-        "\1\u00b4\1\35\1\uffff\1\u00b6\2\uffff\1\u00b7\2\uffff";
-    static final String DFA8_eofS =
-        "\u00b8\uffff";
-    static final String DFA8_minS =
-        "\1\11\1\155\3\uffff\1\52\1\uffff\2\105\1\122\1\116\1\101\1\141\2"+
-        "\uffff\1\162\1\156\4\uffff\1\145\1\157\1\150\1\162\1\uffff\1\156"+
-        "\1\157\1\156\5\uffff\1\154\1\160\3\uffff\1\103\1\116\1\101\1\117"+
-        "\1\122\1\117\1\157\1\162\1\157\2\60\1\144\1\154\1\143\1\156\1\60"+
-        "\1\157\1\60\1\144\1\60\1\157\1\145\1\151\1\157\1\126\1\114\1\104"+
-        "\1\116\1\122\1\101\1\124\1\164\1\141\1\155\2\uffff\1\60\2\145\2"+
-        "\60\1\uffff\1\151\1\uffff\1\60\1\uffff\2\162\1\157\1\156\1\162\1"+
-        "\60\1\101\1\60\1\103\1\104\1\114\1\117\1\157\1\154\1\60\1\uffff"+
-        "\1\60\1\141\2\uffff\1\143\1\uffff\1\144\1\141\1\144\1\145\1\164"+
-        "\1\uffff\1\102\1\uffff\1\110\1\105\1\114\1\103\1\143\1\154\2\uffff"+
-        "\1\164\2\145\1\143\2\165\2\60\1\105\1\60\1\122\1\105\1\117\1\157"+
-        "\1\145\2\60\1\162\1\164\1\160\1\143\2\uffff\1\114\1\uffff\1\105"+
-        "\2\114\2\154\2\uffff\1\145\1\151\1\164\1\145\1\60\1\104\4\60\1\144"+
-        "\1\157\1\60\1\163\1\uffff\1\60\4\uffff\1\60\1\156\1\uffff\1\60\2"+
-        "\uffff\1\60\2\uffff";
-    static final String DFA8_maxS =
-        "\1\175\1\156\3\uffff\1\57\1\uffff\2\105\1\122\1\116\1\122\1\162"+
-        "\2\uffff\1\162\1\164\4\uffff\1\165\1\157\1\150\1\162\1\uffff\1\156"+
-        "\1\157\1\156\5\uffff\1\164\1\160\3\uffff\1\123\1\116\1\101\1\117"+
-        "\1\122\1\117\1\157\1\162\1\157\2\172\1\144\1\154\1\160\1\156\1\172"+
-        "\1\157\1\172\1\144\1\172\1\157\1\162\1\151\1\157\1\126\1\114\1\104"+
-        "\1\116\1\122\1\101\1\124\1\164\1\141\1\155\2\uffff\1\172\2\145\2"+
-        "\172\1\uffff\1\151\1\uffff\1\172\1\uffff\2\162\1\157\1\156\1\162"+
-        "\1\172\1\101\1\172\1\103\1\104\1\114\1\117\1\157\1\154\1\172\1\uffff"+
-        "\1\172\1\141\2\uffff\1\143\1\uffff\1\144\1\162\1\144\1\145\1\164"+
-        "\1\uffff\1\102\1\uffff\1\110\1\105\1\114\1\103\1\143\1\154\2\uffff"+
-        "\1\164\2\145\1\143\2\165\2\172\1\105\1\172\1\122\1\105\1\117\1\157"+
-        "\1\145\2\172\1\162\1\164\1\160\1\143\2\uffff\1\114\1\uffff\1\105"+
-        "\2\114\2\154\2\uffff\1\145\1\151\1\164\1\145\1\172\1\104\4\172\1"+
-        "\144\1\157\1\172\1\163\1\uffff\1\172\4\uffff\1\172\1\156\1\uffff"+
-        "\1\172\2\uffff\1\172\2\uffff";
-    static final String DFA8_acceptS =
-        "\2\uffff\1\2\1\3\1\4\1\uffff\1\6\6\uffff\1\20\1\21\2\uffff\1\25"+
-        "\1\26\1\27\1\30\4\uffff\1\36\3\uffff\1\51\1\52\1\53\1\54\1\57\2"+
-        "\uffff\1\55\1\56\1\5\42\uffff\1\23\1\24\5\uffff\1\33\1\uffff\1\35"+
-        "\1\uffff\1\46\17\uffff\1\45\2\uffff\1\40\1\42\1\uffff\1\41\5\uffff"+
-        "\1\7\1\uffff\1\10\6\uffff\1\22\1\31\25\uffff\1\43\1\16\1\uffff\1"+
-        "\11\5\uffff\1\37\1\34\16\uffff\1\13\1\uffff\1\14\1\15\1\17\1\44"+
-        "\2\uffff\1\47\1\uffff\1\12\1\50\1\uffff\1\32\1\1";
-    static final String DFA8_specialS =
-        "\u00b8\uffff}>";
-    static final String[] DFA8_transitionS = {
-            "\2\37\1\uffff\2\37\22\uffff\1\37\1\uffff\1\41\5\uffff\1\23\1"+
-            "\24\1\4\1\2\1\15\1\3\1\6\1\5\12\36\1\31\1\16\5\uffff\1\35\1"+
-            "\11\15\35\1\13\1\35\1\7\1\10\1\35\1\12\5\35\1\40\3\uffff\1\35"+
-            "\1\uffff\1\20\1\35\1\27\1\33\1\32\1\17\2\35\1\1\5\35\1\30\1"+
-            "\14\1\35\1\25\1\35\1\26\1\34\5\35\1\21\1\uffff\1\22",
-            "\1\43\1\42",
-            "",
-            "",
-            "",
-            "\1\44\4\uffff\1\45",
-            "",
-            "\1\47",
-            "\1\50",
+    protected DFA9 dfa9 = new DFA9(this);
+    static final String DFA9_eotS =
+        "\1\uffff\2\41\3\uffff\1\54\1\uffff\11\41\2\uffff\2\41\4\uffff\1"+
+        "\41\1\uffff\6\41\6\uffff\3\41\3\uffff\14\41\1\126\1\127\4\41\1\135"+
+        "\1\41\1\137\1\41\1\141\1\41\1\145\20\41\2\uffff\1\166\2\41\1\171"+
+        "\1\172\1\uffff\1\41\1\uffff\1\174\1\uffff\3\41\1\uffff\3\41\1\u0083"+
+        "\1\41\1\u0085\1\u0086\10\41\1\u008f\1\uffff\1\u0090\1\41\2\uffff"+
+        "\1\41\1\uffff\6\41\1\uffff\1\41\2\uffff\1\u009b\7\41\2\uffff\6\41"+
+        "\1\u00a9\1\u00aa\1\u00ab\1\41\1\uffff\1\u00ad\3\41\1\u00b1\2\41"+
+        "\1\u00b4\1\u00b5\4\41\3\uffff\1\41\1\uffff\3\41\1\uffff\2\41\2\uffff"+
+        "\4\41\1\u00c4\1\41\1\u00c6\1\u00c7\1\u00c8\1\u00c9\2\41\1\u00cc"+
+        "\1\41\1\uffff\1\u00ce\4\uffff\1\u00cf\1\41\1\uffff\1\u00d1\2\uffff"+
+        "\1\u00d2\2\uffff";
+    static final String DFA9_eofS =
+        "\u00d3\uffff";
+    static final String DFA9_minS =
+        "\1\11\1\155\1\164\3\uffff\1\52\1\uffff\2\105\1\131\1\101\1\122\1"+
+        "\116\1\101\1\123\1\141\2\uffff\1\162\1\156\4\uffff\1\145\1\uffff"+
+        "\1\157\1\150\1\162\1\156\1\157\1\156\6\uffff\1\154\1\160\1\162\3"+
+        "\uffff\1\103\1\116\1\120\1\114\1\101\1\117\1\122\1\117\1\123\1\157"+
+        "\1\162\1\157\2\60\1\144\1\154\1\143\1\156\1\60\1\157\1\60\1\144"+
+        "\1\60\1\157\1\60\1\151\1\157\1\151\1\126\1\114\1\104\1\105\1\125"+
+        "\1\116\1\122\1\101\1\124\1\105\1\164\1\141\1\155\2\uffff\1\60\2"+
+        "\145\2\60\1\uffff\1\151\1\uffff\1\60\1\uffff\2\162\1\157\1\uffff"+
+        "\1\156\1\162\1\156\1\60\1\101\2\60\1\105\1\103\1\104\1\114\1\117"+
+        "\1\122\1\157\1\154\1\60\1\uffff\1\60\1\141\2\uffff\1\143\1\uffff"+
+        "\1\144\1\141\1\144\1\145\1\164\1\147\1\uffff\1\102\2\uffff\1\60"+
+        "\1\110\1\105\1\114\1\103\1\124\1\143\1\154\2\uffff\1\164\2\145\1"+
+        "\143\2\165\3\60\1\105\1\uffff\1\60\1\122\1\105\1\117\1\60\1\157"+
+        "\1\145\2\60\1\162\1\164\1\160\1\143\3\uffff\1\114\1\uffff\1\105"+
+        "\2\114\1\uffff\2\154\2\uffff\1\145\1\151\1\164\1\145\1\60\1\104"+
+        "\4\60\1\144\1\157\1\60\1\163\1\uffff\1\60\4\uffff\1\60\1\156\1\uffff"+
+        "\1\60\2\uffff\1\60\2\uffff";
+    static final String DFA9_maxS =
+        "\1\175\1\156\1\164\3\uffff\1\57\1\uffff\2\105\1\131\1\101\1\122"+
+        "\1\116\1\122\1\123\1\162\2\uffff\1\162\1\164\4\uffff\1\165\1\uffff"+
+        "\1\157\1\150\1\162\1\156\1\157\1\156\6\uffff\1\164\1\160\1\162\3"+
+        "\uffff\1\123\1\116\1\120\1\114\1\101\1\117\1\122\1\117\1\123\1\157"+
+        "\1\162\1\157\2\172\1\144\1\154\1\160\1\156\1\172\1\157\1\172\1\144"+
+        "\1\172\1\157\1\172\1\151\1\157\1\151\1\126\1\114\1\104\1\105\1\125"+
+        "\1\116\1\122\1\101\1\124\1\105\1\164\1\141\1\155\2\uffff\1\172\2"+
+        "\145\2\172\1\uffff\1\151\1\uffff\1\172\1\uffff\2\162\1\157\1\uffff"+
+        "\1\156\1\162\1\156\1\172\1\101\2\172\1\105\1\103\1\104\1\114\1\117"+
+        "\1\122\1\157\1\154\1\172\1\uffff\1\172\1\141\2\uffff\1\143\1\uffff"+
+        "\1\144\1\162\1\144\1\145\1\164\1\147\1\uffff\1\102\2\uffff\1\172"+
+        "\1\110\1\105\1\114\1\103\1\124\1\143\1\154\2\uffff\1\164\2\145\1"+
+        "\143\2\165\3\172\1\105\1\uffff\1\172\1\122\1\105\1\117\1\172\1\157"+
+        "\1\145\2\172\1\162\1\164\1\160\1\143\3\uffff\1\114\1\uffff\1\105"+
+        "\2\114\1\uffff\2\154\2\uffff\1\145\1\151\1\164\1\145\1\172\1\104"+
+        "\4\172\1\144\1\157\1\172\1\163\1\uffff\1\172\4\uffff\1\172\1\156"+
+        "\1\uffff\1\172\2\uffff\1\172\2\uffff";
+    static final String DFA9_acceptS =
+        "\3\uffff\1\4\1\5\1\6\1\uffff\1\10\11\uffff\1\25\1\26\2\uffff\1\32"+
+        "\1\33\1\34\1\35\1\uffff\1\40\6\uffff\1\56\1\57\1\60\1\61\1\62\1"+
+        "\65\3\uffff\1\63\1\64\1\7\51\uffff\1\30\1\31\5\uffff\1\41\1\uffff"+
+        "\1\43\1\uffff\1\53\3\uffff\1\2\20\uffff\1\52\2\uffff\1\45\1\47\1"+
+        "\uffff\1\46\6\uffff\1\11\1\uffff\1\12\1\13\10\uffff\1\27\1\36\12"+
+        "\uffff\1\14\15\uffff\1\50\1\23\1\3\1\uffff\1\15\3\uffff\1\22\2\uffff"+
+        "\1\44\1\42\16\uffff\1\17\1\uffff\1\20\1\21\1\24\1\51\2\uffff\1\54"+
+        "\1\uffff\1\16\1\55\1\uffff\1\37\1\1";
+    static final String DFA9_specialS =
+        "\u00d3\uffff}>";
+    static final String[] DFA9_transitionS = {
+            "\2\43\1\uffff\2\43\22\uffff\1\43\1\uffff\1\46\5\uffff\1\27\1"+
+            "\30\1\5\1\3\1\21\1\4\1\7\1\6\12\42\1\32\1\22\4\uffff\1\44\1"+
+            "\17\1\14\15\41\1\16\1\41\1\10\1\11\1\12\1\15\1\13\4\41\1\45"+
+            "\3\uffff\1\41\1\uffff\1\24\1\41\1\34\1\37\1\36\1\23\2\41\1\1"+
+            "\5\41\1\35\1\20\1\41\1\31\1\2\1\33\1\40\5\41\1\25\1\uffff\1"+
+            "\26",
+            "\1\50\1\47",
             "\1\51",
-            "\1\52",
-            "\1\53\20\uffff\1\54",
-            "\1\56\20\uffff\1\55",
             "",
             "",
+            "",
+            "\1\52\4\uffff\1\53",
+            "",
+            "\1\55",
+            "\1\56",
             "\1\57",
-            "\1\62\4\uffff\1\60\1\61",
+            "\1\60",
+            "\1\61",
+            "\1\62",
+            "\1\63\20\uffff\1\64",
+            "\1\65",
+            "\1\67\20\uffff\1\66",
             "",
             "",
-            "",
-            "",
-            "\1\64\11\uffff\1\63\5\uffff\1\65",
-            "\1\66",
-            "\1\67",
             "\1\70",
-            "",
-            "\1\71",
-            "\1\72",
-            "\1\73",
+            "\1\73\4\uffff\1\71\1\72",
             "",
             "",
             "",
             "",
+            "\1\75\11\uffff\1\74\5\uffff\1\76",
             "",
-            "\1\75\7\uffff\1\74",
-            "\1\76",
-            "",
-            "",
-            "",
-            "\1\100\17\uffff\1\77",
+            "\1\77",
+            "\1\100",
             "\1\101",
             "\1\102",
             "\1\103",
             "\1\104",
-            "\1\105",
-            "\1\106",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "\1\106\7\uffff\1\105",
             "\1\107",
             "\1\110",
-            "\12\35\7\uffff\32\35\4\uffff\1\35\1\uffff\32\35",
-            "\12\35\7\uffff\32\35\4\uffff\1\35\1\uffff\32\35",
+            "",
+            "",
+            "",
+            "\1\112\17\uffff\1\111",
             "\1\113",
             "\1\114",
-            "\1\116\14\uffff\1\115",
+            "\1\115",
+            "\1\116",
             "\1\117",
-            "\12\35\7\uffff\32\35\4\uffff\1\35\1\uffff\32\35",
+            "\1\120",
             "\1\121",
-            "\12\35\7\uffff\32\35\4\uffff\1\35\1\uffff\32\35",
+            "\1\122",
             "\1\123",
-            "\12\35\7\uffff\32\35\4\uffff\1\35\1\uffff\32\35",
+            "\1\124",
             "\1\125",
-            "\1\126\14\uffff\1\127",
+            "\12\41\7\uffff\32\41\4\uffff\1\41\1\uffff\32\41",
+            "\12\41\7\uffff\32\41\4\uffff\1\41\1\uffff\32\41",
             "\1\130",
             "\1\131",
-            "\1\132",
-            "\1\133",
+            "\1\133\14\uffff\1\132",
             "\1\134",
-            "\1\135",
+            "\12\41\7\uffff\32\41\4\uffff\1\41\1\uffff\32\41",
             "\1\136",
-            "\1\137",
+            "\12\41\7\uffff\32\41\4\uffff\1\41\1\uffff\32\41",
             "\1\140",
-            "\1\141",
+            "\12\41\7\uffff\32\41\4\uffff\1\41\1\uffff\32\41",
             "\1\142",
-            "\1\143",
-            "",
-            "",
-            "\12\35\7\uffff\32\35\4\uffff\1\35\1\uffff\32\35",
-            "\1\145",
+            "\12\41\7\uffff\32\41\4\uffff\1\41\1\uffff\4\41\1\143\14\41"+
+            "\1\144\10\41",
             "\1\146",
-            "\12\35\7\uffff\32\35\4\uffff\1\35\1\uffff\32\35",
-            "\12\35\7\uffff\32\35\4\uffff\1\35\1\uffff\32\35",
-            "",
+            "\1\147",
+            "\1\150",
             "\1\151",
-            "",
-            "\12\35\7\uffff\32\35\4\uffff\1\35\1\uffff\32\35",
-            "",
+            "\1\152",
             "\1\153",
             "\1\154",
             "\1\155",
             "\1\156",
             "\1\157",
-            "\12\35\7\uffff\32\35\4\uffff\1\35\1\uffff\32\35",
+            "\1\160",
             "\1\161",
-            "\12\35\7\uffff\32\35\4\uffff\1\35\1\uffff\32\35",
+            "\1\162",
             "\1\163",
             "\1\164",
             "\1\165",
-            "\1\166",
+            "",
+            "",
+            "\12\41\7\uffff\32\41\4\uffff\1\41\1\uffff\32\41",
             "\1\167",
             "\1\170",
-            "\12\35\7\uffff\32\35\4\uffff\1\35\1\uffff\32\35",
+            "\12\41\7\uffff\32\41\4\uffff\1\41\1\uffff\32\41",
+            "\12\41\7\uffff\32\41\4\uffff\1\41\1\uffff\32\41",
             "",
-            "\12\35\7\uffff\32\35\4\uffff\1\35\1\uffff\32\35",
             "\1\173",
             "",
-            "",
-            "\1\174",
+            "\12\41\7\uffff\32\41\4\uffff\1\41\1\uffff\32\41",
             "",
             "\1\175",
-            "\1\176\20\uffff\1\177",
+            "\1\176",
+            "\1\177",
+            "",
             "\1\u0080",
             "\1\u0081",
             "\1\u0082",
-            "",
-            "\1\u0083",
-            "",
+            "\12\41\7\uffff\32\41\4\uffff\1\41\1\uffff\32\41",
             "\1\u0084",
-            "\1\u0085",
-            "\1\u0086",
+            "\12\41\7\uffff\32\41\4\uffff\1\41\1\uffff\32\41",
+            "\12\41\7\uffff\32\41\4\uffff\1\41\1\uffff\32\41",
             "\1\u0087",
             "\1\u0088",
             "\1\u0089",
-            "",
-            "",
             "\1\u008a",
             "\1\u008b",
             "\1\u008c",
             "\1\u008d",
             "\1\u008e",
-            "\1\u008f",
-            "\12\35\7\uffff\32\35\4\uffff\1\35\1\uffff\32\35",
-            "\12\35\7\uffff\32\35\4\uffff\1\35\1\uffff\32\35",
+            "\12\41\7\uffff\32\41\4\uffff\1\41\1\uffff\32\41",
+            "",
+            "\12\41\7\uffff\32\41\4\uffff\1\41\1\uffff\32\41",
+            "\1\u0091",
+            "",
+            "",
             "\1\u0092",
-            "\12\35\7\uffff\32\35\4\uffff\1\35\1\uffff\32\35",
-            "\1\u0094",
-            "\1\u0095",
+            "",
+            "\1\u0093",
+            "\1\u0094\20\uffff\1\u0095",
             "\1\u0096",
             "\1\u0097",
             "\1\u0098",
-            "\12\35\7\uffff\32\35\4\uffff\1\35\1\uffff\32\35",
-            "\12\35\7\uffff\32\35\4\uffff\1\35\1\uffff\32\35",
-            "\1\u009b",
+            "\1\u0099",
+            "",
+            "\1\u009a",
+            "",
+            "",
+            "\12\41\7\uffff\32\41\4\uffff\1\41\1\uffff\32\41",
             "\1\u009c",
             "\1\u009d",
             "\1\u009e",
-            "",
-            "",
             "\1\u009f",
-            "",
             "\1\u00a0",
             "\1\u00a1",
             "\1\u00a2",
+            "",
+            "",
             "\1\u00a3",
             "\1\u00a4",
-            "",
-            "",
             "\1\u00a5",
             "\1\u00a6",
             "\1\u00a7",
             "\1\u00a8",
-            "\12\35\7\uffff\32\35\4\uffff\1\35\1\uffff\32\35",
-            "\1\u00aa",
-            "\12\35\7\uffff\32\35\4\uffff\1\35\1\uffff\32\35",
-            "\12\35\7\uffff\32\35\4\uffff\1\35\1\uffff\32\35",
-            "\12\35\7\uffff\32\35\4\uffff\1\35\1\uffff\32\35",
-            "\12\35\7\uffff\32\35\4\uffff\1\35\1\uffff\32\35",
+            "\12\41\7\uffff\32\41\4\uffff\1\41\1\uffff\32\41",
+            "\12\41\7\uffff\32\41\4\uffff\1\41\1\uffff\32\41",
+            "\12\41\7\uffff\32\41\4\uffff\1\41\1\uffff\32\41",
+            "\1\u00ac",
+            "",
+            "\12\41\7\uffff\32\41\4\uffff\1\41\1\uffff\32\41",
+            "\1\u00ae",
             "\1\u00af",
             "\1\u00b0",
-            "\12\35\7\uffff\32\35\4\uffff\1\35\1\uffff\32\35",
+            "\12\41\7\uffff\32\41\4\uffff\1\41\1\uffff\32\41",
             "\1\u00b2",
-            "",
-            "\12\35\7\uffff\32\35\4\uffff\1\35\1\uffff\32\35",
-            "",
-            "",
-            "",
-            "",
-            "\12\35\7\uffff\32\35\4\uffff\1\35\1\uffff\32\35",
-            "\1\u00b5",
-            "",
-            "\12\35\7\uffff\32\35\4\uffff\1\35\1\uffff\32\35",
+            "\1\u00b3",
+            "\12\41\7\uffff\32\41\4\uffff\1\41\1\uffff\32\41",
+            "\12\41\7\uffff\32\41\4\uffff\1\41\1\uffff\32\41",
+            "\1\u00b6",
+            "\1\u00b7",
+            "\1\u00b8",
+            "\1\u00b9",
             "",
             "",
-            "\12\35\7\uffff\32\35\4\uffff\1\35\1\uffff\32\35",
+            "",
+            "\1\u00ba",
+            "",
+            "\1\u00bb",
+            "\1\u00bc",
+            "\1\u00bd",
+            "",
+            "\1\u00be",
+            "\1\u00bf",
+            "",
+            "",
+            "\1\u00c0",
+            "\1\u00c1",
+            "\1\u00c2",
+            "\1\u00c3",
+            "\12\41\7\uffff\32\41\4\uffff\1\41\1\uffff\32\41",
+            "\1\u00c5",
+            "\12\41\7\uffff\32\41\4\uffff\1\41\1\uffff\32\41",
+            "\12\41\7\uffff\32\41\4\uffff\1\41\1\uffff\32\41",
+            "\12\41\7\uffff\32\41\4\uffff\1\41\1\uffff\32\41",
+            "\12\41\7\uffff\32\41\4\uffff\1\41\1\uffff\32\41",
+            "\1\u00ca",
+            "\1\u00cb",
+            "\12\41\7\uffff\32\41\4\uffff\1\41\1\uffff\32\41",
+            "\1\u00cd",
+            "",
+            "\12\41\7\uffff\32\41\4\uffff\1\41\1\uffff\32\41",
+            "",
+            "",
+            "",
+            "",
+            "\12\41\7\uffff\32\41\4\uffff\1\41\1\uffff\32\41",
+            "\1\u00d0",
+            "",
+            "\12\41\7\uffff\32\41\4\uffff\1\41\1\uffff\32\41",
+            "",
+            "",
+            "\12\41\7\uffff\32\41\4\uffff\1\41\1\uffff\32\41",
             "",
             ""
     };
 
-    static final short[] DFA8_eot = DFA.unpackEncodedString(DFA8_eotS);
-    static final short[] DFA8_eof = DFA.unpackEncodedString(DFA8_eofS);
-    static final char[] DFA8_min = DFA.unpackEncodedStringToUnsignedChars(DFA8_minS);
-    static final char[] DFA8_max = DFA.unpackEncodedStringToUnsignedChars(DFA8_maxS);
-    static final short[] DFA8_accept = DFA.unpackEncodedString(DFA8_acceptS);
-    static final short[] DFA8_special = DFA.unpackEncodedString(DFA8_specialS);
-    static final short[][] DFA8_transition;
+    static final short[] DFA9_eot = DFA.unpackEncodedString(DFA9_eotS);
+    static final short[] DFA9_eof = DFA.unpackEncodedString(DFA9_eofS);
+    static final char[] DFA9_min = DFA.unpackEncodedStringToUnsignedChars(DFA9_minS);
+    static final char[] DFA9_max = DFA.unpackEncodedStringToUnsignedChars(DFA9_maxS);
+    static final short[] DFA9_accept = DFA.unpackEncodedString(DFA9_acceptS);
+    static final short[] DFA9_special = DFA.unpackEncodedString(DFA9_specialS);
+    static final short[][] DFA9_transition;
 
     static {
-        int numStates = DFA8_transitionS.length;
-        DFA8_transition = new short[numStates][];
+        int numStates = DFA9_transitionS.length;
+        DFA9_transition = new short[numStates][];
         for (int i=0; i<numStates; i++) {
-            DFA8_transition[i] = DFA.unpackEncodedString(DFA8_transitionS[i]);
+            DFA9_transition[i] = DFA.unpackEncodedString(DFA9_transitionS[i]);
         }
     }
 
-    class DFA8 extends DFA {
+    class DFA9 extends DFA {
 
-        public DFA8(BaseRecognizer recognizer) {
+        public DFA9(BaseRecognizer recognizer) {
             this.recognizer = recognizer;
-            this.decisionNumber = 8;
-            this.eot = DFA8_eot;
-            this.eof = DFA8_eof;
-            this.min = DFA8_min;
-            this.max = DFA8_max;
-            this.accept = DFA8_accept;
-            this.special = DFA8_special;
-            this.transition = DFA8_transition;
+            this.decisionNumber = 9;
+            this.eot = DFA9_eot;
+            this.eof = DFA9_eof;
+            this.min = DFA9_min;
+            this.max = DFA9_max;
+            this.accept = DFA9_accept;
+            this.special = DFA9_special;
+            this.transition = DFA9_transition;
         }
         public String getDescription() {
-            return "1:1: Tokens : ( INTERACTION | PLUS | MINUS | MULT | DIV | FULLSTOP | RESV | SEND | BRANCH | UNORDERED | RECLABEL | PARALLEL | PROTOCOL | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | T__36 | T__37 | T__38 | T__39 | T__40 | T__41 | T__42 | T__43 | T__44 | T__45 | T__46 | T__47 | T__48 | T__49 | T__50 | T__51 | ID | NUMBER | WHITESPACE | ANNOTATION | ML_COMMENT | LINE_COMMENT | StringLiteral );";
+            return "1:1: Tokens : ( INTERACTION | INT | STRING | PLUS | MINUS | MULT | DIV | FULLSTOP | RESV | SEND | TYPE | VALUE | BRANCH | UNORDERED | RECLABEL | PARALLEL | PROTOCOL | ASSERT | T__31 | T__32 | T__33 | T__34 | T__35 | T__36 | T__37 | T__38 | T__39 | T__40 | T__41 | T__42 | T__43 | T__44 | T__45 | T__46 | T__47 | T__48 | T__49 | T__50 | T__51 | T__52 | T__53 | T__54 | T__55 | T__56 | T__57 | ID | NUMBER | WHITESPACE | ASSERTION | ANNOTATION | ML_COMMENT | LINE_COMMENT | StringLiteral );";
         }
     }
  

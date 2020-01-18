@@ -1,0 +1,63 @@
+protocol DataAcquisition at I(role A) 
+{
+	do 
+	{
+		choice
+		{
+		 	StreamMode from A;
+		 	choice 
+		 	{
+		 		Supported to A;
+		 		ConfigStream from A;
+		 		rec STREAM 
+		 		{
+		 			Raw to A;
+		 			STREAM;
+		 		}
+		 	} 
+		 	or 
+		 	{
+		 		NotSupported to A;
+		 		ConfigPoll from A;
+		 		rec SAMPLE 
+		 		{
+		 			Poll from A;
+		 			Raw to A;
+		 			SAMPLE;
+		 		} 
+		 	}
+		 } 
+		 or 
+		 {
+			SampleMode from A;
+		 	choice
+		 	{
+		 		Supported to A;
+		 		ConfigPoll from A;
+		 		rec SAMPLE1 
+		 		{
+		 			Poll from A;
+		 			Raw to A;
+		 			SAMPLE1;
+		 		}
+		 	} 
+		 	or 
+		 	{
+		 		NotSupported to A;
+		 		ConfigPush from A;
+		 		rec STREAM1 
+		 			{
+		 				Raw to A;
+		 				STREAM1;
+		 			}
+		 		}
+			}
+	}	 
+ 	interrupt by A 
+   	{
+ 		Stop from A;
+	}
+ }
+
+
+ 

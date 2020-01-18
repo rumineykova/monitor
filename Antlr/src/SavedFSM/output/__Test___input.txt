@@ -1,0 +1,3 @@
+protocol PurchasingBuyer (role Buyer) {
+	Order(x:int) to Seller;
+}

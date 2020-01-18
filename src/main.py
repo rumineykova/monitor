@@ -12,8 +12,6 @@ def main (argv):
 def buildPDA():
     pass
 
-
-
 def monitorStart():
     specID = "purchasingAtBuyer"
     monitor = Monitor()
