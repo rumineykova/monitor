@@ -4,11 +4,9 @@ Set-up:
 2) Install pika, client library for Python: https://github.com/pika/pika
 3) Install pyDev: http://pydev.org/manual_101_install.html
 4) Install antlr (antlr-runtime-3.1.3): http://www.antlr.org/download/Python 
-5) Import the project: http://www.doc.ic.ac.uk/~rn710/monitor/monitor.rar
+5) Import the project
 Resources: 
 
-paper page: http://www.doc.ic.ac.uk/~rn710/monitor/
-the paper contains explanation of the api and the monitor implementation
 Important files and how to implement a use case: 
 
 conversaion_api.py module: 
